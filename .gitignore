@@ -1,0 +1,26 @@
+# secrets
+.env
+backend/.env
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# node
+node_modules/
+frontend/dist/
+
+# runtime data (recreated by the seeder / app)
+backend/*.db
+backend/*.db-wal
+backend/*.db-shm
+backend/uploads/
+backend/demo_cache.json
+
+# editors / OS
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store

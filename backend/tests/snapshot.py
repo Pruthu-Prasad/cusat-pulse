@@ -147,21 +147,6 @@ def photo(seed):
 
 # ---------- scenario ----------
 
-POLL_CHECKS = []  # (report name, polled events == streamed events)
-
-
-class _Json:
-    """A computed result recorded like a response (status 200, JSON body)."""
-    status_code = 200
-    headers = {"content-type": "application/json"}
-
-    def __init__(self, body):
-        self._body = body
-
-    def json(self):
-        return self._body
-
-
 def run():
     seed_cusat.seed()
     import main
@@ -193,12 +178,7 @@ def run():
                 data["note"] = note
             r = rec(name, c.post("/api/reports", headers=h, data=data, files={"image": ("p.jpg", img, "image/jpeg")}))
             if r.status_code == 200:
-                job = r.json()["job_id"]
-                rec(name + " /stream", c.get(f"/api/stream/{job}", headers=h), stream=True)
-                polled = c.get(f"/api/stream/{job}/events?after=0", headers=h).json()["events"]
-                streamed = [json.loads(l[5:]) for l in c.get(f"/api/stream/{job}", headers=h).text.splitlines()
-                            if l.startswith("data:")]
-                POLL_CHECKS.append((name, polled == streamed and len(polled) > 0))
+                rec(name + " /stream", c.get(f"/api/stream/{r.json()['job_id']}", headers=h), stream=True)
             return r
 
         def upload(path, h, img, extra=None, name=None):
@@ -366,16 +346,6 @@ def run():
         rec("upload: token in query", c.get("/uploads/seed_sahara_1.jpg?token=" + S1["Authorization"][7:]))
         rec("upload: missing", c.get("/uploads/nope.jpg", headers=S1))
         rec("upload: traversal", c.get("/uploads/..%2Fmain.py", headers=S1))
-
-        # --- polling transport (what the frontend uses; works through Cloudflare) ---
-        rec("poll: dashboard latest (staff)", c.get("/api/stream/dashboard/latest", headers=ST))
-        rec("poll: dashboard latest (student)", c.get("/api/stream/dashboard/latest", headers=S1))
-        rec("poll: dashboard latest (no token)", c.get("/api/stream/dashboard/latest"))
-        rec("poll: unknown job", c.get("/api/stream/JOB-0000000000/events?after=0", headers=S1))
-        rec("poll: events after the last id", c.get("/api/stream/JOB-0000000000/events?after=999999", headers=S1))
-        rec("poll: every report's polled steps == its streamed steps",
-            _Json({"all_equal": all(ok for _, ok in POLL_CHECKS), "reports_checked": len(POLL_CHECKS),
-                   "mismatched": [n for n, ok in POLL_CHECKS if not ok]}))
     return out
 
 

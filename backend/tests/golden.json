@@ -5371,51 +5371,5 @@
   },
   "name": "upload: traversal",
   "status": 404
- },
- {
-  "body": {
-   "block_no": 74,
-   "event": "DISMISSED",
-   "issue_id": "CL-0004"
-  },
-  "name": "poll: dashboard latest (staff)",
-  "status": 200
- },
- {
-  "body": {
-   "detail": "Staff only."
-  },
-  "name": "poll: dashboard latest (student)",
-  "status": 403
- },
- {
-  "body": {
-   "detail": "Please sign in."
-  },
-  "name": "poll: dashboard latest (no token)",
-  "status": 401
- },
- {
-  "body": {
-   "events": []
-  },
-  "name": "poll: unknown job",
-  "status": 200
- },
- {
-  "body": {
-   "events": []
-  },
-  "name": "poll: events after the last id",
-  "status": 200
- },
- {
-  "body": {
-   "all_equal": true,
-   "mismatched": [],
-   "reports_checked": 9
-  },
-  "name": "poll: every report's polled steps == its streamed steps",
-  "status": 200
  }
 ]

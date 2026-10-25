@@ -3,31 +3,18 @@ from datetime import datetime, timedelta, timezone
 
 from google.genai import types
 
-import gemma
-from antifake import haversine_m
-from config import MERGE_RADIUS_METERS, REOPEN_WINDOW_HOURS, UPLOAD_DIR
-from db import next_id, now_iso
-from ledger import write_block
-from ranking import escalate, recount, threat_level
+from ai import tasks
+from ai.prompts import AGENT_SYSTEM
+from core.config import MERGE_RADIUS_METERS, REOPEN_WINDOW_HOURS, UPLOAD_DIR
+from core.database import next_id, now_iso
+from services.antifake import haversine_m
+from services.ledger import write_block
+from services.ranking import escalate, recount, threat_level
 
 MAX_STEPS = 8
 OPEN_STATUSES = ("OPEN", "REOPENED", "FIX_SUBMITTED", "AWAITING_STUDENT_CHECK")
 # Issues that were marked fixed: a fresh report of the same problem reopens them instead of starting a new ticket.
 FIXED_STATUSES = ("AWAITING_STUDENT_CHECK", "RESOLVED")
-
-AGENT_SYSTEM = """You decide where a new campus report belongs. You get the triage result for the
-new photo. Use find_nearby_issues first. If there are candidates, use
-get_issue_photos to compare. Merge as same_object if the photos show the same
-physical thing. Merge as same_root_problem only if it is the same building, same
-category, and the descriptions point to one cause (for example many dry taps
-in one hostel). Never merge across buildings; use link_related instead if two
-buildings seem connected. Issues marked recently_fixed were closed or sent for a
-student check not long ago: if the new photo shows that same problem again, the fix did not
-hold, so use merge_into_issue and the issue is reopened. Do not create a duplicate of a
-recently fixed issue. If nothing matches, call create_issue. Then call
-notify_department. Act through tool calls. Alongside each call write at most one short plain
-sentence explaining the decision: no lists, no headings, no markdown, no restating the report."""
-
 
 def _decl(name, description, props, required):
     return types.FunctionDeclaration(
@@ -125,7 +112,7 @@ class Grouper:
         for r in picks:
             path = UPLOAD_DIR / r["image_path"]
             if path.exists():
-                self.extra_parts.append(gemma.img_part(path.read_bytes()))
+                self.extra_parts.append(tasks.img_part(path.read_bytes()))
         return ({"note": f"The next {len(picks)} image(s) are this issue's first and latest photos.",
                  "photos": [{"report_id": r["id"], "shows": r["ai_description"]} for r in picks]},
                 f"get_issue_photos({issue_id}) -> comparing")
@@ -269,11 +256,11 @@ def run_agent(conn, job_id, ctx, image):
                        "building": ctx["building"], "floor": ctx["floor"], "lat": ctx["lat"], "lng": ctx["lng"],
                        "student_note": ctx["note"]},
     })
-    contents = [types.Content(role="user", parts=[gemma.img_part(image), types.Part.from_text(text=intro)])]
+    contents = [types.Content(role="user", parts=[tasks.img_part(image), types.Part.from_text(text=intro)])]
     try:
         for _ in range(MAX_STEPS):
             log_event(conn, job_id, "thought", "Gemma is deciding the next step...")
-            resp = gemma.generate_with_tools(AGENT_SYSTEM, contents, TOOLS)
+            resp = tasks.generate_with_tools(AGENT_SYSTEM, contents, TOOLS)
             content = resp.candidates[0].content
             for p in content.parts or []:
                 if p.text and p.text.strip() and not getattr(p, "thought", False):
@@ -308,8 +295,8 @@ def _fallback(conn, job_id, g):
     if not found["issues"]:
         return
     try:
-        m = gemma.match_fallback(g.t, found["issues"])
-    except gemma.GemmaError:
+        m = tasks.match_fallback(g.t, found["issues"])
+    except tasks.GemmaError:
         return
     if m.get("match_issue_id") and m.get("merge_type") in ("same_object", "same_root_problem"):
         log_event(conn, job_id, "thought", m.get("reason", ""))

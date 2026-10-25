@@ -5,8 +5,8 @@ from datetime import datetime, timedelta, timezone
 import jwt
 from fastapi import Depends, HTTPException, Request
 
-from config import ALLOWED_EMAIL_DOMAINS, DEMO_MODE, DEMO_OTP, JWT_SECRET, STAFF_EMAILS
-from db import get_db, now_iso, parse_iso
+from core.config import ALLOWED_EMAIL_DOMAINS, DEMO_MODE, DEMO_OTP, JWT_SECRET, STAFF_EMAILS
+from core.database import get_db, now_iso, parse_iso
 
 DEMO_EMAIL_PREFIX = "demo"
 

@@ -6,8 +6,8 @@ from datetime import datetime, timedelta, timezone
 import imagehash
 from PIL import Image
 
-from config import MAX_REPORTS_PER_HOUR
-from db import parse_iso
+from core.config import MAX_REPORTS_PER_HOUR
+from core.database import parse_iso
 
 PHASH_MAX_DISTANCE = 6
 # Box around the CUSAT Thrikkakara campus (from OSM building extents, plus margin); GPS outside it only adds a flag.

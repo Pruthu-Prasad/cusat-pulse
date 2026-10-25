@@ -1,14 +1,15 @@
 """Ledger tamper demo for judges.
 
-python tamper_demo.py            backs up the DB, quietly edits one old block, then restores the trigger
-python tamper_demo.py --status   instead changes an issue's status directly (caught by the status cross-check)
-python tamper_demo.py --restore  puts the backup back
+Run from backend/:
+python -m scripts.tamper_demo            backs up the DB, quietly edits one old block, then restores the trigger
+python -m scripts.tamper_demo --status   instead changes an issue's status directly (caught by the status cross-check)
+python -m scripts.tamper_demo --restore  puts the backup back
 """
 import shutil
 import sqlite3
 import sys
 
-from config import DB_PATH
+from core.config import DB_PATH
 
 BACKUP = DB_PATH.with_name("cusat_pulse.backup.db")
 
@@ -31,8 +32,13 @@ def main():
     src.backup(dst)  # consistent copy even with WAL
     dst.close()
     print(f"Backed up to {BACKUP.name}")
+    try:
+        _tamper(src)
+    finally:
+        src.close()  # release the DB file so --restore can replace it
 
-    conn = src
+
+def _tamper(conn):
     if "--status" in sys.argv:
         row = conn.execute("SELECT id, status FROM issues WHERE status != 'RESOLVED' ORDER BY priority DESC LIMIT 1").fetchone()
         conn.execute("UPDATE issues SET status='RESOLVED' WHERE id=?", (row[0],))

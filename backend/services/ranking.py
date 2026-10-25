@@ -1,9 +1,9 @@
 from datetime import datetime, timezone
 
-import gemma
-from config import STAFF_EMAILS
-from db import now_iso, parse_iso
-from ledger import write_block
+from ai import tasks
+from core.config import STAFF_EMAILS
+from core.database import now_iso, parse_iso
+from services.ledger import write_block
 
 
 def threat_level(severity):
@@ -111,8 +111,8 @@ def refresh_work_order(conn, issue_id):
     linked = [dict(r) for r in conn.execute(
         "SELECT issue_a, issue_b, note FROM issue_links WHERE issue_a=? OR issue_b=?", (issue_id, issue_id))]
     try:
-        r = gemma.rank_and_work_order(issue, current_rank(conn, issue_id), linked)
-    except gemma.GemmaError:
+        r = tasks.rank_and_work_order(issue, current_rank(conn, issue_id), linked)
+    except tasks.GemmaError:
         return
     conn.execute(
         "UPDATE issues SET rank_reason=?, work_order_en=?, work_order_ml=?, trade_needed=? WHERE id=?",

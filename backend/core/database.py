@@ -2,7 +2,7 @@ import sqlite3
 from contextlib import contextmanager
 from datetime import datetime, timezone
 
-from config import DB_PATH
+from core.config import DB_PATH
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS users (

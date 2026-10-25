@@ -1,9 +1,10 @@
 import hashlib
 import json
 
-from db import now_iso
+from core.database import get_db, now_iso, rows
 
 GENESIS = "0" * 64
+PAGE_SIZE = 50
 
 
 def _hash(prev_hash, payload):
@@ -62,3 +63,20 @@ def verify(conn):
             return {"intact": False, "broken_at": block_no, "issue_id": issue_id,
                     "reason": f"Issue status is {row['status']} but the ledger says {status}", "blocks": len(blocks)}
     return {"intact": True, "blocks": len(blocks), "latest_hash": prev}
+
+
+def page(issue_id=None, page_no=1):
+    """Newest blocks first, optionally for one issue."""
+    with get_db() as conn:
+        where, args = ("WHERE issue_id=?", [issue_id]) if issue_id else ("", [])
+        blocks = rows(conn.execute(
+            f"SELECT block_no, event, issue_id, report_id, actor, prev_hash, block_hash, created_at FROM ledger {where}"
+            " ORDER BY block_no DESC LIMIT ? OFFSET ?", (*args, PAGE_SIZE, (page_no - 1) * PAGE_SIZE)))
+        total = conn.execute(f"SELECT COUNT(*) c FROM ledger {where}", args).fetchone()["c"]
+        latest = conn.execute("SELECT block_hash FROM ledger ORDER BY block_no DESC LIMIT 1").fetchone()
+    return {"blocks": blocks, "total": total, "latest_hash": latest["block_hash"] if latest else None}
+
+
+def verify_now():
+    with get_db() as conn:
+        return verify(conn)

@@ -5337,7 +5337,7 @@
  },
  {
   "body": {
-   "message": "Data already exists. Run `python seed_cusat.py --fresh` to start over.",
+   "message": "Data already exists. Run `python -m scripts.seed_cusat --fresh` to start over.",
    "seeded": false
   },
   "name": "seed: already seeded",

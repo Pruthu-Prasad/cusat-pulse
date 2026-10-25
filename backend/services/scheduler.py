@@ -1,8 +1,8 @@
 import asyncio
 
-import ranking
-from db import get_db, now_iso
-from ledger import write_block
+from core.database import get_db, now_iso
+from services import ranking
+from services.ledger import write_block
 
 CHECK_EVERY_S = 15
 RERANK_EVERY_TICKS = 40  # ~10 minutes, keeps the age bonus current

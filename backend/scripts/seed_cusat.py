@@ -1,4 +1,5 @@
-"""Demo data. Run `python seed_cusat.py --fresh` to wipe and reseed (the DB file is removed; rows can't be deleted).
+"""Demo data. From backend/: `python -m scripts.seed_cusat --fresh` wipes and reseeds (the DB file is removed;
+rows can't be deleted). Stop the backend first.
 
 Real photos: drop JPEGs into seed_images/ named <photo key>.jpg (e.g. sahara_1.jpg). Missing ones get a placeholder.
 Add --ai to run each real photo through Gemma (descriptions, scores, advice, rank reasons, EN/ML work orders)
@@ -12,12 +13,11 @@ from datetime import datetime, timedelta, timezone
 
 from PIL import Image, ImageDraw
 
-import antifake
-import gemma
-import ranking
-from config import DB_PATH, SEED_IMAGE_DIR, STAFF_EMAILS, UPLOAD_DIR
-from db import get_db, init_db, next_id, now_iso
-from ledger import write_block
+from ai import tasks
+from core.config import DB_PATH, SEED_IMAGE_DIR, STAFF_EMAILS, UPLOAD_DIR
+from core.database import get_db, init_db, next_id, now_iso
+from services import antifake, ranking
+from services.ledger import write_block
 
 # Coordinates from OpenStreetMap; names match frontend/src/buildings.js so grouping lines up.
 PLACES = {
@@ -157,8 +157,8 @@ def _ai_triage(key, s):
     if not USE_AI or not real.exists():
         return None
     try:
-        t = gemma.triage(real.read_bytes(), "", s["place"], s["floor"])
-    except gemma.GemmaError as e:
+        t = tasks.triage(real.read_bytes(), "", s["place"], s["floor"])
+    except tasks.GemmaError as e:
         print(f"  {key}: Gemma failed ({e}); using canned text", flush=True)
         return None
     if not t["is_valid_hazard"]:
@@ -231,7 +231,7 @@ def seed():
     with get_db() as conn:
         user_ids = _users(conn)
         if conn.execute("SELECT COUNT(*) c FROM issues").fetchone()["c"]:
-            return {"seeded": False, "message": "Data already exists. Run `python seed_cusat.py --fresh` to start over."}
+            return {"seeded": False, "message": "Data already exists. Run `python -m scripts.seed_cusat --fresh` to start over."}
         ids = [_scenario(conn, s, user_ids) for s in SCENARIOS]
         hostel_a, hostel_b = ids[1], ids[2]
         note = "Both hostels lost water around the same time; could be the main supply."

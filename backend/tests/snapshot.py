@@ -21,14 +21,9 @@ GOLDEN = Path(__file__).with_name("golden.json")
 
 def _setup():
     tmp = Path(tempfile.mkdtemp()) / "snapshot.db"
-    try:
-        from core import config, database as db  # new layout
-        from ai import tasks as ai
-        from scripts import seed_cusat
-    except ImportError:
-        import config, db  # noqa: E401  (old flat layout)
-        import gemma as ai
-        import seed_cusat
+    from core import config, database as db
+    from ai import tasks as ai
+    from scripts import seed_cusat
     config.DB_PATH = tmp
     db.DB_PATH = tmp
     return ai, seed_cusat, tmp

@@ -1,4 +1,10 @@
-"""Server-Sent Events. Both streams poll the database (agent_events / ledger), so they survive restarts."""
+"""Live updates for the Agent Trace and the staff dashboard.
+
+Two transports over the same data (agent_events / ledger):
+- Polling (/latest, /{job_id}/events): what the frontend uses. Plain short requests work through any proxy,
+  including Cloudflare quick tunnels, which hold back streaming responses.
+- Server-Sent Events (/dashboard, /{job_id}): kept for direct connections and older clients.
+"""
 import asyncio
 import json
 
@@ -7,8 +13,30 @@ from fastapi.responses import StreamingResponse
 
 from core.database import get_db, rows
 from core.security import current_user, require_staff
+from schemas.reports import DashboardVersion, JobEventsOut
 
 router = APIRouter(prefix="/api/stream", tags=["stream"])
+
+
+# ---------- polling ----------
+
+@router.get("/dashboard/latest", response_model=DashboardVersion, response_model_exclude_unset=True)
+def api_dashboard_latest(user=Depends(require_staff)):
+    with get_db() as conn:
+        row = conn.execute("SELECT block_no, event, issue_id FROM ledger ORDER BY block_no DESC LIMIT 1").fetchone()
+    return dict(row) if row else {"block_no": 0}
+
+
+@router.get("/{job_id}/events", response_model=JobEventsOut, response_model_exclude_unset=True)
+def api_job_events(job_id: str, after: int = 0, user=Depends(current_user)):
+    """Agent Trace steps for a job with id > after; the client stops polling after a final/error event."""
+    with get_db() as conn:
+        evs = rows(conn.execute("SELECT id, step, kind, text FROM agent_events WHERE report_id=? AND id>? ORDER BY id",
+                                (job_id, after)))
+    return {"events": evs}
+
+
+# ---------- Server-Sent Events ----------
 
 
 def sse(gen):

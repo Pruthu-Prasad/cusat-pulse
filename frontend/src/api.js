@@ -38,10 +38,48 @@ export async function api(path, { method = 'GET', body, form } = {}) {
 
 export const photo = (name) => (name ? `/uploads/${name}?token=${encodeURIComponent(session.token || '')}` : null)
 
+// Live updates by polling, with the same shape as an EventSource (onopen / onerror / close()).
+// Cloudflare quick tunnels hold back streaming (SSE) responses, so short requests are what reliably
+// reach phones. '/api/stream/dashboard' fires onMessage when the ledger moves; '/api/stream/<job>'
+// delivers each Agent Trace step once, in order.
 export function stream(path, onMessage) {
-  const es = new EventSource(`${path}?token=${encodeURIComponent(session.token || '')}`)
-  es.onmessage = (e) => { try { onMessage(JSON.parse(e.data)) } catch { /* ignore */ } }
-  return es
+  const dashboard = path === '/api/stream/dashboard'
+  let timer = null
+  let after = 0
+  let lastBlock = null
+  let opened = false
+  const handle = {
+    onopen: null,
+    onerror: null,
+    closed: false,
+    close() { this.closed = true; clearTimeout(timer) },
+  }
+
+  async function tick() {
+    if (handle.closed) return
+    try {
+      if (dashboard) {
+        const v = await api('/api/stream/dashboard/latest')
+        if (lastBlock !== null && v.block_no !== lastBlock) onMessage(v)
+        lastBlock = v.block_no
+      } else {
+        const r = await api(`${path}/events?after=${after}`)
+        for (const e of r.events) {
+          after = e.id
+          onMessage(e)
+          if (handle.closed) return  // the caller closes on final / error
+        }
+      }
+      if (!opened) { opened = true; handle.onopen?.() }
+    } catch {
+      opened = false
+      handle.onerror?.()
+    }
+    if (!handle.closed) timer = setTimeout(tick, dashboard ? 2000 : 700)
+  }
+
+  tick()
+  return handle
 }
 
 export const CATEGORY_COLORS = {

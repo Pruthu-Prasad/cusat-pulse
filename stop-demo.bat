@@ -12,5 +12,8 @@ for %%P in (8000 5173) do (
   for /f "tokens=5" %%I in ('netstat -ano ^| findstr /r /c:":%%P .*LISTENING"') do taskkill /pid %%I /t /f >nul 2>nul
 )
 
-echo Done. Ports 8000 and 5173 are free.
-timeout /t 3 >nul
+rem The phone tunnel, if its window was closed some other way.
+taskkill /im cloudflared.exe /f >nul 2>nul
+
+echo Done. Backend, frontend and tunnel are stopped.
+ping -n 4 127.0.0.1 >nul

@@ -1,0 +1,4881 @@
+[
+ {
+  "body": {
+   "detail": "Only CUSAT email addresses can sign in."
+  },
+  "name": "otp: wrong domain",
+  "status": 400
+ },
+ {
+  "body": {
+   "detail": "First time here? Please enter your name and CUSAT ID."
+  },
+  "name": "otp: new user without profile",
+  "status": 400
+ },
+ {
+  "body": {
+   "detail": "This CUSAT ID is already registered."
+  },
+  "name": "otp: duplicate cusat id",
+  "status": 400
+ },
+ {
+  "body": {
+   "demo_hint": null,
+   "new_user": true,
+   "sent": true
+  },
+  "name": "otp: new user ok",
+  "status": 200
+ },
+ {
+  "body": {
+   "detail": "That code is not right."
+  },
+  "name": "verify: wrong code",
+  "status": 400
+ },
+ {
+  "body": {
+   "detail": "Please request a code first."
+  },
+  "name": "verify: no otp requested",
+  "status": 400
+ },
+ {
+  "body": {
+   "token": "<TOKEN>",
+   "user": {
+    "cusat_id": "CUS1001",
+    "email": "demo1@cusat.ac.in",
+    "id": 1,
+    "name": "Anjali Menon",
+    "role": "student",
+    "trust_score": 100
+   }
+  },
+  "name": "verify: demo ok",
+  "status": 200
+ },
+ {
+  "body": {
+   "detail": "Please sign in."
+  },
+  "name": "issues: no token",
+  "status": 401
+ },
+ {
+  "body": {
+   "detail": "Your session has expired. Please sign in again."
+  },
+  "name": "issues: bad token",
+  "status": 401
+ },
+ {
+  "body": {
+   "detail": "Staff only."
+  },
+  "name": "heatmap: student",
+  "status": 403
+ },
+ {
+  "body": {
+   "detail": "Staff only."
+  },
+  "name": "grouped: student",
+  "status": 403
+ },
+ {
+  "body": {
+   "detail": "Admin only."
+  },
+  "name": "ledger: staff",
+  "status": 403
+ },
+ {
+  "body": {
+   "detail": "Admin only."
+  },
+  "name": "verify: staff",
+  "status": 403
+ },
+ {
+  "body": {
+   "detail": "Admin only."
+  },
+  "name": "seed: staff",
+  "status": 403
+ },
+ {
+  "body": {
+   "detail": "Staff only."
+  },
+  "name": "accept: student",
+  "status": 403
+ },
+ {
+  "body": {
+   "reports": [
+    {
+     "after_photo": null,
+     "ai_description": "Open electrical box with exposed burnt wires.",
+     "already_confirmed": false,
+     "category": "Electrical",
+     "created_at": "<TS>",
+     "fix_disputed": 0,
+     "id": "RPT-0001",
+     "image_path": "seed_sahara_1.jpg",
+     "issue_id": "CL-0001",
+     "report_status": "ACTIVE",
+     "severity": 9,
+     "status": "OPEN",
+     "threat_level": "Critical",
+     "title": "Sparking distribution box near the mess entrance",
+     "unique_reporters": 3,
+     "verify_deadline": null
+    },
+    {
+     "after_photo": null,
+     "ai_description": "Shower with no water.",
+     "already_confirmed": false,
+     "category": "Plumbing",
+     "created_at": "<TS>",
+     "fix_disputed": 0,
+     "id": "RPT-0011",
+     "image_path": "seed_aishwarya_2.jpg",
+     "issue_id": "CL-0003",
+     "report_status": "ACTIVE",
+     "severity": 5,
+     "status": "OPEN",
+     "threat_level": "Medium",
+     "title": "Taps dry in Aishwarya Hostel",
+     "unique_reporters": 3,
+     "verify_deadline": null
+    }
+   ],
+   "user": {
+    "cusat_id": "CUS1001",
+    "email": "demo1@cusat.ac.in",
+    "id": 1,
+    "name": "Anjali Menon",
+    "role": "student",
+    "trust_score": 100
+   }
+  },
+  "name": "me: demo1",
+  "status": 200
+ },
+ {
+  "body": {
+   "reports": [],
+   "user": {
+    "cusat_id": "STAFF1",
+    "email": "estate@cusat.ac.in",
+    "id": 11,
+    "name": "Estate",
+    "role": "admin",
+    "trust_score": 100
+   }
+  },
+  "name": "me: admin",
+  "status": 200
+ },
+ {
+  "body": {
+   "expires_in": 120,
+   "token": "<TOKEN>"
+  },
+  "name": "capture-token",
+  "status": 200
+ },
+ {
+  "body": {
+   "issues": [
+    {
+     "building": "Sahara Hostel",
+     "category": "Electrical",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "Ground",
+     "id": "CL-0001",
+     "lat": 10.05,
+     "lng": 76.33,
+     "priority": 8.17,
+     "severity": 9,
+     "status": "OPEN",
+     "threat_level": "Critical",
+     "title": "Sparking distribution box near the mess entrance",
+     "unique_reporters": 3
+    },
+    {
+     "building": "Athulya Hostel",
+     "category": "Plumbing",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "3+",
+     "id": "CL-0002",
+     "lat": 10.04,
+     "lng": 76.32,
+     "priority": 7.15,
+     "severity": 6,
+     "status": "OPEN",
+     "threat_level": "Medium",
+     "title": "No water on all floors since morning",
+     "unique_reporters": 6
+    },
+    {
+     "building": "SOE",
+     "category": "Structural",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "2",
+     "id": "CL-0004",
+     "lat": 10.05,
+     "lng": 76.33,
+     "priority": 6.78,
+     "severity": 7,
+     "status": "OPEN",
+     "threat_level": "High",
+     "title": "Collapsed ceiling panel in a lab",
+     "unique_reporters": 1
+    },
+    {
+     "building": "Amenity Centre",
+     "category": "Plumbing",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "Ground",
+     "id": "CL-0006",
+     "lat": 10.04,
+     "lng": 76.33,
+     "priority": 6.75,
+     "severity": 7,
+     "status": "OPEN",
+     "threat_level": "High",
+     "title": "Burst pipe flooding the corridor",
+     "unique_reporters": 2
+    },
+    {
+     "building": "Aishwarya Hostel",
+     "category": "Plumbing",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "1",
+     "id": "CL-0003",
+     "lat": 10.04,
+     "lng": 76.32,
+     "priority": 6.12,
+     "severity": 5,
+     "status": "OPEN",
+     "threat_level": "Medium",
+     "title": "Taps dry in Aishwarya Hostel",
+     "unique_reporters": 3
+    },
+    {
+     "building": "CITTIC",
+     "category": "IT",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "1",
+     "id": "CL-0005",
+     "lat": 10.04,
+     "lng": 76.33,
+     "priority": 3.28,
+     "severity": 2,
+     "status": "OPEN",
+     "threat_level": "Low",
+     "title": "Projector not turning on in seminar hall",
+     "unique_reporters": 1
+    }
+   ],
+   "links": [
+    {
+     "issue_a": "CL-0002",
+     "issue_b": "CL-0003",
+     "note": "Both hostels lost water around the same time; could be the main supply."
+    }
+   ]
+  },
+  "name": "issues: student",
+  "status": 200
+ },
+ {
+  "body": {
+   "issues": [
+    {
+     "building": "Sahara Hostel",
+     "category": "Electrical",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "Ground",
+     "id": "CL-0001",
+     "lat": 10.05,
+     "lng": 76.33,
+     "priority": 8.17,
+     "severity": 9,
+     "status": "OPEN",
+     "threat_level": "Critical",
+     "title": "Sparking distribution box near the mess entrance",
+     "unique_reporters": 3
+    },
+    {
+     "building": "Athulya Hostel",
+     "category": "Plumbing",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "3+",
+     "id": "CL-0002",
+     "lat": 10.04,
+     "lng": 76.32,
+     "priority": 7.15,
+     "severity": 6,
+     "status": "OPEN",
+     "threat_level": "Medium",
+     "title": "No water on all floors since morning",
+     "unique_reporters": 6
+    },
+    {
+     "building": "SOE",
+     "category": "Structural",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "2",
+     "id": "CL-0004",
+     "lat": 10.05,
+     "lng": 76.33,
+     "priority": 6.78,
+     "severity": 7,
+     "status": "OPEN",
+     "threat_level": "High",
+     "title": "Collapsed ceiling panel in a lab",
+     "unique_reporters": 1
+    },
+    {
+     "building": "Amenity Centre",
+     "category": "Plumbing",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "Ground",
+     "id": "CL-0006",
+     "lat": 10.04,
+     "lng": 76.33,
+     "priority": 6.75,
+     "severity": 7,
+     "status": "OPEN",
+     "threat_level": "High",
+     "title": "Burst pipe flooding the corridor",
+     "unique_reporters": 2
+    },
+    {
+     "building": "Aishwarya Hostel",
+     "category": "Plumbing",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "1",
+     "id": "CL-0003",
+     "lat": 10.04,
+     "lng": 76.32,
+     "priority": 6.12,
+     "severity": 5,
+     "status": "OPEN",
+     "threat_level": "Medium",
+     "title": "Taps dry in Aishwarya Hostel",
+     "unique_reporters": 3
+    },
+    {
+     "building": "CITTIC",
+     "category": "IT",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "1",
+     "id": "CL-0005",
+     "lat": 10.04,
+     "lng": 76.33,
+     "priority": 3.28,
+     "severity": 2,
+     "status": "OPEN",
+     "threat_level": "Low",
+     "title": "Projector not turning on in seminar hall",
+     "unique_reporters": 1
+    }
+   ],
+   "links": [
+    {
+     "issue_a": "CL-0002",
+     "issue_b": "CL-0003",
+     "note": "Both hostels lost water around the same time; could be the main supply."
+    }
+   ]
+  },
+  "name": "issues: student include_resolved",
+  "status": 200
+ },
+ {
+  "body": {
+   "issues": [
+    {
+     "building": "Sahara Hostel",
+     "category": "Electrical",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "Ground",
+     "id": "CL-0001",
+     "lat": 10.05,
+     "lng": 76.33,
+     "priority": 8.17,
+     "severity": 9,
+     "status": "OPEN",
+     "threat_level": "Critical",
+     "title": "Sparking distribution box near the mess entrance",
+     "unique_reporters": 3
+    },
+    {
+     "building": "Athulya Hostel",
+     "category": "Plumbing",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "3+",
+     "id": "CL-0002",
+     "lat": 10.04,
+     "lng": 76.32,
+     "priority": 7.15,
+     "severity": 6,
+     "status": "OPEN",
+     "threat_level": "Medium",
+     "title": "No water on all floors since morning",
+     "unique_reporters": 6
+    },
+    {
+     "building": "SOE",
+     "category": "Structural",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "2",
+     "id": "CL-0004",
+     "lat": 10.05,
+     "lng": 76.33,
+     "priority": 6.78,
+     "severity": 7,
+     "status": "OPEN",
+     "threat_level": "High",
+     "title": "Collapsed ceiling panel in a lab",
+     "unique_reporters": 1
+    },
+    {
+     "building": "Amenity Centre",
+     "category": "Plumbing",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "Ground",
+     "id": "CL-0006",
+     "lat": 10.04,
+     "lng": 76.33,
+     "priority": 6.75,
+     "severity": 7,
+     "status": "OPEN",
+     "threat_level": "High",
+     "title": "Burst pipe flooding the corridor",
+     "unique_reporters": 2
+    },
+    {
+     "building": "Aishwarya Hostel",
+     "category": "Plumbing",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "1",
+     "id": "CL-0003",
+     "lat": 10.04,
+     "lng": 76.32,
+     "priority": 6.12,
+     "severity": 5,
+     "status": "OPEN",
+     "threat_level": "Medium",
+     "title": "Taps dry in Aishwarya Hostel",
+     "unique_reporters": 3
+    },
+    {
+     "building": "CITTIC",
+     "category": "IT",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "1",
+     "id": "CL-0005",
+     "lat": 10.04,
+     "lng": 76.33,
+     "priority": 3.28,
+     "severity": 2,
+     "status": "OPEN",
+     "threat_level": "Low",
+     "title": "Projector not turning on in seminar hall",
+     "unique_reporters": 1
+    }
+   ],
+   "links": [
+    {
+     "issue_a": "CL-0002",
+     "issue_b": "CL-0003",
+     "note": "Both hostels lost water around the same time; could be the main supply."
+    }
+   ]
+  },
+  "name": "issues: staff include_resolved",
+  "status": 200
+ },
+ {
+  "body": {
+   "after_photo": null,
+   "audits": [],
+   "breakdown": {
+    "inputs": {
+     "C": 6,
+     "E": 9,
+     "R": 3,
+     "S": 9
+    },
+    "parts": {
+     "age": 0.0,
+     "complexity": 1.2,
+     "emergency": 2.25,
+     "reporters": 1.12,
+     "severity": 3.6
+    },
+    "priority": 8.17
+   },
+   "building": "Sahara Hostel",
+   "category": "Electrical",
+   "complexity": 6,
+   "created_at": "<TS>",
+   "emergency": 9,
+   "escalation": 0,
+   "failed_fix_attempts": 0,
+   "fix_disputed": 0,
+   "floor": "Ground",
+   "i_reported": true,
+   "id": "CL-0001",
+   "lat": 10.05,
+   "links": [],
+   "lng": 76.33,
+   "needs_human_check": 0,
+   "priority": 8.17,
+   "rank": 1,
+   "rank_reason": "Ranked #1: live electrical risk in a busy corridor; needs an electrician and the circuit isolated.",
+   "reports": [
+    {
+     "advice": "Don't touch it. Keep 2 m away and tell the warden to cut the mains.",
+     "ai_description": "Open electrical box with exposed burnt wires.",
+     "complexity": 6,
+     "confidence": 0.9,
+     "counts_toward_total": 1,
+     "created_at": "<TS>",
+     "emergency": 9,
+     "floor": "Ground",
+     "hazard_box": "[]",
+     "id": "RPT-0001",
+     "image_path": "seed_sahara_1.jpg",
+     "lat": 10.05,
+     "lng": 76.33,
+     "merge_reason": "Seeded scenario",
+     "merge_type": "new",
+     "severity": 9,
+     "status": "ACTIVE"
+    },
+    {
+     "advice": "Don't touch it. Keep 2 m away and tell the warden to cut the mains.",
+     "ai_description": "Same box from the left, scorch marks above the breaker.",
+     "complexity": 6,
+     "confidence": 0.9,
+     "counts_toward_total": 1,
+     "created_at": "<TS>",
+     "emergency": 9,
+     "floor": "Ground",
+     "hazard_box": "[]",
+     "id": "RPT-0002",
+     "image_path": "seed_sahara_2.jpg",
+     "lat": 10.05,
+     "lng": 76.33,
+     "merge_reason": "Seeded scenario",
+     "merge_type": "same_object",
+     "severity": 9,
+     "status": "ACTIVE"
+    },
+    {
+     "advice": "Don't touch it. Keep 2 m away and tell the warden to cut the mains.",
+     "ai_description": "Close-up of melted insulation inside the box.",
+     "complexity": 6,
+     "confidence": 0.9,
+     "counts_toward_total": 1,
+     "created_at": "<TS>",
+     "emergency": 9,
+     "floor": "Ground",
+     "hazard_box": "[]",
+     "id": "RPT-0003",
+     "image_path": "seed_sahara_3.jpg",
+     "lat": 10.05,
+     "lng": 76.33,
+     "merge_reason": "Seeded scenario",
+     "merge_type": "same_object",
+     "severity": 9,
+     "status": "ACTIVE"
+    }
+   ],
+   "resolved_at": null,
+   "severity": 9,
+   "status": "OPEN",
+   "summary": "Open distribution box with burnt, exposed wires and scorch marks; sparks reported.",
+   "threat_level": "Critical",
+   "title": "Sparking distribution box near the mess entrance",
+   "trade_needed": "Electrician",
+   "unique_reporters": 3,
+   "verify_deadline": null
+  },
+  "name": "issue: student CL-0001",
+  "status": 200
+ },
+ {
+  "body": {
+   "after_photo": null,
+   "audits": [],
+   "breakdown": {
+    "inputs": {
+     "C": 6,
+     "E": 9,
+     "R": 3,
+     "S": 9
+    },
+    "parts": {
+     "age": 0.0,
+     "complexity": 1.2,
+     "emergency": 2.25,
+     "reporters": 1.12,
+     "severity": 3.6
+    },
+    "priority": 8.17
+   },
+   "building": "Sahara Hostel",
+   "category": "Electrical",
+   "complexity": 6,
+   "created_at": "<TS>",
+   "emergency": 9,
+   "escalation": 0,
+   "failed_fix_attempts": 0,
+   "fix_disputed": 0,
+   "floor": "Ground",
+   "i_reported": false,
+   "id": "CL-0001",
+   "lat": 10.05,
+   "ledger": [
+    {
+     "actor": "seed",
+     "block_hash": "<HASH>",
+     "block_no": 1,
+     "created_at": "<TS>",
+     "event": "ISSUE_CREATED",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1001",
+     "block_hash": "<HASH>",
+     "block_no": 2,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "report_id": "RPT-0001"
+    },
+    {
+     "actor": "student:CUS1002",
+     "block_hash": "<HASH>",
+     "block_no": 3,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "report_id": "RPT-0002"
+    },
+    {
+     "actor": "student:CUS1002",
+     "block_hash": "<HASH>",
+     "block_no": 4,
+     "created_at": "<TS>",
+     "event": "MERGED",
+     "report_id": "RPT-0002"
+    },
+    {
+     "actor": "student:CUS1003",
+     "block_hash": "<HASH>",
+     "block_no": 5,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "report_id": "RPT-0003"
+    },
+    {
+     "actor": "student:CUS1003",
+     "block_hash": "<HASH>",
+     "block_no": 6,
+     "created_at": "<TS>",
+     "event": "MERGED",
+     "report_id": "RPT-0003"
+    }
+   ],
+   "links": [],
+   "lng": 76.33,
+   "needs_human_check": 0,
+   "priority": 8.17,
+   "rank": 1,
+   "rank_reason": "Ranked #1: live electrical risk in a busy corridor; needs an electrician and the circuit isolated.",
+   "reports": [
+    {
+     "advice": "Don't touch it. Keep 2 m away and tell the warden to cut the mains.",
+     "ai_description": "Open electrical box with exposed burnt wires.",
+     "complexity": 6,
+     "confidence": 0.9,
+     "counts_toward_total": 1,
+     "created_at": "<TS>",
+     "cusat_id": "CUS1001",
+     "emergency": 9,
+     "floor": "Ground",
+     "gps_flag": null,
+     "hazard_box": "[]",
+     "id": "RPT-0001",
+     "image_path": "seed_sahara_1.jpg",
+     "lat": 10.05,
+     "lng": 76.33,
+     "merge_reason": "Seeded scenario",
+     "merge_type": "new",
+     "name": "Anjali Menon",
+     "note": null,
+     "severity": 9,
+     "status": "ACTIVE",
+     "trust_score": 100
+    },
+    {
+     "advice": "Don't touch it. Keep 2 m away and tell the warden to cut the mains.",
+     "ai_description": "Same box from the left, scorch marks above the breaker.",
+     "complexity": 6,
+     "confidence": 0.9,
+     "counts_toward_total": 1,
+     "created_at": "<TS>",
+     "cusat_id": "CUS1002",
+     "emergency": 9,
+     "floor": "Ground",
+     "gps_flag": null,
+     "hazard_box": "[]",
+     "id": "RPT-0002",
+     "image_path": "seed_sahara_2.jpg",
+     "lat": 10.05,
+     "lng": 76.33,
+     "merge_reason": "Seeded scenario",
+     "merge_type": "same_object",
+     "name": "Rahul Nair",
+     "note": null,
+     "severity": 9,
+     "status": "ACTIVE",
+     "trust_score": 100
+    },
+    {
+     "advice": "Don't touch it. Keep 2 m away and tell the warden to cut the mains.",
+     "ai_description": "Close-up of melted insulation inside the box.",
+     "complexity": 6,
+     "confidence": 0.9,
+     "counts_toward_total": 1,
+     "created_at": "<TS>",
+     "cusat_id": "CUS1003",
+     "emergency": 9,
+     "floor": "Ground",
+     "gps_flag": null,
+     "hazard_box": "[]",
+     "id": "RPT-0003",
+     "image_path": "seed_sahara_3.jpg",
+     "lat": 10.05,
+     "lng": 76.33,
+     "merge_reason": "Seeded scenario",
+     "merge_type": "same_object",
+     "name": "Fathima Rasheed",
+     "note": null,
+     "severity": 9,
+     "status": "ACTIVE",
+     "trust_score": 100
+    }
+   ],
+   "resolved_at": null,
+   "severity": 9,
+   "status": "OPEN",
+   "summary": "Open distribution box with burnt, exposed wires and scorch marks; sparks reported.",
+   "threat_level": "Critical",
+   "title": "Sparking distribution box near the mess entrance",
+   "trade_needed": "Electrician",
+   "unique_reporters": 3,
+   "verify_deadline": null,
+   "work_order_en": "WHAT: Sparking distribution box, exposed burnt wiring.\nWHERE: Sahara Hostel, ground floor, near mess entrance.\nTRADE: Electrician (2), insulated tools, replacement MCBs.\nRISK: Critical.\nSAFETY: Isolate the mains before opening. Rubber gloves and mat.",
+   "work_order_ml": "എന്ത്: തീപ്പൊരി വരുന്ന ഡിസ്ട്രിബ്യൂഷൻ ബോക്സ്, കത്തിയ വയറുകൾ പുറത്ത്.\nഎവിടെ: സഹാറ ഹോസ്റ്റൽ, താഴത്തെ നില, മെസ്സിന് സമീപം.\nജോലിക്കാർ: ഇലക്ട്രീഷ്യൻ (2), ഇൻസുലേറ്റഡ് ഉപകരണങ്ങൾ.\nഅപകട നില: അതീവ ഗുരുതരം.\nസുരക്ഷ: തുറക്കുന്നതിന് മുമ്പ് മെയിൻ സ്വിച്ച് ഓഫ് ചെയ്യുക."
+  },
+  "name": "issue: staff CL-0001",
+  "status": 200
+ },
+ {
+  "body": {
+   "detail": "Issue not found."
+  },
+  "name": "issue: 404",
+  "status": 404
+ },
+ {
+  "body": {
+   "flagged": [
+    {
+     "ai_description": "A flooded room shown on a laptop screen; screen bezel and moire lines visible.",
+     "building": "SOE",
+     "created_at": "<TS>",
+     "cusat_id": "CUS1008",
+     "gps_flag": "no_gps",
+     "id": "RPT-0017",
+     "image_path": "seed_fake_flood.jpg",
+     "lat": 10.05,
+     "lng": 76.33,
+     "name": "Nikhil Varghese"
+    }
+   ],
+   "groups": [
+    {
+     "category": "Electrical",
+     "count": 1,
+     "locations": [
+      {
+       "building": "Sahara Hostel",
+       "issues": [
+        {
+         "building": "Sahara Hostel",
+         "category": "Electrical",
+         "complexity": 6,
+         "created_at": "<TS>",
+         "emergency": 9,
+         "escalation": 0,
+         "failed_fix_attempts": 0,
+         "fix_disputed": 0,
+         "floor": "Ground",
+         "id": "CL-0001",
+         "lat": 10.05,
+         "lng": 76.33,
+         "needs_human_check": 0,
+         "priority": 8.17,
+         "rank_reason": "Ranked #1: live electrical risk in a busy corridor; needs an electrician and the circuit isolated.",
+         "resolved_at": null,
+         "severity": 9,
+         "status": "OPEN",
+         "summary": "Open distribution box with burnt, exposed wires and scorch marks; sparks reported.",
+         "threat_level": "Critical",
+         "title": "Sparking distribution box near the mess entrance",
+         "trade_needed": "Electrician",
+         "unique_reporters": 3,
+         "verify_deadline": null,
+         "work_order_en": "WHAT: Sparking distribution box, exposed burnt wiring.\nWHERE: Sahara Hostel, ground floor, near mess entrance.\nTRADE: Electrician (2), insulated tools, replacement MCBs.\nRISK: Critical.\nSAFETY: Isolate the mains before opening. Rubber gloves and mat.",
+         "work_order_ml": "എന്ത്: തീപ്പൊരി വരുന്ന ഡിസ്ട്രിബ്യൂഷൻ ബോക്സ്, കത്തിയ വയറുകൾ പുറത്ത്.\nഎവിടെ: സഹാറ ഹോസ്റ്റൽ, താഴത്തെ നില, മെസ്സിന് സമീപം.\nജോലിക്കാർ: ഇലക്ട്രീഷ്യൻ (2), ഇൻസുലേറ്റഡ് ഉപകരണങ്ങൾ.\nഅപകട നില: അതീവ ഗുരുതരം.\nസുരക്ഷ: തുറക്കുന്നതിന് മുമ്പ് മെയിൻ സ്വിച്ച് ഓഫ് ചെയ്യുക."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "category": "Structural",
+     "count": 1,
+     "locations": [
+      {
+       "building": "SOE",
+       "issues": [
+        {
+         "building": "SOE",
+         "category": "Structural",
+         "complexity": 8,
+         "created_at": "<TS>",
+         "emergency": 6,
+         "escalation": 0,
+         "failed_fix_attempts": 0,
+         "fix_disputed": 0,
+         "floor": "2",
+         "id": "CL-0004",
+         "lat": 10.05,
+         "lng": 76.33,
+         "needs_human_check": 0,
+         "priority": 6.78,
+         "rank_reason": "Ranked #3: more panels may fall in a room students use daily; needs a scaffold and a carpentry team.",
+         "resolved_at": null,
+         "severity": 7,
+         "status": "OPEN",
+         "summary": "A false-ceiling panel has fallen onto a lab bench; the frame above is sagging.",
+         "threat_level": "High",
+         "title": "Collapsed ceiling panel in a lab",
+         "trade_needed": "Carpenter",
+         "unique_reporters": 1,
+         "verify_deadline": null,
+         "work_order_en": "WHAT: Collapsed false-ceiling panel, frame sagging.\nWHERE: SOE, 2nd floor lab.\nTRADE: Carpenter team + scaffold.\nRISK: High.\nSAFETY: Close the lab; hard hats.",
+         "work_order_ml": "എന്ത്: ഫാൾസ് സീലിംഗ് പാനൽ വീണു, ഫ്രെയിം താഴ്ന്നിരിക്കുന്നു.\nഎവിടെ: SOE, രണ്ടാം നില ലാബ്.\nജോലിക്കാർ: ആശാരി സംഘം, സ്കാഫോൾഡ്.\nഅപകട നില: ഉയർന്നത്.\nസുരക്ഷ: ലാബ് അടച്ചിടുക."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "category": "Plumbing",
+     "count": 3,
+     "locations": [
+      {
+       "building": "Amenity Centre",
+       "issues": [
+        {
+         "building": "Amenity Centre",
+         "category": "Plumbing",
+         "complexity": 6,
+         "created_at": "<TS>",
+         "emergency": 8,
+         "escalation": 0,
+         "failed_fix_attempts": 0,
+         "fix_disputed": 0,
+         "floor": "Ground",
+         "id": "CL-0006",
+         "lat": 10.04,
+         "lng": 76.33,
+         "needs_human_check": 0,
+         "priority": 6.75,
+         "rank_reason": "Ranked #4: water is spreading in a busy corridor and wasting supply; slip risk.",
+         "resolved_at": null,
+         "severity": 7,
+         "status": "OPEN",
+         "summary": "Water spraying from a cracked pipe joint at floor level; corridor floor is wet.",
+         "threat_level": "High",
+         "title": "Burst pipe flooding the corridor",
+         "trade_needed": "Plumber",
+         "unique_reporters": 2,
+         "verify_deadline": null,
+         "work_order_en": "WHAT: Burst pipe joint.\nWHERE: Amenity Centre, ground floor corridor.\nTRADE: Plumber; replacement joint and clamps.\nRISK: High.\nSAFETY: Close the branch valve first; wet floor signs.",
+         "work_order_ml": "എന്ത്: പൈപ്പ് ജോയിന്റ് പൊട്ടി.\nഎവിടെ: അമിനിറ്റി സെന്റർ, താഴത്തെ നില ഇടനാഴി.\nജോലിക്കാർ: പ്ലംബർ.\nഅപകട നില: ഉയർന്നത്.\nസുരക്ഷ: ആദ്യം വാൽവ് അടയ്ക്കുക."
+        }
+       ]
+      },
+      {
+       "building": "Athulya Hostel",
+       "issues": [
+        {
+         "building": "Athulya Hostel",
+         "category": "Plumbing",
+         "complexity": 5,
+         "created_at": "<TS>",
+         "emergency": 7,
+         "escalation": 0,
+         "failed_fix_attempts": 0,
+         "fix_disputed": 0,
+         "floor": "3+",
+         "id": "CL-0002",
+         "lat": 10.04,
+         "lng": 76.32,
+         "needs_human_check": 0,
+         "priority": 7.15,
+         "rank_reason": "Ranked #2: whole building without water for 14 hours, six students affected; likely pump or tank fault.",
+         "resolved_at": null,
+         "severity": 6,
+         "status": "OPEN",
+         "summary": "Several taps and showers across floors are dry; points to a supply or tank problem, not one tap.",
+         "threat_level": "Medium",
+         "title": "No water on all floors since morning",
+         "trade_needed": "Plumber",
+         "unique_reporters": 6,
+         "verify_deadline": null,
+         "work_order_en": "WHAT: No water supply on all floors.\nWHERE: Athulya Hostel, building-wide.\nTRADE: Plumber + pump operator; check tank, pump, main valve.\nRISK: Medium-High (sanitation).\nSAFETY: Switch off the pump before inspecting.",
+         "work_order_ml": "എന്ത്: എല്ലാ നിലകളിലും വെള്ളമില്ല.\nഎവിടെ: അതുല്യ ഹോസ്റ്റൽ, മുഴുവൻ കെട്ടിടം.\nജോലിക്കാർ: പ്ലംബർ, പമ്പ് ഓപ്പറേറ്റർ; ടാങ്കും പമ്പും പരിശോധിക്കുക.\nഅപകട നില: ഇടത്തരം.\nസുരക്ഷ: പരിശോധിക്കുന്നതിന് മുമ്പ് പമ്പ് ഓഫ് ചെയ്യുക."
+        }
+       ]
+      },
+      {
+       "building": "Aishwarya Hostel",
+       "issues": [
+        {
+         "building": "Aishwarya Hostel",
+         "category": "Plumbing",
+         "complexity": 5,
+         "created_at": "<TS>",
+         "emergency": 6,
+         "escalation": 0,
+         "failed_fix_attempts": 0,
+         "fix_disputed": 0,
+         "floor": "1",
+         "id": "CL-0003",
+         "lat": 10.04,
+         "lng": 76.32,
+         "needs_human_check": 0,
+         "priority": 6.12,
+         "rank_reason": "Ranked #5: water failure for 3 students, possibly the same main supply as Athulya Hostel.",
+         "resolved_at": null,
+         "severity": 5,
+         "status": "OPEN",
+         "summary": "Dry taps in washrooms on two floors; started around the same time as Athulya Hostel next door.",
+         "threat_level": "Medium",
+         "title": "Taps dry in Aishwarya Hostel",
+         "trade_needed": "Plumber",
+         "unique_reporters": 3,
+         "verify_deadline": null,
+         "work_order_en": "WHAT: No water in washrooms.\nWHERE: Aishwarya Hostel, floors 1-2.\nTRADE: Plumber; check with the Athulya Hostel crew about the shared main line.\nRISK: Medium.\nSAFETY: Standard.",
+         "work_order_ml": "എന്ത്: ശുചിമുറികളിൽ വെള്ളമില്ല.\nഎവിടെ: ഐശ്വര്യ ഹോസ്റ്റൽ, 1-2 നിലകൾ.\nജോലിക്കാർ: പ്ലംബർ; അതുല്യ ഹോസ്റ്റലിലെ പ്രധാന ലൈനുമായി ഒത്തുനോക്കുക.\nഅപകട നില: ഇടത്തരം."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "category": "IT",
+     "count": 1,
+     "locations": [
+      {
+       "building": "CITTIC",
+       "issues": [
+        {
+         "building": "CITTIC",
+         "category": "IT",
+         "complexity": 3,
+         "created_at": "<TS>",
+         "emergency": 2,
+         "escalation": 0,
+         "failed_fix_attempts": 0,
+         "fix_disputed": 0,
+         "floor": "1",
+         "id": "CL-0005",
+         "lat": 10.04,
+         "lng": 76.33,
+         "needs_human_check": 0,
+         "priority": 3.28,
+         "rank_reason": "Ranked #6: no safety risk; schedule with IT support this week.",
+         "resolved_at": null,
+         "severity": 2,
+         "status": "OPEN",
+         "summary": "Ceiling projector shows no power light; the rest of the hall works.",
+         "threat_level": "Low",
+         "title": "Projector not turning on in seminar hall",
+         "trade_needed": "IT technician",
+         "unique_reporters": 1,
+         "verify_deadline": null,
+         "work_order_en": "WHAT: Projector dead.\nWHERE: CITTIC seminar hall, 1st floor.\nTRADE: IT technician; check power cable and lamp.\nRISK: Low.\nSAFETY: Use a ladder with a spotter.",
+         "work_order_ml": "എന്ത്: പ്രൊജക്ടർ പ്രവർത്തിക്കുന്നില്ല.\nഎവിടെ: CITTIC സെമിനാർ ഹാൾ.\nജോലിക്കാർ: ഐടി ടെക്നീഷ്യൻ.\nഅപകട നില: കുറവ്."
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "top": [
+    {
+     "building": "Sahara Hostel",
+     "category": "Electrical",
+     "complexity": 6,
+     "created_at": "<TS>",
+     "emergency": 9,
+     "escalation": 0,
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "Ground",
+     "id": "CL-0001",
+     "lat": 10.05,
+     "lng": 76.33,
+     "needs_human_check": 0,
+     "priority": 8.17,
+     "rank_reason": "Ranked #1: live electrical risk in a busy corridor; needs an electrician and the circuit isolated.",
+     "resolved_at": null,
+     "severity": 9,
+     "status": "OPEN",
+     "summary": "Open distribution box with burnt, exposed wires and scorch marks; sparks reported.",
+     "threat_level": "Critical",
+     "title": "Sparking distribution box near the mess entrance",
+     "trade_needed": "Electrician",
+     "unique_reporters": 3,
+     "verify_deadline": null,
+     "work_order_en": "WHAT: Sparking distribution box, exposed burnt wiring.\nWHERE: Sahara Hostel, ground floor, near mess entrance.\nTRADE: Electrician (2), insulated tools, replacement MCBs.\nRISK: Critical.\nSAFETY: Isolate the mains before opening. Rubber gloves and mat.",
+     "work_order_ml": "എന്ത്: തീപ്പൊരി വരുന്ന ഡിസ്ട്രിബ്യൂഷൻ ബോക്സ്, കത്തിയ വയറുകൾ പുറത്ത്.\nഎവിടെ: സഹാറ ഹോസ്റ്റൽ, താഴത്തെ നില, മെസ്സിന് സമീപം.\nജോലിക്കാർ: ഇലക്ട്രീഷ്യൻ (2), ഇൻസുലേറ്റഡ് ഉപകരണങ്ങൾ.\nഅപകട നില: അതീവ ഗുരുതരം.\nസുരക്ഷ: തുറക്കുന്നതിന് മുമ്പ് മെയിൻ സ്വിച്ച് ഓഫ് ചെയ്യുക."
+    },
+    {
+     "building": "Athulya Hostel",
+     "category": "Plumbing",
+     "complexity": 5,
+     "created_at": "<TS>",
+     "emergency": 7,
+     "escalation": 0,
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "3+",
+     "id": "CL-0002",
+     "lat": 10.04,
+     "lng": 76.32,
+     "needs_human_check": 0,
+     "priority": 7.15,
+     "rank_reason": "Ranked #2: whole building without water for 14 hours, six students affected; likely pump or tank fault.",
+     "resolved_at": null,
+     "severity": 6,
+     "status": "OPEN",
+     "summary": "Several taps and showers across floors are dry; points to a supply or tank problem, not one tap.",
+     "threat_level": "Medium",
+     "title": "No water on all floors since morning",
+     "trade_needed": "Plumber",
+     "unique_reporters": 6,
+     "verify_deadline": null,
+     "work_order_en": "WHAT: No water supply on all floors.\nWHERE: Athulya Hostel, building-wide.\nTRADE: Plumber + pump operator; check tank, pump, main valve.\nRISK: Medium-High (sanitation).\nSAFETY: Switch off the pump before inspecting.",
+     "work_order_ml": "എന്ത്: എല്ലാ നിലകളിലും വെള്ളമില്ല.\nഎവിടെ: അതുല്യ ഹോസ്റ്റൽ, മുഴുവൻ കെട്ടിടം.\nജോലിക്കാർ: പ്ലംബർ, പമ്പ് ഓപ്പറേറ്റർ; ടാങ്കും പമ്പും പരിശോധിക്കുക.\nഅപകട നില: ഇടത്തരം.\nസുരക്ഷ: പരിശോധിക്കുന്നതിന് മുമ്പ് പമ്പ് ഓഫ് ചെയ്യുക."
+    },
+    {
+     "building": "SOE",
+     "category": "Structural",
+     "complexity": 8,
+     "created_at": "<TS>",
+     "emergency": 6,
+     "escalation": 0,
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "2",
+     "id": "CL-0004",
+     "lat": 10.05,
+     "lng": 76.33,
+     "needs_human_check": 0,
+     "priority": 6.78,
+     "rank_reason": "Ranked #3: more panels may fall in a room students use daily; needs a scaffold and a carpentry team.",
+     "resolved_at": null,
+     "severity": 7,
+     "status": "OPEN",
+     "summary": "A false-ceiling panel has fallen onto a lab bench; the frame above is sagging.",
+     "threat_level": "High",
+     "title": "Collapsed ceiling panel in a lab",
+     "trade_needed": "Carpenter",
+     "unique_reporters": 1,
+     "verify_deadline": null,
+     "work_order_en": "WHAT: Collapsed false-ceiling panel, frame sagging.\nWHERE: SOE, 2nd floor lab.\nTRADE: Carpenter team + scaffold.\nRISK: High.\nSAFETY: Close the lab; hard hats.",
+     "work_order_ml": "എന്ത്: ഫാൾസ് സീലിംഗ് പാനൽ വീണു, ഫ്രെയിം താഴ്ന്നിരിക്കുന്നു.\nഎവിടെ: SOE, രണ്ടാം നില ലാബ്.\nജോലിക്കാർ: ആശാരി സംഘം, സ്കാഫോൾഡ്.\nഅപകട നില: ഉയർന്നത്.\nസുരക്ഷ: ലാബ് അടച്ചിടുക."
+    },
+    {
+     "building": "Amenity Centre",
+     "category": "Plumbing",
+     "complexity": 6,
+     "created_at": "<TS>",
+     "emergency": 8,
+     "escalation": 0,
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "Ground",
+     "id": "CL-0006",
+     "lat": 10.04,
+     "lng": 76.33,
+     "needs_human_check": 0,
+     "priority": 6.75,
+     "rank_reason": "Ranked #4: water is spreading in a busy corridor and wasting supply; slip risk.",
+     "resolved_at": null,
+     "severity": 7,
+     "status": "OPEN",
+     "summary": "Water spraying from a cracked pipe joint at floor level; corridor floor is wet.",
+     "threat_level": "High",
+     "title": "Burst pipe flooding the corridor",
+     "trade_needed": "Plumber",
+     "unique_reporters": 2,
+     "verify_deadline": null,
+     "work_order_en": "WHAT: Burst pipe joint.\nWHERE: Amenity Centre, ground floor corridor.\nTRADE: Plumber; replacement joint and clamps.\nRISK: High.\nSAFETY: Close the branch valve first; wet floor signs.",
+     "work_order_ml": "എന്ത്: പൈപ്പ് ജോയിന്റ് പൊട്ടി.\nഎവിടെ: അമിനിറ്റി സെന്റർ, താഴത്തെ നില ഇടനാഴി.\nജോലിക്കാർ: പ്ലംബർ.\nഅപകട നില: ഉയർന്നത്.\nസുരക്ഷ: ആദ്യം വാൽവ് അടയ്ക്കുക."
+    },
+    {
+     "building": "Aishwarya Hostel",
+     "category": "Plumbing",
+     "complexity": 5,
+     "created_at": "<TS>",
+     "emergency": 6,
+     "escalation": 0,
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "1",
+     "id": "CL-0003",
+     "lat": 10.04,
+     "lng": 76.32,
+     "needs_human_check": 0,
+     "priority": 6.12,
+     "rank_reason": "Ranked #5: water failure for 3 students, possibly the same main supply as Athulya Hostel.",
+     "resolved_at": null,
+     "severity": 5,
+     "status": "OPEN",
+     "summary": "Dry taps in washrooms on two floors; started around the same time as Athulya Hostel next door.",
+     "threat_level": "Medium",
+     "title": "Taps dry in Aishwarya Hostel",
+     "trade_needed": "Plumber",
+     "unique_reporters": 3,
+     "verify_deadline": null,
+     "work_order_en": "WHAT: No water in washrooms.\nWHERE: Aishwarya Hostel, floors 1-2.\nTRADE: Plumber; check with the Athulya Hostel crew about the shared main line.\nRISK: Medium.\nSAFETY: Standard.",
+     "work_order_ml": "എന്ത്: ശുചിമുറികളിൽ വെള്ളമില്ല.\nഎവിടെ: ഐശ്വര്യ ഹോസ്റ്റൽ, 1-2 നിലകൾ.\nജോലിക്കാർ: പ്ലംബർ; അതുല്യ ഹോസ്റ്റലിലെ പ്രധാന ലൈനുമായി ഒത്തുനോക്കുക.\nഅപകട നില: ഇടത്തരം."
+    }
+   ]
+  },
+  "name": "grouped: staff",
+  "status": 200
+ },
+ {
+  "body": {
+   "points": [
+    {
+     "category": "Electrical",
+     "id": "CL-0001",
+     "lat": 10.05,
+     "lng": 76.33,
+     "priority": 8.17,
+     "status": "OPEN",
+     "threat_level": "Critical",
+     "weight": 0.68
+    },
+    {
+     "category": "Plumbing",
+     "id": "CL-0002",
+     "lat": 10.04,
+     "lng": 76.32,
+     "priority": 7.15,
+     "status": "OPEN",
+     "threat_level": "Medium",
+     "weight": 0.6
+    },
+    {
+     "category": "Plumbing",
+     "id": "CL-0003",
+     "lat": 10.04,
+     "lng": 76.32,
+     "priority": 6.12,
+     "status": "OPEN",
+     "threat_level": "Medium",
+     "weight": 0.51
+    },
+    {
+     "category": "Structural",
+     "id": "CL-0004",
+     "lat": 10.05,
+     "lng": 76.33,
+     "priority": 6.78,
+     "status": "OPEN",
+     "threat_level": "High",
+     "weight": 0.56
+    },
+    {
+     "category": "IT",
+     "id": "CL-0005",
+     "lat": 10.04,
+     "lng": 76.33,
+     "priority": 3.28,
+     "status": "OPEN",
+     "threat_level": "Low",
+     "weight": 0.27
+    },
+    {
+     "category": "Plumbing",
+     "id": "CL-0006",
+     "lat": 10.04,
+     "lng": 76.33,
+     "priority": 6.75,
+     "status": "OPEN",
+     "threat_level": "High",
+     "weight": 0.56
+    }
+   ]
+  },
+  "name": "heatmap: staff",
+  "status": 200
+ },
+ {
+  "body": {
+   "job_id": "<JOB>"
+  },
+  "name": "report: not a hazard",
+  "status": 200
+ },
+ {
+  "body": [
+   {
+    "id": 1,
+    "kind": "thought",
+    "step": 1,
+    "text": "Looking at photo..."
+   },
+   {
+    "id": 2,
+    "kind": "thought",
+    "step": 2,
+    "text": "Electrical: A clean wall. Severity 8 (High)"
+   },
+   {
+    "id": 3,
+    "kind": "final",
+    "step": 3,
+    "text": "{\"outcome\": \"not_hazard\", \"message\": \"A clean wall.\"}"
+   }
+  ],
+  "name": "report: not a hazard /stream",
+  "status": 200
+ },
+ {
+  "body": {
+   "job_id": "<JOB>"
+  },
+  "name": "report: text mismatch",
+  "status": 200
+ },
+ {
+  "body": [
+   {
+    "id": 4,
+    "kind": "thought",
+    "step": 1,
+    "text": "Looking at photo..."
+   },
+   {
+    "id": 5,
+    "kind": "thought",
+    "step": 2,
+    "text": "Electrical: Exposed wires on a wall socket. Severity 8 (High)"
+   },
+   {
+    "id": 6,
+    "kind": "final",
+    "step": 3,
+    "text": "{\"outcome\": \"clarify\", \"job_id\": \"<JOB>\", \"photo_shows\": \"Exposed wires on a wall socket.\", \"note\": \"water leaking everywhere\"}"
+   }
+  ],
+  "name": "report: text mismatch /stream",
+  "status": 200
+ },
+ {
+  "body": {
+   "job_id": "<JOB>"
+  },
+  "name": "clarify: go with photo",
+  "status": 200
+ },
+ {
+  "body": [
+   {
+    "id": 7,
+    "kind": "thought",
+    "step": 1,
+    "text": "Looking at photo..."
+   },
+   {
+    "id": 8,
+    "kind": "thought",
+    "step": 2,
+    "text": "Electrical: Exposed wires on a wall socket. Severity 8 (High)"
+   },
+   {
+    "id": 9,
+    "kind": "thought",
+    "step": 3,
+    "text": "Gemma is deciding the next step..."
+   },
+   {
+    "id": 10,
+    "kind": "tool_call",
+    "step": 4,
+    "text": "find_nearby_issues(CITTIC) -> 1 issue"
+   },
+   {
+    "id": 11,
+    "kind": "tool_call",
+    "step": 5,
+    "text": "create_issue -> CL-0007, priority 5.93"
+   },
+   {
+    "id": 12,
+    "kind": "thought",
+    "step": 6,
+    "text": "Writing rank reason and work order (English + Malayalam)..."
+   },
+   {
+    "id": 13,
+    "kind": "final",
+    "step": 7,
+    "text": "{\"outcome\": \"saved\", \"report_id\": \"RPT-0018\", \"issue_id\": \"CL-0007\", \"merge_type\": \"new\", \"reopened\": false, \"unique_students\": 1, \"priority\": 5.93, \"category\": \"Electrical\", \"threat_level\": \"High\", \"severity\": 8, \"what_i_see\": \"Exposed wires on a wall socket.\", \"advice\": \"Keep away.\", \"who_is_at_risk\": \"Students\", \"needs_human_check\": false, \"rank_reason\": \"Ranked #6: test\"}"
+   }
+  ],
+  "name": "clarify /stream",
+  "status": 200
+ },
+ {
+  "body": {
+   "detail": "This report has expired. Please start again."
+  },
+  "name": "clarify: expired job",
+  "status": 404
+ },
+ {
+  "body": {
+   "job_id": "<JOB>"
+  },
+  "name": "report: merge into CL-0001",
+  "status": 200
+ },
+ {
+  "body": [
+   {
+    "id": 14,
+    "kind": "thought",
+    "step": 1,
+    "text": "Looking at photo..."
+   },
+   {
+    "id": 15,
+    "kind": "thought",
+    "step": 2,
+    "text": "Electrical: Exposed wires on a wall socket. Severity 8 (High)"
+   },
+   {
+    "id": 16,
+    "kind": "thought",
+    "step": 3,
+    "text": "Gemma is deciding the next step..."
+   },
+   {
+    "id": 17,
+    "kind": "tool_call",
+    "step": 4,
+    "text": "find_nearby_issues(Sahara Hostel) -> 1 issue"
+   },
+   {
+    "id": 18,
+    "kind": "thought",
+    "step": 5,
+    "text": "same box"
+   },
+   {
+    "id": 19,
+    "kind": "tool_call",
+    "step": 6,
+    "text": "merge_into_issue(CL-0001, same_object) -> 4 students, priority 8.55"
+   },
+   {
+    "id": 20,
+    "kind": "final",
+    "step": 7,
+    "text": "{\"outcome\": \"saved\", \"report_id\": \"RPT-0019\", \"issue_id\": \"CL-0001\", \"merge_type\": \"same_object\", \"reopened\": false, \"unique_students\": 4, \"priority\": 8.55, \"category\": \"Electrical\", \"threat_level\": \"Critical\", \"severity\": 8, \"what_i_see\": \"Exposed wires on a wall socket.\", \"advice\": \"Keep away.\", \"who_is_at_risk\": \"Students\", \"needs_human_check\": false, \"rank_reason\": \"Ranked #1: live electrical risk in a busy corridor; needs an electrician and the circuit isolated.\"}"
+   }
+  ],
+  "name": "report: merge into CL-0001 /stream",
+  "status": 200
+ },
+ {
+  "body": {
+   "job_id": "<JOB>"
+  },
+  "name": "report: flagged screen photo",
+  "status": 200
+ },
+ {
+  "body": [
+   {
+    "id": 21,
+    "kind": "thought",
+    "step": 1,
+    "text": "Looking at photo..."
+   },
+   {
+    "id": 22,
+    "kind": "thought",
+    "step": 2,
+    "text": "Electrical: Exposed wires on a wall socket. Severity 8 (High)"
+   },
+   {
+    "id": 23,
+    "kind": "thought",
+    "step": 3,
+    "text": "Authenticity check: screen bezel"
+   },
+   {
+    "id": 24,
+    "kind": "final",
+    "step": 4,
+    "text": "{\"outcome\": \"flagged\", \"report_id\": \"RPT-0020\", \"message\": \"We could not verify this photo. Please take it again on the spot.\"}"
+   }
+  ],
+  "name": "report: flagged screen photo /stream",
+  "status": 200
+ },
+ {
+  "body": {
+   "detail": "This photo was already reported as RPT-0019."
+  },
+  "name": "report: duplicate photo",
+  "status": 409
+ },
+ {
+  "body": {
+   "job_id": "<JOB>"
+  },
+  "name": "report: token first use",
+  "status": 200
+ },
+ {
+  "body": [
+   {
+    "id": 25,
+    "kind": "thought",
+    "step": 1,
+    "text": "Looking at photo..."
+   },
+   {
+    "id": 26,
+    "kind": "thought",
+    "step": 2,
+    "text": "Electrical: Exposed wires on a wall socket. Severity 8 (High)"
+   },
+   {
+    "id": 27,
+    "kind": "thought",
+    "step": 3,
+    "text": "Gemma is deciding the next step..."
+   },
+   {
+    "id": 28,
+    "kind": "tool_call",
+    "step": 4,
+    "text": "find_nearby_issues(SOE) -> 1 issue"
+   },
+   {
+    "id": 29,
+    "kind": "thought",
+    "step": 5,
+    "text": "same box"
+   },
+   {
+    "id": 30,
+    "kind": "tool_call",
+    "step": 6,
+    "text": "merge_into_issue(CL-0001) -> refused, different building"
+   },
+   {
+    "id": 31,
+    "kind": "tool_call",
+    "step": 7,
+    "text": "create_issue -> CL-0008, priority 5.93"
+   },
+   {
+    "id": 32,
+    "kind": "thought",
+    "step": 8,
+    "text": "Writing rank reason and work order (English + Malayalam)..."
+   },
+   {
+    "id": 33,
+    "kind": "final",
+    "step": 9,
+    "text": "{\"outcome\": \"saved\", \"report_id\": \"RPT-0021\", \"issue_id\": \"CL-0008\", \"merge_type\": \"new\", \"reopened\": false, \"unique_students\": 1, \"priority\": 5.93, \"category\": \"Electrical\", \"threat_level\": \"High\", \"severity\": 8, \"what_i_see\": \"Exposed wires on a wall socket.\", \"advice\": \"Keep away.\", \"who_is_at_risk\": \"Students\", \"needs_human_check\": false, \"rank_reason\": \"Ranked #7: test\"}"
+   }
+  ],
+  "name": "report: token first use /stream",
+  "status": 200
+ },
+ {
+  "body": {
+   "detail": "Please take the photo again with the in-app camera."
+  },
+  "name": "report: reused token",
+  "status": 400
+ },
+ {
+  "body": {
+   "detail": "That file is not a photo."
+  },
+  "name": "report: not an image",
+  "status": 400
+ },
+ {
+  "body": {
+   "detail": [
+    {
+     "input": null,
+     "loc": [
+      "body",
+      "image"
+     ],
+     "msg": "Field required",
+     "type": "missing"
+    },
+    {
+     "input": null,
+     "loc": [
+      "body",
+      "capture_token"
+     ],
+     "msg": "Field required",
+     "type": "missing"
+    },
+    {
+     "input": null,
+     "loc": [
+      "body",
+      "lat"
+     ],
+     "msg": "Field required",
+     "type": "missing"
+    },
+    {
+     "input": null,
+     "loc": [
+      "body",
+      "lng"
+     ],
+     "msg": "Field required",
+     "type": "missing"
+    }
+   ]
+  },
+  "name": "report: missing fields",
+  "status": 422
+ },
+ {
+  "body": {
+   "job_id": "<JOB>"
+  },
+  "name": "accept: flagged seed report",
+  "status": 200
+ },
+ {
+  "body": [
+   {
+    "id": 34,
+    "kind": "thought",
+    "step": 1,
+    "text": "Staff (staff:STAFF2) confirmed RPT-0017 shows a real problem. Grouping it now..."
+   },
+   {
+    "id": 35,
+    "kind": "thought",
+    "step": 2,
+    "text": "Gemma is deciding the next step..."
+   },
+   {
+    "id": 36,
+    "kind": "tool_call",
+    "step": 3,
+    "text": "find_nearby_issues(SOE) -> 2 issues"
+   },
+   {
+    "id": 37,
+    "kind": "tool_call",
+    "step": 4,
+    "text": "create_issue -> CL-0009, priority 6.58"
+   },
+   {
+    "id": 38,
+    "kind": "thought",
+    "step": 5,
+    "text": "Writing rank reason and work order (English + Malayalam)..."
+   },
+   {
+    "id": 39,
+    "kind": "final",
+    "step": 6,
+    "text": "{\"outcome\": \"saved\", \"report_id\": \"RPT-0017\", \"issue_id\": \"CL-0009\", \"merge_type\": \"new\", \"reopened\": false, \"unique_students\": 1, \"priority\": 6.58, \"category\": \"Plumbing\", \"threat_level\": \"High\", \"severity\": 8, \"what_i_see\": \"A flooded room shown on a laptop screen; screen bezel and moire lines visible.\", \"advice\": \"Keep a safe distance.\", \"who_is_at_risk\": null, \"needs_human_check\": false, \"rank_reason\": \"Ranked #5: test\"}"
+   }
+  ],
+  "name": "accept /stream",
+  "status": 200
+ },
+ {
+  "body": {
+   "detail": "This report is not waiting for a decision."
+  },
+  "name": "accept: again",
+  "status": 400
+ },
+ {
+  "body": {
+   "detail": "Report not found."
+  },
+  "name": "accept: 404",
+  "status": 404
+ },
+ {
+  "body": {
+   "is_screen_or_reused": true,
+   "passed": false,
+   "reason": "This is the same photo as the original report, not a photo of the repair.",
+   "resolved": false,
+   "same_location_verified": true
+  },
+  "name": "fix: reused before photo",
+  "status": 200
+ },
+ {
+  "body": {
+   "is_screen_or_reused": false,
+   "passed": true,
+   "reason": "repaired",
+   "resolved": true,
+   "same_location_verified": true
+  },
+  "name": "fix: passes",
+  "status": 200
+ },
+ {
+  "body": {
+   "detail": "This issue is not waiting for a fix."
+  },
+  "name": "fix: not waiting for a fix",
+  "status": 400
+ },
+ {
+  "body": {
+   "after_photo": "<IMG>.jpg",
+   "audits": [
+    {
+     "created_at": "<TS>",
+     "image_path": "<IMG>.jpg",
+     "kind": "staff_fix",
+     "passed": 0,
+     "reason": "This is the same photo as the original report, not a photo of the repair.",
+     "same_location_verified": 1
+    },
+    {
+     "created_at": "<TS>",
+     "image_path": "<IMG>.jpg",
+     "kind": "staff_fix",
+     "passed": 1,
+     "reason": "repaired",
+     "same_location_verified": 1
+    }
+   ],
+   "breakdown": {
+    "inputs": {
+     "C": 3,
+     "E": 2,
+     "R": 1,
+     "S": 2
+    },
+    "parts": {
+     "age": 1.0,
+     "complexity": 0.6,
+     "emergency": 0.5,
+     "reporters": 0.38,
+     "severity": 0.8
+    },
+    "priority": 3.28
+   },
+   "building": "CITTIC",
+   "category": "IT",
+   "complexity": 3,
+   "created_at": "<TS>",
+   "emergency": 2,
+   "escalation": 0,
+   "failed_fix_attempts": 1,
+   "fix_disputed": 0,
+   "floor": "1",
+   "i_reported": false,
+   "id": "CL-0005",
+   "lat": 10.04,
+   "links": [],
+   "lng": 76.33,
+   "needs_human_check": 0,
+   "priority": 3.28,
+   "rank": 9,
+   "rank_reason": "Ranked #6: no safety risk; schedule with IT support this week.",
+   "reports": [
+    {
+     "advice": "No danger. Use the spare portable projector for now.",
+     "ai_description": "Ceiling projector with no power light.",
+     "complexity": 3,
+     "confidence": 0.9,
+     "counts_toward_total": 1,
+     "created_at": "<TS>",
+     "emergency": 2,
+     "floor": "1",
+     "hazard_box": "[]",
+     "id": "RPT-0014",
+     "image_path": "seed_cittic_1.jpg",
+     "lat": 10.04,
+     "lng": 76.33,
+     "merge_reason": "Seeded scenario",
+     "merge_type": "new",
+     "severity": 2,
+     "status": "ACTIVE"
+    }
+   ],
+   "resolved_at": null,
+   "severity": 2,
+   "status": "AWAITING_STUDENT_CHECK",
+   "summary": "Ceiling projector shows no power light; the rest of the hall works.",
+   "threat_level": "Low",
+   "title": "Projector not turning on in seminar hall",
+   "trade_needed": "IT technician",
+   "unique_reporters": 1,
+   "verify_deadline": "<TS>"
+  },
+  "name": "issue: awaiting check (student view)",
+  "status": 200
+ },
+ {
+  "body": {
+   "accepted": false,
+   "claim": "resolved",
+   "message": "Your photo shows the problem is still there. CL-0005 has been reopened and escalated to maintenance for immediate action.",
+   "outcome": "unresolved",
+   "reason": "still broken",
+   "verified": true
+  },
+  "name": "confirm: photo shows problem -> reopen+escalate",
+  "status": 200
+ },
+ {
+  "body": {
+   "after_photo": "<IMG>.jpg",
+   "audits": [
+    {
+     "created_at": "<TS>",
+     "image_path": "<IMG>.jpg",
+     "kind": "staff_fix",
+     "passed": 0,
+     "reason": "This is the same photo as the original report, not a photo of the repair.",
+     "same_location_verified": 1
+    },
+    {
+     "created_at": "<TS>",
+     "image_path": "<IMG>.jpg",
+     "kind": "staff_fix",
+     "passed": 1,
+     "reason": "repaired",
+     "same_location_verified": 1
+    },
+    {
+     "created_at": "<TS>",
+     "image_path": "<IMG>.jpg",
+     "kind": "student_confirm",
+     "passed": 0,
+     "reason": "still broken",
+     "same_location_verified": 1
+    }
+   ],
+   "breakdown": {
+    "inputs": {
+     "C": 3,
+     "E": 4,
+     "R": 1,
+     "S": 4
+    },
+    "parts": {
+     "age": 1.0,
+     "complexity": 0.6,
+     "emergency": 1.0,
+     "reporters": 0.38,
+     "severity": 1.6
+    },
+    "priority": 4.58
+   },
+   "building": "CITTIC",
+   "category": "IT",
+   "complexity": 3,
+   "created_at": "<TS>",
+   "emergency": 4,
+   "escalation": 2,
+   "failed_fix_attempts": 2,
+   "fix_disputed": 1,
+   "floor": "1",
+   "i_reported": false,
+   "id": "CL-0005",
+   "lat": 10.04,
+   "ledger": [
+    {
+     "actor": "seed",
+     "block_hash": "<HASH>",
+     "block_no": 27,
+     "created_at": "<TS>",
+     "event": "ISSUE_CREATED",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1005",
+     "block_hash": "<HASH>",
+     "block_no": 28,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "report_id": "RPT-0014"
+    },
+    {
+     "actor": "staff:STAFF2",
+     "block_hash": "<HASH>",
+     "block_no": 46,
+     "created_at": "<TS>",
+     "event": "FIX_SUBMITTED",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 47,
+     "created_at": "<TS>",
+     "event": "AUDIT_FAILED",
+     "report_id": null
+    },
+    {
+     "actor": "staff:STAFF2",
+     "block_hash": "<HASH>",
+     "block_no": 48,
+     "created_at": "<TS>",
+     "event": "FIX_SUBMITTED",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 49,
+     "created_at": "<TS>",
+     "event": "AUDIT_PASSED",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 50,
+     "created_at": "<TS>",
+     "event": "DISPUTE_VERIFIED",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1010",
+     "block_hash": "<HASH>",
+     "block_no": 51,
+     "created_at": "<TS>",
+     "event": "REOPENED",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 52,
+     "created_at": "<TS>",
+     "event": "RANK_CHANGED",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 53,
+     "created_at": "<TS>",
+     "event": "ESCALATED",
+     "report_id": null
+    }
+   ],
+   "links": [],
+   "lng": 76.33,
+   "needs_human_check": 0,
+   "priority": 4.58,
+   "rank": 9,
+   "rank_reason": "Ranked #9: test",
+   "reports": [
+    {
+     "advice": "No danger. Use the spare portable projector for now.",
+     "ai_description": "Ceiling projector with no power light.",
+     "complexity": 3,
+     "confidence": 0.9,
+     "counts_toward_total": 1,
+     "created_at": "<TS>",
+     "cusat_id": "CUS1005",
+     "emergency": 2,
+     "floor": "1",
+     "gps_flag": null,
+     "hazard_box": "[]",
+     "id": "RPT-0014",
+     "image_path": "seed_cittic_1.jpg",
+     "lat": 10.04,
+     "lng": 76.33,
+     "merge_reason": "Seeded scenario",
+     "merge_type": "new",
+     "name": "Sneha Thomas",
+     "note": null,
+     "severity": 2,
+     "status": "ACTIVE",
+     "trust_score": 100
+    }
+   ],
+   "resolved_at": null,
+   "severity": 4,
+   "status": "REOPENED",
+   "summary": "Ceiling projector shows no power light; the rest of the hall works.",
+   "threat_level": "Medium",
+   "title": "Projector not turning on in seminar hall",
+   "trade_needed": "Tester",
+   "unique_reporters": 1,
+   "verify_deadline": null,
+   "work_order_en": "WO EN",
+   "work_order_ml": "WO ML"
+  },
+  "name": "issue: after escalation",
+  "status": 200
+ },
+ {
+  "body": {
+   "is_screen_or_reused": false,
+   "passed": false,
+   "reason": "not fixed",
+   "resolved": false,
+   "same_location_verified": true
+  },
+  "name": "fix: audit fails",
+  "status": 200
+ },
+ {
+  "body": {
+   "is_screen_or_reused": false,
+   "passed": true,
+   "reason": "repaired",
+   "resolved": true,
+   "same_location_verified": true
+  },
+  "name": "fix: passes again",
+  "status": 200
+ },
+ {
+  "body": {
+   "accepted": false,
+   "claim": "unresolved",
+   "message": "Not verified: the photo shows the repair in place. looks fine",
+   "outcome": "resolved",
+   "reason": "looks fine",
+   "verified": false
+  },
+  "name": "dispute: false claim",
+  "status": 200
+ },
+ {
+  "body": {
+   "accepted": false,
+   "claim": "resolved",
+   "message": "Not verified: other room",
+   "outcome": "rejected",
+   "reason": "other room",
+   "verified": false
+  },
+  "name": "confirm: wrong place",
+  "status": 200
+ },
+ {
+  "body": {
+   "accepted": false,
+   "claim": "unresolved",
+   "message": "Not verified: This photo was already submitted for this issue. Please take a new photo of the location.",
+   "outcome": "rejected",
+   "reason": "This photo was already submitted for this issue. Please take a new photo of the location.",
+   "verified": false
+  },
+  "name": "dispute: reused photo",
+  "status": 200
+ },
+ {
+  "body": {
+   "accepted": true,
+   "claim": "resolved",
+   "message": "Thank you. Your photo verifies the repair, so CL-0005 is now closed.",
+   "outcome": "resolved",
+   "reason": "repaired",
+   "verified": false
+  },
+  "name": "confirm: verified -> resolved",
+  "status": 200
+ },
+ {
+  "body": {
+   "detail": "This issue is no longer awaiting verification."
+  },
+  "name": "confirm: no longer awaiting",
+  "status": 400
+ },
+ {
+  "body": {
+   "detail": [
+    {
+     "input": null,
+     "loc": [
+      "body",
+      "image"
+     ],
+     "msg": "Field required",
+     "type": "missing"
+    },
+    {
+     "input": null,
+     "loc": [
+      "body",
+      "capture_token"
+     ],
+     "msg": "Field required",
+     "type": "missing"
+    }
+   ]
+  },
+  "name": "confirm: no photo",
+  "status": 422
+ },
+ {
+  "body": {
+   "is_screen_or_reused": false,
+   "marked_fake": false,
+   "problem_present": true,
+   "reason": "Not marked fake: Gemma can still see the problem at this spot. still dry",
+   "same_location_verified": true
+  },
+  "name": "mark-fake: problem still visible",
+  "status": 200
+ },
+ {
+  "body": {
+   "is_screen_or_reused": false,
+   "marked_fake": false,
+   "problem_present": false,
+   "reason": "Not marked fake: this doesn't look like the reported spot. elsewhere",
+   "same_location_verified": false
+  },
+  "name": "mark-fake: wrong place",
+  "status": 200
+ },
+ {
+  "body": {
+   "is_screen_or_reused": false,
+   "marked_fake": true,
+   "problem_present": false,
+   "reason": "spot fine",
+   "same_location_verified": true
+  },
+  "name": "mark-fake: accepted",
+  "status": 200
+ },
+ {
+  "body": {
+   "marked_fake": true,
+   "reason": "Already marked as fake."
+  },
+  "name": "mark-fake: already fake",
+  "status": 200
+ },
+ {
+  "body": {
+   "is_screen_or_reused": false,
+   "marked_fake": true,
+   "problem_present": false,
+   "reason": "spot fine No valid reports remain, so CL-0004 has been dismissed and removed from the map.",
+   "same_location_verified": true
+  },
+  "name": "mark-fake: last report -> dismissed",
+  "status": 200
+ },
+ {
+  "body": {
+   "detail": "Report not found."
+  },
+  "name": "mark-fake: 404",
+  "status": 404
+ },
+ {
+  "body": {
+   "issues": [
+    {
+     "building": "Sahara Hostel",
+     "category": "Electrical",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "Ground",
+     "id": "CL-0001",
+     "lat": 10.05,
+     "lng": 76.33,
+     "priority": 8.55,
+     "severity": 9,
+     "status": "OPEN",
+     "threat_level": "Critical",
+     "title": "Sparking distribution box near the mess entrance",
+     "unique_reporters": 4
+    },
+    {
+     "building": "Athulya Hostel",
+     "category": "Plumbing",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "3+",
+     "id": "CL-0002",
+     "lat": 10.04,
+     "lng": 76.32,
+     "priority": 7.15,
+     "severity": 6,
+     "status": "OPEN",
+     "threat_level": "Medium",
+     "title": "No water on all floors since morning",
+     "unique_reporters": 6
+    },
+    {
+     "building": "Amenity Centre",
+     "category": "Plumbing",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "Ground",
+     "id": "CL-0006",
+     "lat": 10.04,
+     "lng": 76.33,
+     "priority": 6.75,
+     "severity": 7,
+     "status": "OPEN",
+     "threat_level": "High",
+     "title": "Burst pipe flooding the corridor",
+     "unique_reporters": 2
+    },
+    {
+     "building": "SOE",
+     "category": "Plumbing",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": null,
+     "id": "CL-0009",
+     "lat": 10.05,
+     "lng": 76.33,
+     "priority": 6.58,
+     "severity": 8,
+     "status": "OPEN",
+     "threat_level": "High",
+     "title": "A flooded room shown on a laptop screen; screen bezel and moire lines visible",
+     "unique_reporters": 1
+    },
+    {
+     "building": "CITTIC",
+     "category": "Electrical",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "1",
+     "id": "CL-0007",
+     "lat": 10.04,
+     "lng": 76.33,
+     "priority": 5.93,
+     "severity": 8,
+     "status": "OPEN",
+     "threat_level": "High",
+     "title": "Exposed socket wires",
+     "unique_reporters": 1
+    },
+    {
+     "building": "SOE",
+     "category": "Electrical",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "2",
+     "id": "CL-0008",
+     "lat": 10.05,
+     "lng": 76.33,
+     "priority": 5.93,
+     "severity": 8,
+     "status": "OPEN",
+     "threat_level": "High",
+     "title": "Exposed socket wires",
+     "unique_reporters": 1
+    },
+    {
+     "building": "Aishwarya Hostel",
+     "category": "Plumbing",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "1",
+     "id": "CL-0003",
+     "lat": 10.04,
+     "lng": 76.32,
+     "priority": 5.75,
+     "severity": 5,
+     "status": "OPEN",
+     "threat_level": "Medium",
+     "title": "Taps dry in Aishwarya Hostel",
+     "unique_reporters": 2
+    }
+   ],
+   "links": [
+    {
+     "issue_a": "CL-0002",
+     "issue_b": "CL-0003",
+     "note": "Both hostels lost water around the same time; could be the main supply."
+    }
+   ]
+  },
+  "name": "issues: student after",
+  "status": 200
+ },
+ {
+  "body": {
+   "issues": [
+    {
+     "building": "Sahara Hostel",
+     "category": "Electrical",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "Ground",
+     "id": "CL-0001",
+     "lat": 10.05,
+     "lng": 76.33,
+     "priority": 8.55,
+     "severity": 9,
+     "status": "OPEN",
+     "threat_level": "Critical",
+     "title": "Sparking distribution box near the mess entrance",
+     "unique_reporters": 4
+    },
+    {
+     "building": "Athulya Hostel",
+     "category": "Plumbing",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "3+",
+     "id": "CL-0002",
+     "lat": 10.04,
+     "lng": 76.32,
+     "priority": 7.15,
+     "severity": 6,
+     "status": "OPEN",
+     "threat_level": "Medium",
+     "title": "No water on all floors since morning",
+     "unique_reporters": 6
+    },
+    {
+     "building": "Amenity Centre",
+     "category": "Plumbing",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "Ground",
+     "id": "CL-0006",
+     "lat": 10.04,
+     "lng": 76.33,
+     "priority": 6.75,
+     "severity": 7,
+     "status": "OPEN",
+     "threat_level": "High",
+     "title": "Burst pipe flooding the corridor",
+     "unique_reporters": 2
+    },
+    {
+     "building": "SOE",
+     "category": "Plumbing",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": null,
+     "id": "CL-0009",
+     "lat": 10.05,
+     "lng": 76.33,
+     "priority": 6.58,
+     "severity": 8,
+     "status": "OPEN",
+     "threat_level": "High",
+     "title": "A flooded room shown on a laptop screen; screen bezel and moire lines visible",
+     "unique_reporters": 1
+    },
+    {
+     "building": "CITTIC",
+     "category": "Electrical",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "1",
+     "id": "CL-0007",
+     "lat": 10.04,
+     "lng": 76.33,
+     "priority": 5.93,
+     "severity": 8,
+     "status": "OPEN",
+     "threat_level": "High",
+     "title": "Exposed socket wires",
+     "unique_reporters": 1
+    },
+    {
+     "building": "SOE",
+     "category": "Electrical",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "2",
+     "id": "CL-0008",
+     "lat": 10.05,
+     "lng": 76.33,
+     "priority": 5.93,
+     "severity": 8,
+     "status": "OPEN",
+     "threat_level": "High",
+     "title": "Exposed socket wires",
+     "unique_reporters": 1
+    },
+    {
+     "building": "Aishwarya Hostel",
+     "category": "Plumbing",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "1",
+     "id": "CL-0003",
+     "lat": 10.04,
+     "lng": 76.32,
+     "priority": 5.75,
+     "severity": 5,
+     "status": "OPEN",
+     "threat_level": "Medium",
+     "title": "Taps dry in Aishwarya Hostel",
+     "unique_reporters": 2
+    },
+    {
+     "building": "CITTIC",
+     "category": "IT",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 3,
+     "fix_disputed": 1,
+     "floor": "1",
+     "id": "CL-0005",
+     "lat": 10.04,
+     "lng": 76.33,
+     "priority": 4.58,
+     "severity": 4,
+     "status": "RESOLVED",
+     "threat_level": "Medium",
+     "title": "Projector not turning on in seminar hall",
+     "unique_reporters": 1
+    }
+   ],
+   "links": [
+    {
+     "issue_a": "CL-0002",
+     "issue_b": "CL-0003",
+     "note": "Both hostels lost water around the same time; could be the main supply."
+    }
+   ]
+  },
+  "name": "issues: staff after",
+  "status": 200
+ },
+ {
+  "body": {
+   "flagged": [
+    {
+     "ai_description": "Exposed wires on a wall socket.",
+     "building": "CITTIC",
+     "created_at": "<TS>",
+     "cusat_id": "CUS1003",
+     "gps_flag": null,
+     "id": "RPT-0020",
+     "image_path": "<IMG>.jpg",
+     "lat": 10.04,
+     "lng": 76.33,
+     "name": "Fathima Rasheed"
+    }
+   ],
+   "groups": [
+    {
+     "category": "Electrical",
+     "count": 3,
+     "locations": [
+      {
+       "building": "Sahara Hostel",
+       "issues": [
+        {
+         "building": "Sahara Hostel",
+         "category": "Electrical",
+         "complexity": 6,
+         "created_at": "<TS>",
+         "emergency": 9,
+         "escalation": 0,
+         "failed_fix_attempts": 0,
+         "fix_disputed": 0,
+         "floor": "Ground",
+         "id": "CL-0001",
+         "lat": 10.05,
+         "lng": 76.33,
+         "needs_human_check": 0,
+         "priority": 8.55,
+         "rank_reason": "Ranked #1: live electrical risk in a busy corridor; needs an electrician and the circuit isolated.",
+         "resolved_at": null,
+         "severity": 9,
+         "status": "OPEN",
+         "summary": "Open distribution box with burnt, exposed wires and scorch marks; sparks reported.",
+         "threat_level": "Critical",
+         "title": "Sparking distribution box near the mess entrance",
+         "trade_needed": "Electrician",
+         "unique_reporters": 4,
+         "verify_deadline": null,
+         "work_order_en": "WHAT: Sparking distribution box, exposed burnt wiring.\nWHERE: Sahara Hostel, ground floor, near mess entrance.\nTRADE: Electrician (2), insulated tools, replacement MCBs.\nRISK: Critical.\nSAFETY: Isolate the mains before opening. Rubber gloves and mat.",
+         "work_order_ml": "എന്ത്: തീപ്പൊരി വരുന്ന ഡിസ്ട്രിബ്യൂഷൻ ബോക്സ്, കത്തിയ വയറുകൾ പുറത്ത്.\nഎവിടെ: സഹാറ ഹോസ്റ്റൽ, താഴത്തെ നില, മെസ്സിന് സമീപം.\nജോലിക്കാർ: ഇലക്ട്രീഷ്യൻ (2), ഇൻസുലേറ്റഡ് ഉപകരണങ്ങൾ.\nഅപകട നില: അതീവ ഗുരുതരം.\nസുരക്ഷ: തുറക്കുന്നതിന് മുമ്പ് മെയിൻ സ്വിച്ച് ഓഫ് ചെയ്യുക."
+        }
+       ]
+      },
+      {
+       "building": "CITTIC",
+       "issues": [
+        {
+         "building": "CITTIC",
+         "category": "Electrical",
+         "complexity": 3,
+         "created_at": "<TS>",
+         "emergency": 7,
+         "escalation": 0,
+         "failed_fix_attempts": 0,
+         "fix_disputed": 0,
+         "floor": "1",
+         "id": "CL-0007",
+         "lat": 10.04,
+         "lng": 76.33,
+         "needs_human_check": 0,
+         "priority": 5.93,
+         "rank_reason": "Ranked #6: test",
+         "resolved_at": null,
+         "severity": 8,
+         "status": "OPEN",
+         "summary": "Exposed wires on a wall socket.",
+         "threat_level": "High",
+         "title": "Exposed socket wires",
+         "trade_needed": "Tester",
+         "unique_reporters": 1,
+         "verify_deadline": null,
+         "work_order_en": "WO EN",
+         "work_order_ml": "WO ML"
+        }
+       ]
+      },
+      {
+       "building": "SOE",
+       "issues": [
+        {
+         "building": "SOE",
+         "category": "Electrical",
+         "complexity": 3,
+         "created_at": "<TS>",
+         "emergency": 7,
+         "escalation": 0,
+         "failed_fix_attempts": 0,
+         "fix_disputed": 0,
+         "floor": "2",
+         "id": "CL-0008",
+         "lat": 10.05,
+         "lng": 76.33,
+         "needs_human_check": 0,
+         "priority": 5.93,
+         "rank_reason": "Ranked #7: test",
+         "resolved_at": null,
+         "severity": 8,
+         "status": "OPEN",
+         "summary": "Exposed wires on a wall socket.",
+         "threat_level": "High",
+         "title": "Exposed socket wires",
+         "trade_needed": "Tester",
+         "unique_reporters": 1,
+         "verify_deadline": null,
+         "work_order_en": "WO EN",
+         "work_order_ml": "WO ML"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "category": "Plumbing",
+     "count": 4,
+     "locations": [
+      {
+       "building": "SOE",
+       "issues": [
+        {
+         "building": "SOE",
+         "category": "Plumbing",
+         "complexity": 5,
+         "created_at": "<TS>",
+         "emergency": 8,
+         "escalation": 0,
+         "failed_fix_attempts": 0,
+         "fix_disputed": 0,
+         "floor": null,
+         "id": "CL-0009",
+         "lat": 10.05,
+         "lng": 76.33,
+         "needs_human_check": 0,
+         "priority": 6.58,
+         "rank_reason": "Ranked #5: test",
+         "resolved_at": null,
+         "severity": 8,
+         "status": "OPEN",
+         "summary": "A flooded room shown on a laptop screen; screen bezel and moire lines visible.",
+         "threat_level": "High",
+         "title": "A flooded room shown on a laptop screen; screen bezel and moire lines visible",
+         "trade_needed": "Tester",
+         "unique_reporters": 1,
+         "verify_deadline": null,
+         "work_order_en": "WO EN",
+         "work_order_ml": "WO ML"
+        }
+       ]
+      },
+      {
+       "building": "Amenity Centre",
+       "issues": [
+        {
+         "building": "Amenity Centre",
+         "category": "Plumbing",
+         "complexity": 6,
+         "created_at": "<TS>",
+         "emergency": 8,
+         "escalation": 0,
+         "failed_fix_attempts": 0,
+         "fix_disputed": 0,
+         "floor": "Ground",
+         "id": "CL-0006",
+         "lat": 10.04,
+         "lng": 76.33,
+         "needs_human_check": 0,
+         "priority": 6.75,
+         "rank_reason": "Ranked #4: water is spreading in a busy corridor and wasting supply; slip risk.",
+         "resolved_at": null,
+         "severity": 7,
+         "status": "OPEN",
+         "summary": "Water spraying from a cracked pipe joint at floor level; corridor floor is wet.",
+         "threat_level": "High",
+         "title": "Burst pipe flooding the corridor",
+         "trade_needed": "Plumber",
+         "unique_reporters": 2,
+         "verify_deadline": null,
+         "work_order_en": "WHAT: Burst pipe joint.\nWHERE: Amenity Centre, ground floor corridor.\nTRADE: Plumber; replacement joint and clamps.\nRISK: High.\nSAFETY: Close the branch valve first; wet floor signs.",
+         "work_order_ml": "എന്ത്: പൈപ്പ് ജോയിന്റ് പൊട്ടി.\nഎവിടെ: അമിനിറ്റി സെന്റർ, താഴത്തെ നില ഇടനാഴി.\nജോലിക്കാർ: പ്ലംബർ.\nഅപകട നില: ഉയർന്നത്.\nസുരക്ഷ: ആദ്യം വാൽവ് അടയ്ക്കുക."
+        }
+       ]
+      },
+      {
+       "building": "Athulya Hostel",
+       "issues": [
+        {
+         "building": "Athulya Hostel",
+         "category": "Plumbing",
+         "complexity": 5,
+         "created_at": "<TS>",
+         "emergency": 7,
+         "escalation": 0,
+         "failed_fix_attempts": 0,
+         "fix_disputed": 0,
+         "floor": "3+",
+         "id": "CL-0002",
+         "lat": 10.04,
+         "lng": 76.32,
+         "needs_human_check": 0,
+         "priority": 7.15,
+         "rank_reason": "Ranked #2: whole building without water for 14 hours, six students affected; likely pump or tank fault.",
+         "resolved_at": null,
+         "severity": 6,
+         "status": "OPEN",
+         "summary": "Several taps and showers across floors are dry; points to a supply or tank problem, not one tap.",
+         "threat_level": "Medium",
+         "title": "No water on all floors since morning",
+         "trade_needed": "Plumber",
+         "unique_reporters": 6,
+         "verify_deadline": null,
+         "work_order_en": "WHAT: No water supply on all floors.\nWHERE: Athulya Hostel, building-wide.\nTRADE: Plumber + pump operator; check tank, pump, main valve.\nRISK: Medium-High (sanitation).\nSAFETY: Switch off the pump before inspecting.",
+         "work_order_ml": "എന്ത്: എല്ലാ നിലകളിലും വെള്ളമില്ല.\nഎവിടെ: അതുല്യ ഹോസ്റ്റൽ, മുഴുവൻ കെട്ടിടം.\nജോലിക്കാർ: പ്ലംബർ, പമ്പ് ഓപ്പറേറ്റർ; ടാങ്കും പമ്പും പരിശോധിക്കുക.\nഅപകട നില: ഇടത്തരം.\nസുരക്ഷ: പരിശോധിക്കുന്നതിന് മുമ്പ് പമ്പ് ഓഫ് ചെയ്യുക."
+        }
+       ]
+      },
+      {
+       "building": "Aishwarya Hostel",
+       "issues": [
+        {
+         "building": "Aishwarya Hostel",
+         "category": "Plumbing",
+         "complexity": 5,
+         "created_at": "<TS>",
+         "emergency": 6,
+         "escalation": 0,
+         "failed_fix_attempts": 0,
+         "fix_disputed": 0,
+         "floor": "1",
+         "id": "CL-0003",
+         "lat": 10.04,
+         "lng": 76.32,
+         "needs_human_check": 0,
+         "priority": 5.75,
+         "rank_reason": "Ranked #5: water failure for 3 students, possibly the same main supply as Athulya Hostel.",
+         "resolved_at": null,
+         "severity": 5,
+         "status": "OPEN",
+         "summary": "Dry taps in washrooms on two floors; started around the same time as Athulya Hostel next door.",
+         "threat_level": "Medium",
+         "title": "Taps dry in Aishwarya Hostel",
+         "trade_needed": "Plumber",
+         "unique_reporters": 2,
+         "verify_deadline": null,
+         "work_order_en": "WHAT: No water in washrooms.\nWHERE: Aishwarya Hostel, floors 1-2.\nTRADE: Plumber; check with the Athulya Hostel crew about the shared main line.\nRISK: Medium.\nSAFETY: Standard.",
+         "work_order_ml": "എന്ത്: ശുചിമുറികളിൽ വെള്ളമില്ല.\nഎവിടെ: ഐശ്വര്യ ഹോസ്റ്റൽ, 1-2 നിലകൾ.\nജോലിക്കാർ: പ്ലംബർ; അതുല്യ ഹോസ്റ്റലിലെ പ്രധാന ലൈനുമായി ഒത്തുനോക്കുക.\nഅപകട നില: ഇടത്തരം."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "category": "Structural",
+     "count": 1,
+     "locations": [
+      {
+       "building": "SOE",
+       "issues": [
+        {
+         "building": "SOE",
+         "category": "Structural",
+         "complexity": 8,
+         "created_at": "<TS>",
+         "emergency": 6,
+         "escalation": 0,
+         "failed_fix_attempts": 0,
+         "fix_disputed": 0,
+         "floor": "2",
+         "id": "CL-0004",
+         "lat": 10.05,
+         "lng": 76.33,
+         "needs_human_check": 0,
+         "priority": 6.4,
+         "rank_reason": "Ranked #3: more panels may fall in a room students use daily; needs a scaffold and a carpentry team.",
+         "resolved_at": "<TS>",
+         "severity": 7,
+         "status": "DISMISSED",
+         "summary": "A false-ceiling panel has fallen onto a lab bench; the frame above is sagging.",
+         "threat_level": "High",
+         "title": "Collapsed ceiling panel in a lab",
+         "trade_needed": "Carpenter",
+         "unique_reporters": 0,
+         "verify_deadline": null,
+         "work_order_en": "WHAT: Collapsed false-ceiling panel, frame sagging.\nWHERE: SOE, 2nd floor lab.\nTRADE: Carpenter team + scaffold.\nRISK: High.\nSAFETY: Close the lab; hard hats.",
+         "work_order_ml": "എന്ത്: ഫാൾസ് സീലിംഗ് പാനൽ വീണു, ഫ്രെയിം താഴ്ന്നിരിക്കുന്നു.\nഎവിടെ: SOE, രണ്ടാം നില ലാബ്.\nജോലിക്കാർ: ആശാരി സംഘം, സ്കാഫോൾഡ്.\nഅപകട നില: ഉയർന്നത്.\nസുരക്ഷ: ലാബ് അടച്ചിടുക."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "category": "IT",
+     "count": 1,
+     "locations": [
+      {
+       "building": "CITTIC",
+       "issues": [
+        {
+         "building": "CITTIC",
+         "category": "IT",
+         "complexity": 3,
+         "created_at": "<TS>",
+         "emergency": 4,
+         "escalation": 2,
+         "failed_fix_attempts": 3,
+         "fix_disputed": 1,
+         "floor": "1",
+         "id": "CL-0005",
+         "lat": 10.04,
+         "lng": 76.33,
+         "needs_human_check": 0,
+         "priority": 4.58,
+         "rank_reason": "Ranked #9: test",
+         "resolved_at": "<TS>",
+         "severity": 4,
+         "status": "RESOLVED",
+         "summary": "Ceiling projector shows no power light; the rest of the hall works.",
+         "threat_level": "Medium",
+         "title": "Projector not turning on in seminar hall",
+         "trade_needed": "Tester",
+         "unique_reporters": 1,
+         "verify_deadline": null,
+         "work_order_en": "WO EN",
+         "work_order_ml": "WO ML"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "top": [
+    {
+     "building": "Sahara Hostel",
+     "category": "Electrical",
+     "complexity": 6,
+     "created_at": "<TS>",
+     "emergency": 9,
+     "escalation": 0,
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "Ground",
+     "id": "CL-0001",
+     "lat": 10.05,
+     "lng": 76.33,
+     "needs_human_check": 0,
+     "priority": 8.55,
+     "rank_reason": "Ranked #1: live electrical risk in a busy corridor; needs an electrician and the circuit isolated.",
+     "resolved_at": null,
+     "severity": 9,
+     "status": "OPEN",
+     "summary": "Open distribution box with burnt, exposed wires and scorch marks; sparks reported.",
+     "threat_level": "Critical",
+     "title": "Sparking distribution box near the mess entrance",
+     "trade_needed": "Electrician",
+     "unique_reporters": 4,
+     "verify_deadline": null,
+     "work_order_en": "WHAT: Sparking distribution box, exposed burnt wiring.\nWHERE: Sahara Hostel, ground floor, near mess entrance.\nTRADE: Electrician (2), insulated tools, replacement MCBs.\nRISK: Critical.\nSAFETY: Isolate the mains before opening. Rubber gloves and mat.",
+     "work_order_ml": "എന്ത്: തീപ്പൊരി വരുന്ന ഡിസ്ട്രിബ്യൂഷൻ ബോക്സ്, കത്തിയ വയറുകൾ പുറത്ത്.\nഎവിടെ: സഹാറ ഹോസ്റ്റൽ, താഴത്തെ നില, മെസ്സിന് സമീപം.\nജോലിക്കാർ: ഇലക്ട്രീഷ്യൻ (2), ഇൻസുലേറ്റഡ് ഉപകരണങ്ങൾ.\nഅപകട നില: അതീവ ഗുരുതരം.\nസുരക്ഷ: തുറക്കുന്നതിന് മുമ്പ് മെയിൻ സ്വിച്ച് ഓഫ് ചെയ്യുക."
+    },
+    {
+     "building": "Athulya Hostel",
+     "category": "Plumbing",
+     "complexity": 5,
+     "created_at": "<TS>",
+     "emergency": 7,
+     "escalation": 0,
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "3+",
+     "id": "CL-0002",
+     "lat": 10.04,
+     "lng": 76.32,
+     "needs_human_check": 0,
+     "priority": 7.15,
+     "rank_reason": "Ranked #2: whole building without water for 14 hours, six students affected; likely pump or tank fault.",
+     "resolved_at": null,
+     "severity": 6,
+     "status": "OPEN",
+     "summary": "Several taps and showers across floors are dry; points to a supply or tank problem, not one tap.",
+     "threat_level": "Medium",
+     "title": "No water on all floors since morning",
+     "trade_needed": "Plumber",
+     "unique_reporters": 6,
+     "verify_deadline": null,
+     "work_order_en": "WHAT: No water supply on all floors.\nWHERE: Athulya Hostel, building-wide.\nTRADE: Plumber + pump operator; check tank, pump, main valve.\nRISK: Medium-High (sanitation).\nSAFETY: Switch off the pump before inspecting.",
+     "work_order_ml": "എന്ത്: എല്ലാ നിലകളിലും വെള്ളമില്ല.\nഎവിടെ: അതുല്യ ഹോസ്റ്റൽ, മുഴുവൻ കെട്ടിടം.\nജോലിക്കാർ: പ്ലംബർ, പമ്പ് ഓപ്പറേറ്റർ; ടാങ്കും പമ്പും പരിശോധിക്കുക.\nഅപകട നില: ഇടത്തരം.\nസുരക്ഷ: പരിശോധിക്കുന്നതിന് മുമ്പ് പമ്പ് ഓഫ് ചെയ്യുക."
+    },
+    {
+     "building": "Amenity Centre",
+     "category": "Plumbing",
+     "complexity": 6,
+     "created_at": "<TS>",
+     "emergency": 8,
+     "escalation": 0,
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "Ground",
+     "id": "CL-0006",
+     "lat": 10.04,
+     "lng": 76.33,
+     "needs_human_check": 0,
+     "priority": 6.75,
+     "rank_reason": "Ranked #4: water is spreading in a busy corridor and wasting supply; slip risk.",
+     "resolved_at": null,
+     "severity": 7,
+     "status": "OPEN",
+     "summary": "Water spraying from a cracked pipe joint at floor level; corridor floor is wet.",
+     "threat_level": "High",
+     "title": "Burst pipe flooding the corridor",
+     "trade_needed": "Plumber",
+     "unique_reporters": 2,
+     "verify_deadline": null,
+     "work_order_en": "WHAT: Burst pipe joint.\nWHERE: Amenity Centre, ground floor corridor.\nTRADE: Plumber; replacement joint and clamps.\nRISK: High.\nSAFETY: Close the branch valve first; wet floor signs.",
+     "work_order_ml": "എന്ത്: പൈപ്പ് ജോയിന്റ് പൊട്ടി.\nഎവിടെ: അമിനിറ്റി സെന്റർ, താഴത്തെ നില ഇടനാഴി.\nജോലിക്കാർ: പ്ലംബർ.\nഅപകട നില: ഉയർന്നത്.\nസുരക്ഷ: ആദ്യം വാൽവ് അടയ്ക്കുക."
+    },
+    {
+     "building": "SOE",
+     "category": "Plumbing",
+     "complexity": 5,
+     "created_at": "<TS>",
+     "emergency": 8,
+     "escalation": 0,
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": null,
+     "id": "CL-0009",
+     "lat": 10.05,
+     "lng": 76.33,
+     "needs_human_check": 0,
+     "priority": 6.58,
+     "rank_reason": "Ranked #5: test",
+     "resolved_at": null,
+     "severity": 8,
+     "status": "OPEN",
+     "summary": "A flooded room shown on a laptop screen; screen bezel and moire lines visible.",
+     "threat_level": "High",
+     "title": "A flooded room shown on a laptop screen; screen bezel and moire lines visible",
+     "trade_needed": "Tester",
+     "unique_reporters": 1,
+     "verify_deadline": null,
+     "work_order_en": "WO EN",
+     "work_order_ml": "WO ML"
+    },
+    {
+     "building": "CITTIC",
+     "category": "Electrical",
+     "complexity": 3,
+     "created_at": "<TS>",
+     "emergency": 7,
+     "escalation": 0,
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "1",
+     "id": "CL-0007",
+     "lat": 10.04,
+     "lng": 76.33,
+     "needs_human_check": 0,
+     "priority": 5.93,
+     "rank_reason": "Ranked #6: test",
+     "resolved_at": null,
+     "severity": 8,
+     "status": "OPEN",
+     "summary": "Exposed wires on a wall socket.",
+     "threat_level": "High",
+     "title": "Exposed socket wires",
+     "trade_needed": "Tester",
+     "unique_reporters": 1,
+     "verify_deadline": null,
+     "work_order_en": "WO EN",
+     "work_order_ml": "WO ML"
+    }
+   ]
+  },
+  "name": "grouped: after",
+  "status": 200
+ },
+ {
+  "body": {
+   "points": [
+    {
+     "category": "Electrical",
+     "id": "CL-0001",
+     "lat": 10.05,
+     "lng": 76.33,
+     "priority": 8.55,
+     "status": "OPEN",
+     "threat_level": "Critical",
+     "weight": 0.71
+    },
+    {
+     "category": "Plumbing",
+     "id": "CL-0002",
+     "lat": 10.04,
+     "lng": 76.32,
+     "priority": 7.15,
+     "status": "OPEN",
+     "threat_level": "Medium",
+     "weight": 0.6
+    },
+    {
+     "category": "Plumbing",
+     "id": "CL-0003",
+     "lat": 10.04,
+     "lng": 76.32,
+     "priority": 5.75,
+     "status": "OPEN",
+     "threat_level": "Medium",
+     "weight": 0.48
+    },
+    {
+     "category": "Structural",
+     "id": "CL-0004",
+     "lat": 10.05,
+     "lng": 76.33,
+     "priority": 6.4,
+     "status": "DISMISSED",
+     "threat_level": "High",
+     "weight": 0.53
+    },
+    {
+     "category": "IT",
+     "id": "CL-0005",
+     "lat": 10.04,
+     "lng": 76.33,
+     "priority": 4.58,
+     "status": "RESOLVED",
+     "threat_level": "Medium",
+     "weight": 0.38
+    },
+    {
+     "category": "Plumbing",
+     "id": "CL-0006",
+     "lat": 10.04,
+     "lng": 76.33,
+     "priority": 6.75,
+     "status": "OPEN",
+     "threat_level": "High",
+     "weight": 0.56
+    },
+    {
+     "category": "Electrical",
+     "id": "CL-0007",
+     "lat": 10.04,
+     "lng": 76.33,
+     "priority": 5.93,
+     "status": "OPEN",
+     "threat_level": "High",
+     "weight": 0.49
+    },
+    {
+     "category": "Electrical",
+     "id": "CL-0008",
+     "lat": 10.05,
+     "lng": 76.33,
+     "priority": 5.93,
+     "status": "OPEN",
+     "threat_level": "High",
+     "weight": 0.49
+    },
+    {
+     "category": "Plumbing",
+     "id": "CL-0009",
+     "lat": 10.05,
+     "lng": 76.33,
+     "priority": 6.58,
+     "status": "OPEN",
+     "threat_level": "High",
+     "weight": 0.55
+    }
+   ]
+  },
+  "name": "heatmap: after",
+  "status": 200
+ },
+ {
+  "body": {
+   "reports": [
+    {
+     "after_photo": null,
+     "ai_description": "Exposed wires on a wall socket.",
+     "already_confirmed": false,
+     "category": "Electrical",
+     "created_at": "<TS>",
+     "fix_disputed": 0,
+     "id": "RPT-0021",
+     "image_path": "<IMG>.jpg",
+     "issue_id": "CL-0008",
+     "report_status": "ACTIVE",
+     "severity": 8,
+     "status": "OPEN",
+     "threat_level": "High",
+     "title": "Exposed socket wires",
+     "unique_reporters": 1,
+     "verify_deadline": null
+    },
+    {
+     "after_photo": null,
+     "ai_description": "Exposed wires on a wall socket.",
+     "already_confirmed": false,
+     "category": "Electrical",
+     "created_at": "<TS>",
+     "fix_disputed": null,
+     "id": "RPT-0020",
+     "image_path": "<IMG>.jpg",
+     "issue_id": null,
+     "report_status": "FLAGGED",
+     "severity": 8,
+     "status": null,
+     "threat_level": null,
+     "title": null,
+     "unique_reporters": null,
+     "verify_deadline": null
+    },
+    {
+     "after_photo": null,
+     "ai_description": "Close-up of melted insulation inside the box.",
+     "already_confirmed": false,
+     "category": "Electrical",
+     "created_at": "<TS>",
+     "fix_disputed": 0,
+     "id": "RPT-0003",
+     "image_path": "seed_sahara_3.jpg",
+     "issue_id": "CL-0001",
+     "report_status": "ACTIVE",
+     "severity": 9,
+     "status": "OPEN",
+     "threat_level": "Critical",
+     "title": "Sparking distribution box near the mess entrance",
+     "unique_reporters": 4,
+     "verify_deadline": null
+    },
+    {
+     "after_photo": null,
+     "ai_description": "Fallen ceiling panel on a lab bench, sagging frame above.",
+     "already_confirmed": false,
+     "category": "Structural",
+     "created_at": "<TS>",
+     "fix_disputed": 0,
+     "id": "RPT-0013",
+     "image_path": "seed_soe_1.jpg",
+     "issue_id": "CL-0004",
+     "report_status": "MARKED_FAKE",
+     "severity": 7,
+     "status": "DISMISSED",
+     "threat_level": "High",
+     "title": "Collapsed ceiling panel in a lab",
+     "unique_reporters": 0,
+     "verify_deadline": null
+    }
+   ],
+   "user": {
+    "cusat_id": "CUS1003",
+    "email": "demo3@cusat.ac.in",
+    "id": 3,
+    "name": "Fathima Rasheed",
+    "role": "student",
+    "trust_score": 65
+   }
+  },
+  "name": "me: demo3 after",
+  "status": 200
+ },
+ {
+  "body": {
+   "reports": [
+    {
+     "after_photo": null,
+     "ai_description": "Exposed wires on a wall socket.",
+     "already_confirmed": false,
+     "category": "Electrical",
+     "created_at": "<TS>",
+     "fix_disputed": 0,
+     "id": "RPT-0019",
+     "image_path": "<IMG>.jpg",
+     "issue_id": "CL-0001",
+     "report_status": "ACTIVE",
+     "severity": 8,
+     "status": "OPEN",
+     "threat_level": "Critical",
+     "title": "Sparking distribution box near the mess entrance",
+     "unique_reporters": 4,
+     "verify_deadline": null
+    },
+    {
+     "after_photo": null,
+     "ai_description": "Dry tap, 1st floor washroom.",
+     "already_confirmed": false,
+     "category": "Plumbing",
+     "created_at": "<TS>",
+     "fix_disputed": 0,
+     "id": "RPT-0010",
+     "image_path": "seed_aishwarya_1.jpg",
+     "issue_id": "CL-0003",
+     "report_status": "ACTIVE",
+     "severity": 5,
+     "status": "OPEN",
+     "threat_level": "Medium",
+     "title": "Taps dry in Aishwarya Hostel",
+     "unique_reporters": 2,
+     "verify_deadline": null
+    }
+   ],
+   "user": {
+    "cusat_id": "CUS1010",
+    "email": "demo10@cusat.ac.in",
+    "id": 10,
+    "name": "Joel Mathew",
+    "role": "student",
+    "trust_score": 80
+   }
+  },
+  "name": "me: demo10 after",
+  "status": 200
+ },
+ {
+  "body": {
+   "after_photo": null,
+   "audits": [
+    {
+     "created_at": "<TS>",
+     "image_path": "<IMG>.jpg",
+     "kind": "staff_fake_check",
+     "passed": 0,
+     "reason": "still dry",
+     "same_location_verified": 1
+    },
+    {
+     "created_at": "<TS>",
+     "image_path": "<IMG>.jpg",
+     "kind": "staff_fake_check",
+     "passed": 0,
+     "reason": "elsewhere",
+     "same_location_verified": 0
+    },
+    {
+     "created_at": "<TS>",
+     "image_path": "<IMG>.jpg",
+     "kind": "staff_fake_check",
+     "passed": 1,
+     "reason": "spot fine",
+     "same_location_verified": 1
+    }
+   ],
+   "breakdown": {
+    "inputs": {
+     "C": 5,
+     "E": 6,
+     "R": 2,
+     "S": 5
+    },
+    "parts": {
+     "age": 0.5,
+     "complexity": 1.0,
+     "emergency": 1.5,
+     "reporters": 0.75,
+     "severity": 2.0
+    },
+    "priority": 5.75
+   },
+   "building": "Aishwarya Hostel",
+   "category": "Plumbing",
+   "complexity": 5,
+   "created_at": "<TS>",
+   "emergency": 6,
+   "escalation": 0,
+   "failed_fix_attempts": 0,
+   "fix_disputed": 0,
+   "floor": "1",
+   "i_reported": false,
+   "id": "CL-0003",
+   "lat": 10.04,
+   "ledger": [
+    {
+     "actor": "seed",
+     "block_hash": "<HASH>",
+     "block_no": 19,
+     "created_at": "<TS>",
+     "event": "ISSUE_CREATED",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1010",
+     "block_hash": "<HASH>",
+     "block_no": 20,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "report_id": "RPT-0010"
+    },
+    {
+     "actor": "student:CUS1001",
+     "block_hash": "<HASH>",
+     "block_no": 21,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "report_id": "RPT-0011"
+    },
+    {
+     "actor": "student:CUS1001",
+     "block_hash": "<HASH>",
+     "block_no": 22,
+     "created_at": "<TS>",
+     "event": "MERGED",
+     "report_id": "RPT-0011"
+    },
+    {
+     "actor": "student:CUS1002",
+     "block_hash": "<HASH>",
+     "block_no": 23,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "report_id": "RPT-0012"
+    },
+    {
+     "actor": "student:CUS1002",
+     "block_hash": "<HASH>",
+     "block_no": 24,
+     "created_at": "<TS>",
+     "event": "MERGED",
+     "report_id": "RPT-0012"
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 63,
+     "created_at": "<TS>",
+     "event": "FAKE_CLAIM_REJECTED",
+     "report_id": "RPT-0012"
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 64,
+     "created_at": "<TS>",
+     "event": "FAKE_CLAIM_REJECTED",
+     "report_id": "RPT-0012"
+    },
+    {
+     "actor": "staff:STAFF2",
+     "block_hash": "<HASH>",
+     "block_no": 65,
+     "created_at": "<TS>",
+     "event": "MARKED_FAKE_BY_STAFF",
+     "report_id": "RPT-0012"
+    }
+   ],
+   "links": [
+    {
+     "issue_a": "CL-0002",
+     "issue_b": "CL-0003",
+     "note": "Both hostels lost water around the same time; could be the main supply."
+    }
+   ],
+   "lng": 76.32,
+   "needs_human_check": 0,
+   "priority": 5.75,
+   "rank": 7,
+   "rank_reason": "Ranked #5: water failure for 3 students, possibly the same main supply as Athulya Hostel.",
+   "reports": [
+    {
+     "advice": "Store some drinking water and report to the warden.",
+     "ai_description": "Dry tap, 1st floor washroom.",
+     "complexity": 5,
+     "confidence": 0.9,
+     "counts_toward_total": 1,
+     "created_at": "<TS>",
+     "cusat_id": "CUS1010",
+     "emergency": 6,
+     "floor": "1",
+     "gps_flag": null,
+     "hazard_box": "[]",
+     "id": "RPT-0010",
+     "image_path": "seed_aishwarya_1.jpg",
+     "lat": 10.04,
+     "lng": 76.32,
+     "merge_reason": "Seeded scenario",
+     "merge_type": "new",
+     "name": "Joel Mathew",
+     "note": null,
+     "severity": 5,
+     "status": "ACTIVE",
+     "trust_score": 80
+    },
+    {
+     "advice": "Store some drinking water and report to the warden.",
+     "ai_description": "Shower with no water.",
+     "complexity": 5,
+     "confidence": 0.9,
+     "counts_toward_total": 1,
+     "created_at": "<TS>",
+     "cusat_id": "CUS1001",
+     "emergency": 6,
+     "floor": "1",
+     "gps_flag": null,
+     "hazard_box": "[]",
+     "id": "RPT-0011",
+     "image_path": "seed_aishwarya_2.jpg",
+     "lat": 10.04,
+     "lng": 76.32,
+     "merge_reason": "Seeded scenario",
+     "merge_type": "same_root_problem",
+     "name": "Anjali Menon",
+     "note": null,
+     "severity": 5,
+     "status": "ACTIVE",
+     "trust_score": 100
+    },
+    {
+     "advice": "Store some drinking water and report to the warden.",
+     "ai_description": "Row of basins with no water.",
+     "complexity": 5,
+     "confidence": 0.9,
+     "counts_toward_total": 0,
+     "created_at": "<TS>",
+     "cusat_id": "CUS1002",
+     "emergency": 6,
+     "floor": "1",
+     "gps_flag": null,
+     "hazard_box": "[]",
+     "id": "RPT-0012",
+     "image_path": "seed_aishwarya_3.jpg",
+     "lat": 10.04,
+     "lng": 76.32,
+     "merge_reason": "Seeded scenario",
+     "merge_type": "same_root_problem",
+     "name": "Rahul Nair",
+     "note": null,
+     "severity": 5,
+     "status": "MARKED_FAKE",
+     "trust_score": 70
+    }
+   ],
+   "resolved_at": null,
+   "severity": 5,
+   "status": "OPEN",
+   "summary": "Dry taps in washrooms on two floors; started around the same time as Athulya Hostel next door.",
+   "threat_level": "Medium",
+   "title": "Taps dry in Aishwarya Hostel",
+   "trade_needed": "Plumber",
+   "unique_reporters": 2,
+   "verify_deadline": null,
+   "work_order_en": "WHAT: No water in washrooms.\nWHERE: Aishwarya Hostel, floors 1-2.\nTRADE: Plumber; check with the Athulya Hostel crew about the shared main line.\nRISK: Medium.\nSAFETY: Standard.",
+   "work_order_ml": "എന്ത്: ശുചിമുറികളിൽ വെള്ളമില്ല.\nഎവിടെ: ഐശ്വര്യ ഹോസ്റ്റൽ, 1-2 നിലകൾ.\nജോലിക്കാർ: പ്ലംബർ; അതുല്യ ഹോസ്റ്റലിലെ പ്രധാന ലൈനുമായി ഒത്തുനോക്കുക.\nഅപകട നില: ഇടത്തരം."
+  },
+  "name": "issue: CL-0003 after (staff)",
+  "status": 200
+ },
+ {
+  "body": {
+   "after_photo": null,
+   "audits": [
+    {
+     "created_at": "<TS>",
+     "image_path": "<IMG>.jpg",
+     "kind": "staff_fake_check",
+     "passed": 1,
+     "reason": "spot fine",
+     "same_location_verified": 1
+    }
+   ],
+   "breakdown": {
+    "inputs": {
+     "C": 8,
+     "E": 6,
+     "R": 0,
+     "S": 7
+    },
+    "parts": {
+     "age": 0.5,
+     "complexity": 1.6,
+     "emergency": 1.5,
+     "reporters": 0.0,
+     "severity": 2.8
+    },
+    "priority": 6.4
+   },
+   "building": "SOE",
+   "category": "Structural",
+   "complexity": 8,
+   "created_at": "<TS>",
+   "emergency": 6,
+   "escalation": 0,
+   "failed_fix_attempts": 0,
+   "fix_disputed": 0,
+   "floor": "2",
+   "i_reported": false,
+   "id": "CL-0004",
+   "lat": 10.05,
+   "ledger": [
+    {
+     "actor": "seed",
+     "block_hash": "<HASH>",
+     "block_no": 25,
+     "created_at": "<TS>",
+     "event": "ISSUE_CREATED",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1003",
+     "block_hash": "<HASH>",
+     "block_no": 26,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "report_id": "RPT-0013"
+    },
+    {
+     "actor": "staff:STAFF2",
+     "block_hash": "<HASH>",
+     "block_no": 66,
+     "created_at": "<TS>",
+     "event": "MARKED_FAKE_BY_STAFF",
+     "report_id": "RPT-0013"
+    },
+    {
+     "actor": "staff:STAFF2",
+     "block_hash": "<HASH>",
+     "block_no": 67,
+     "created_at": "<TS>",
+     "event": "DISMISSED",
+     "report_id": null
+    }
+   ],
+   "links": [],
+   "lng": 76.33,
+   "needs_human_check": 0,
+   "priority": 6.4,
+   "rank": 8,
+   "rank_reason": "Ranked #3: more panels may fall in a room students use daily; needs a scaffold and a carpentry team.",
+   "reports": [
+    {
+     "advice": "Stay out from under the sagging section and keep the lab closed.",
+     "ai_description": "Fallen ceiling panel on a lab bench, sagging frame above.",
+     "complexity": 8,
+     "confidence": 0.9,
+     "counts_toward_total": 0,
+     "created_at": "<TS>",
+     "cusat_id": "CUS1003",
+     "emergency": 6,
+     "floor": "2",
+     "gps_flag": null,
+     "hazard_box": "[]",
+     "id": "RPT-0013",
+     "image_path": "seed_soe_1.jpg",
+     "lat": 10.05,
+     "lng": 76.33,
+     "merge_reason": "Seeded scenario",
+     "merge_type": "new",
+     "name": "Fathima Rasheed",
+     "note": null,
+     "severity": 7,
+     "status": "MARKED_FAKE",
+     "trust_score": 65
+    }
+   ],
+   "resolved_at": "<TS>",
+   "severity": 7,
+   "status": "DISMISSED",
+   "summary": "A false-ceiling panel has fallen onto a lab bench; the frame above is sagging.",
+   "threat_level": "High",
+   "title": "Collapsed ceiling panel in a lab",
+   "trade_needed": "Carpenter",
+   "unique_reporters": 0,
+   "verify_deadline": null,
+   "work_order_en": "WHAT: Collapsed false-ceiling panel, frame sagging.\nWHERE: SOE, 2nd floor lab.\nTRADE: Carpenter team + scaffold.\nRISK: High.\nSAFETY: Close the lab; hard hats.",
+   "work_order_ml": "എന്ത്: ഫാൾസ് സീലിംഗ് പാനൽ വീണു, ഫ്രെയിം താഴ്ന്നിരിക്കുന്നു.\nഎവിടെ: SOE, രണ്ടാം നില ലാബ്.\nജോലിക്കാർ: ആശാരി സംഘം, സ്കാഫോൾഡ്.\nഅപകട നില: ഉയർന്നത്.\nസുരക്ഷ: ലാബ് അടച്ചിടുക."
+  },
+  "name": "issue: CL-0004 after (staff)",
+  "status": 200
+ },
+ {
+  "body": {
+   "after_photo": "<IMG>.jpg",
+   "audits": [
+    {
+     "created_at": "<TS>",
+     "image_path": "<IMG>.jpg",
+     "kind": "staff_fix",
+     "passed": 0,
+     "reason": "This is the same photo as the original report, not a photo of the repair.",
+     "same_location_verified": 1
+    },
+    {
+     "created_at": "<TS>",
+     "image_path": "<IMG>.jpg",
+     "kind": "staff_fix",
+     "passed": 1,
+     "reason": "repaired",
+     "same_location_verified": 1
+    },
+    {
+     "created_at": "<TS>",
+     "image_path": "<IMG>.jpg",
+     "kind": "student_confirm",
+     "passed": 0,
+     "reason": "still broken",
+     "same_location_verified": 1
+    },
+    {
+     "created_at": "<TS>",
+     "image_path": "<IMG>.jpg",
+     "kind": "staff_fix",
+     "passed": 0,
+     "reason": "not fixed",
+     "same_location_verified": 1
+    },
+    {
+     "created_at": "<TS>",
+     "image_path": "<IMG>.jpg",
+     "kind": "staff_fix",
+     "passed": 1,
+     "reason": "repaired",
+     "same_location_verified": 1
+    },
+    {
+     "created_at": "<TS>",
+     "image_path": "<IMG>.jpg",
+     "kind": "student_dispute",
+     "passed": 0,
+     "reason": "looks fine",
+     "same_location_verified": 1
+    },
+    {
+     "created_at": "<TS>",
+     "image_path": "<IMG>.jpg",
+     "kind": "student_confirm",
+     "passed": 0,
+     "reason": "other room",
+     "same_location_verified": 0
+    },
+    {
+     "created_at": "<TS>",
+     "image_path": "<IMG>.jpg",
+     "kind": "student_dispute",
+     "passed": 0,
+     "reason": "This photo was already submitted for this issue. Please take a new photo of the location.",
+     "same_location_verified": 1
+    },
+    {
+     "created_at": "<TS>",
+     "image_path": "<IMG>.jpg",
+     "kind": "student_confirm",
+     "passed": 1,
+     "reason": "repaired",
+     "same_location_verified": 1
+    }
+   ],
+   "breakdown": {
+    "inputs": {
+     "C": 3,
+     "E": 4,
+     "R": 1,
+     "S": 4
+    },
+    "parts": {
+     "age": 1.0,
+     "complexity": 0.6,
+     "emergency": 1.0,
+     "reporters": 0.38,
+     "severity": 1.6
+    },
+    "priority": 4.58
+   },
+   "building": "CITTIC",
+   "category": "IT",
+   "complexity": 3,
+   "created_at": "<TS>",
+   "emergency": 4,
+   "escalation": 2,
+   "failed_fix_attempts": 3,
+   "fix_disputed": 1,
+   "floor": "1",
+   "i_reported": false,
+   "id": "CL-0005",
+   "lat": 10.04,
+   "ledger": [
+    {
+     "actor": "seed",
+     "block_hash": "<HASH>",
+     "block_no": 27,
+     "created_at": "<TS>",
+     "event": "ISSUE_CREATED",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1005",
+     "block_hash": "<HASH>",
+     "block_no": 28,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "report_id": "RPT-0014"
+    },
+    {
+     "actor": "staff:STAFF2",
+     "block_hash": "<HASH>",
+     "block_no": 46,
+     "created_at": "<TS>",
+     "event": "FIX_SUBMITTED",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 47,
+     "created_at": "<TS>",
+     "event": "AUDIT_FAILED",
+     "report_id": null
+    },
+    {
+     "actor": "staff:STAFF2",
+     "block_hash": "<HASH>",
+     "block_no": 48,
+     "created_at": "<TS>",
+     "event": "FIX_SUBMITTED",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 49,
+     "created_at": "<TS>",
+     "event": "AUDIT_PASSED",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 50,
+     "created_at": "<TS>",
+     "event": "DISPUTE_VERIFIED",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1010",
+     "block_hash": "<HASH>",
+     "block_no": 51,
+     "created_at": "<TS>",
+     "event": "REOPENED",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 52,
+     "created_at": "<TS>",
+     "event": "RANK_CHANGED",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 53,
+     "created_at": "<TS>",
+     "event": "ESCALATED",
+     "report_id": null
+    },
+    {
+     "actor": "staff:STAFF2",
+     "block_hash": "<HASH>",
+     "block_no": 54,
+     "created_at": "<TS>",
+     "event": "FIX_SUBMITTED",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 55,
+     "created_at": "<TS>",
+     "event": "AUDIT_FAILED",
+     "report_id": null
+    },
+    {
+     "actor": "staff:STAFF2",
+     "block_hash": "<HASH>",
+     "block_no": 56,
+     "created_at": "<TS>",
+     "event": "FIX_SUBMITTED",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 57,
+     "created_at": "<TS>",
+     "event": "AUDIT_PASSED",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 58,
+     "created_at": "<TS>",
+     "event": "DISPUTE_REJECTED",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 59,
+     "created_at": "<TS>",
+     "event": "CONFIRMATION_REJECTED",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 60,
+     "created_at": "<TS>",
+     "event": "DISPUTE_REJECTED",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1010",
+     "block_hash": "<HASH>",
+     "block_no": 61,
+     "created_at": "<TS>",
+     "event": "STUDENT_CONFIRMED",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1010",
+     "block_hash": "<HASH>",
+     "block_no": 62,
+     "created_at": "<TS>",
+     "event": "RESOLVED",
+     "report_id": null
+    }
+   ],
+   "links": [],
+   "lng": 76.33,
+   "needs_human_check": 0,
+   "priority": 4.58,
+   "rank": 8,
+   "rank_reason": "Ranked #9: test",
+   "reports": [
+    {
+     "advice": "No danger. Use the spare portable projector for now.",
+     "ai_description": "Ceiling projector with no power light.",
+     "complexity": 3,
+     "confidence": 0.9,
+     "counts_toward_total": 1,
+     "created_at": "<TS>",
+     "cusat_id": "CUS1005",
+     "emergency": 2,
+     "floor": "1",
+     "gps_flag": null,
+     "hazard_box": "[]",
+     "id": "RPT-0014",
+     "image_path": "seed_cittic_1.jpg",
+     "lat": 10.04,
+     "lng": 76.33,
+     "merge_reason": "Seeded scenario",
+     "merge_type": "new",
+     "name": "Sneha Thomas",
+     "note": null,
+     "severity": 2,
+     "status": "ACTIVE",
+     "trust_score": 100
+    }
+   ],
+   "resolved_at": "<TS>",
+   "severity": 4,
+   "status": "RESOLVED",
+   "summary": "Ceiling projector shows no power light; the rest of the hall works.",
+   "threat_level": "Medium",
+   "title": "Projector not turning on in seminar hall",
+   "trade_needed": "Tester",
+   "unique_reporters": 1,
+   "verify_deadline": null,
+   "work_order_en": "WO EN",
+   "work_order_ml": "WO ML"
+  },
+  "name": "issue: CL-0005 after (staff)",
+  "status": 200
+ },
+ {
+  "body": {
+   "after_photo": null,
+   "audits": [],
+   "breakdown": {
+    "inputs": {
+     "C": 3,
+     "E": 7,
+     "R": 1,
+     "S": 8
+    },
+    "parts": {
+     "age": 0.0,
+     "complexity": 0.6,
+     "emergency": 1.75,
+     "reporters": 0.38,
+     "severity": 3.2
+    },
+    "priority": 5.93
+   },
+   "building": "CITTIC",
+   "category": "Electrical",
+   "complexity": 3,
+   "created_at": "<TS>",
+   "emergency": 7,
+   "escalation": 0,
+   "failed_fix_attempts": 0,
+   "fix_disputed": 0,
+   "floor": "1",
+   "i_reported": false,
+   "id": "CL-0007",
+   "lat": 10.04,
+   "ledger": [
+    {
+     "actor": "student:CUS1002",
+     "block_hash": "<HASH>",
+     "block_no": 35,
+     "created_at": "<TS>",
+     "event": "ISSUE_CREATED",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1002",
+     "block_hash": "<HASH>",
+     "block_no": 36,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "report_id": "RPT-0018"
+    }
+   ],
+   "links": [],
+   "lng": 76.33,
+   "needs_human_check": 0,
+   "priority": 5.93,
+   "rank": 5,
+   "rank_reason": "Ranked #6: test",
+   "reports": [
+    {
+     "advice": "Keep away.",
+     "ai_description": "Exposed wires on a wall socket.",
+     "complexity": 3,
+     "confidence": 0.9,
+     "counts_toward_total": 1,
+     "created_at": "<TS>",
+     "cusat_id": "CUS1002",
+     "emergency": 7,
+     "floor": "1",
+     "gps_flag": null,
+     "hazard_box": "[10, 10, 500, 500]",
+     "id": "RPT-0018",
+     "image_path": "<IMG>.jpg",
+     "lat": 10.04,
+     "lng": 76.33,
+     "merge_reason": "No matching open issue here.",
+     "merge_type": "new",
+     "name": "Rahul Nair",
+     "note": "",
+     "severity": 8,
+     "status": "ACTIVE",
+     "trust_score": 70
+    }
+   ],
+   "resolved_at": null,
+   "severity": 8,
+   "status": "OPEN",
+   "summary": "Exposed wires on a wall socket.",
+   "threat_level": "High",
+   "title": "Exposed socket wires",
+   "trade_needed": "Tester",
+   "unique_reporters": 1,
+   "verify_deadline": null,
+   "work_order_en": "WO EN",
+   "work_order_ml": "WO ML"
+  },
+  "name": "issue: CL-0007 after (staff)",
+  "status": 200
+ },
+ {
+  "body": {
+   "blocks": [
+    {
+     "actor": "staff:STAFF2",
+     "block_hash": "<HASH>",
+     "block_no": 67,
+     "created_at": "<TS>",
+     "event": "DISMISSED",
+     "issue_id": "CL-0004",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "staff:STAFF2",
+     "block_hash": "<HASH>",
+     "block_no": 66,
+     "created_at": "<TS>",
+     "event": "MARKED_FAKE_BY_STAFF",
+     "issue_id": "CL-0004",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0013"
+    },
+    {
+     "actor": "staff:STAFF2",
+     "block_hash": "<HASH>",
+     "block_no": 65,
+     "created_at": "<TS>",
+     "event": "MARKED_FAKE_BY_STAFF",
+     "issue_id": "CL-0003",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0012"
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 64,
+     "created_at": "<TS>",
+     "event": "FAKE_CLAIM_REJECTED",
+     "issue_id": "CL-0003",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0012"
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 63,
+     "created_at": "<TS>",
+     "event": "FAKE_CLAIM_REJECTED",
+     "issue_id": "CL-0003",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0012"
+    },
+    {
+     "actor": "student:CUS1010",
+     "block_hash": "<HASH>",
+     "block_no": 62,
+     "created_at": "<TS>",
+     "event": "RESOLVED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1010",
+     "block_hash": "<HASH>",
+     "block_no": 61,
+     "created_at": "<TS>",
+     "event": "STUDENT_CONFIRMED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 60,
+     "created_at": "<TS>",
+     "event": "DISPUTE_REJECTED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 59,
+     "created_at": "<TS>",
+     "event": "CONFIRMATION_REJECTED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 58,
+     "created_at": "<TS>",
+     "event": "DISPUTE_REJECTED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 57,
+     "created_at": "<TS>",
+     "event": "AUDIT_PASSED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "staff:STAFF2",
+     "block_hash": "<HASH>",
+     "block_no": 56,
+     "created_at": "<TS>",
+     "event": "FIX_SUBMITTED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 55,
+     "created_at": "<TS>",
+     "event": "AUDIT_FAILED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "staff:STAFF2",
+     "block_hash": "<HASH>",
+     "block_no": 54,
+     "created_at": "<TS>",
+     "event": "FIX_SUBMITTED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 53,
+     "created_at": "<TS>",
+     "event": "ESCALATED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 52,
+     "created_at": "<TS>",
+     "event": "RANK_CHANGED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1010",
+     "block_hash": "<HASH>",
+     "block_no": 51,
+     "created_at": "<TS>",
+     "event": "REOPENED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 50,
+     "created_at": "<TS>",
+     "event": "DISPUTE_VERIFIED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 49,
+     "created_at": "<TS>",
+     "event": "AUDIT_PASSED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "staff:STAFF2",
+     "block_hash": "<HASH>",
+     "block_no": 48,
+     "created_at": "<TS>",
+     "event": "FIX_SUBMITTED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 47,
+     "created_at": "<TS>",
+     "event": "AUDIT_FAILED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "staff:STAFF2",
+     "block_hash": "<HASH>",
+     "block_no": 46,
+     "created_at": "<TS>",
+     "event": "FIX_SUBMITTED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1008",
+     "block_hash": "<HASH>",
+     "block_no": 45,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "issue_id": "CL-0009",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0017"
+    },
+    {
+     "actor": "student:CUS1008",
+     "block_hash": "<HASH>",
+     "block_no": 44,
+     "created_at": "<TS>",
+     "event": "ISSUE_CREATED",
+     "issue_id": "CL-0009",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "staff:STAFF2",
+     "block_hash": "<HASH>",
+     "block_no": 43,
+     "created_at": "<TS>",
+     "event": "FLAG_CLEARED_BY_STAFF",
+     "issue_id": null,
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0017"
+    },
+    {
+     "actor": "student:CUS1003",
+     "block_hash": "<HASH>",
+     "block_no": 42,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "issue_id": "CL-0008",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0021"
+    },
+    {
+     "actor": "student:CUS1003",
+     "block_hash": "<HASH>",
+     "block_no": 41,
+     "created_at": "<TS>",
+     "event": "ISSUE_CREATED",
+     "issue_id": "CL-0008",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1003",
+     "block_hash": "<HASH>",
+     "block_no": 40,
+     "created_at": "<TS>",
+     "event": "REPORT_REJECTED_FAKE",
+     "issue_id": null,
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1003",
+     "block_hash": "<HASH>",
+     "block_no": 39,
+     "created_at": "<TS>",
+     "event": "REPORT_REJECTED_FAKE",
+     "issue_id": null,
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0020"
+    },
+    {
+     "actor": "student:CUS1010",
+     "block_hash": "<HASH>",
+     "block_no": 38,
+     "created_at": "<TS>",
+     "event": "MERGED",
+     "issue_id": "CL-0001",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0019"
+    },
+    {
+     "actor": "student:CUS1010",
+     "block_hash": "<HASH>",
+     "block_no": 37,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "issue_id": "CL-0001",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0019"
+    },
+    {
+     "actor": "student:CUS1002",
+     "block_hash": "<HASH>",
+     "block_no": 36,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "issue_id": "CL-0007",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0018"
+    },
+    {
+     "actor": "student:CUS1002",
+     "block_hash": "<HASH>",
+     "block_no": 35,
+     "created_at": "<TS>",
+     "event": "ISSUE_CREATED",
+     "issue_id": "CL-0007",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1008",
+     "block_hash": "<HASH>",
+     "block_no": 34,
+     "created_at": "<TS>",
+     "event": "REPORT_REJECTED_FAKE",
+     "issue_id": null,
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0017"
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 33,
+     "created_at": "<TS>",
+     "event": "LINKED",
+     "issue_id": "CL-0002",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1007",
+     "block_hash": "<HASH>",
+     "block_no": 32,
+     "created_at": "<TS>",
+     "event": "MERGED",
+     "issue_id": "CL-0006",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0016"
+    },
+    {
+     "actor": "student:CUS1007",
+     "block_hash": "<HASH>",
+     "block_no": 31,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "issue_id": "CL-0006",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0016"
+    },
+    {
+     "actor": "student:CUS1006",
+     "block_hash": "<HASH>",
+     "block_no": 30,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "issue_id": "CL-0006",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0015"
+    },
+    {
+     "actor": "seed",
+     "block_hash": "<HASH>",
+     "block_no": 29,
+     "created_at": "<TS>",
+     "event": "ISSUE_CREATED",
+     "issue_id": "CL-0006",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1005",
+     "block_hash": "<HASH>",
+     "block_no": 28,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0014"
+    },
+    {
+     "actor": "seed",
+     "block_hash": "<HASH>",
+     "block_no": 27,
+     "created_at": "<TS>",
+     "event": "ISSUE_CREATED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1003",
+     "block_hash": "<HASH>",
+     "block_no": 26,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "issue_id": "CL-0004",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0013"
+    },
+    {
+     "actor": "seed",
+     "block_hash": "<HASH>",
+     "block_no": 25,
+     "created_at": "<TS>",
+     "event": "ISSUE_CREATED",
+     "issue_id": "CL-0004",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1002",
+     "block_hash": "<HASH>",
+     "block_no": 24,
+     "created_at": "<TS>",
+     "event": "MERGED",
+     "issue_id": "CL-0003",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0012"
+    },
+    {
+     "actor": "student:CUS1002",
+     "block_hash": "<HASH>",
+     "block_no": 23,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "issue_id": "CL-0003",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0012"
+    },
+    {
+     "actor": "student:CUS1001",
+     "block_hash": "<HASH>",
+     "block_no": 22,
+     "created_at": "<TS>",
+     "event": "MERGED",
+     "issue_id": "CL-0003",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0011"
+    },
+    {
+     "actor": "student:CUS1001",
+     "block_hash": "<HASH>",
+     "block_no": 21,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "issue_id": "CL-0003",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0011"
+    },
+    {
+     "actor": "student:CUS1010",
+     "block_hash": "<HASH>",
+     "block_no": 20,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "issue_id": "CL-0003",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0010"
+    },
+    {
+     "actor": "seed",
+     "block_hash": "<HASH>",
+     "block_no": 19,
+     "created_at": "<TS>",
+     "event": "ISSUE_CREATED",
+     "issue_id": "CL-0003",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1009",
+     "block_hash": "<HASH>",
+     "block_no": 18,
+     "created_at": "<TS>",
+     "event": "MERGED",
+     "issue_id": "CL-0002",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0009"
+    }
+   ],
+   "latest_hash": "<HASH>",
+   "total": 67
+  },
+  "name": "ledger: page 1",
+  "status": 200
+ },
+ {
+  "body": {
+   "blocks": [
+    {
+     "actor": "student:CUS1009",
+     "block_hash": "<HASH>",
+     "block_no": 17,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "issue_id": "CL-0002",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0009"
+    },
+    {
+     "actor": "student:CUS1008",
+     "block_hash": "<HASH>",
+     "block_no": 16,
+     "created_at": "<TS>",
+     "event": "MERGED",
+     "issue_id": "CL-0002",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0008"
+    },
+    {
+     "actor": "student:CUS1008",
+     "block_hash": "<HASH>",
+     "block_no": 15,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "issue_id": "CL-0002",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0008"
+    },
+    {
+     "actor": "student:CUS1007",
+     "block_hash": "<HASH>",
+     "block_no": 14,
+     "created_at": "<TS>",
+     "event": "MERGED",
+     "issue_id": "CL-0002",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0007"
+    },
+    {
+     "actor": "student:CUS1007",
+     "block_hash": "<HASH>",
+     "block_no": 13,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "issue_id": "CL-0002",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0007"
+    },
+    {
+     "actor": "student:CUS1006",
+     "block_hash": "<HASH>",
+     "block_no": 12,
+     "created_at": "<TS>",
+     "event": "MERGED",
+     "issue_id": "CL-0002",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0006"
+    },
+    {
+     "actor": "student:CUS1006",
+     "block_hash": "<HASH>",
+     "block_no": 11,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "issue_id": "CL-0002",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0006"
+    },
+    {
+     "actor": "student:CUS1005",
+     "block_hash": "<HASH>",
+     "block_no": 10,
+     "created_at": "<TS>",
+     "event": "MERGED",
+     "issue_id": "CL-0002",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0005"
+    },
+    {
+     "actor": "student:CUS1005",
+     "block_hash": "<HASH>",
+     "block_no": 9,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "issue_id": "CL-0002",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0005"
+    },
+    {
+     "actor": "student:CUS1004",
+     "block_hash": "<HASH>",
+     "block_no": 8,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "issue_id": "CL-0002",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0004"
+    },
+    {
+     "actor": "seed",
+     "block_hash": "<HASH>",
+     "block_no": 7,
+     "created_at": "<TS>",
+     "event": "ISSUE_CREATED",
+     "issue_id": "CL-0002",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1003",
+     "block_hash": "<HASH>",
+     "block_no": 6,
+     "created_at": "<TS>",
+     "event": "MERGED",
+     "issue_id": "CL-0001",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0003"
+    },
+    {
+     "actor": "student:CUS1003",
+     "block_hash": "<HASH>",
+     "block_no": 5,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "issue_id": "CL-0001",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0003"
+    },
+    {
+     "actor": "student:CUS1002",
+     "block_hash": "<HASH>",
+     "block_no": 4,
+     "created_at": "<TS>",
+     "event": "MERGED",
+     "issue_id": "CL-0001",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0002"
+    },
+    {
+     "actor": "student:CUS1002",
+     "block_hash": "<HASH>",
+     "block_no": 3,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "issue_id": "CL-0001",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0002"
+    },
+    {
+     "actor": "student:CUS1001",
+     "block_hash": "<HASH>",
+     "block_no": 2,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "issue_id": "CL-0001",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0001"
+    },
+    {
+     "actor": "seed",
+     "block_hash": "<HASH>",
+     "block_no": 1,
+     "created_at": "<TS>",
+     "event": "ISSUE_CREATED",
+     "issue_id": "CL-0001",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    }
+   ],
+   "latest_hash": "<HASH>",
+   "total": 67
+  },
+  "name": "ledger: page 2",
+  "status": 200
+ },
+ {
+  "body": {
+   "blocks": [
+    {
+     "actor": "student:CUS1010",
+     "block_hash": "<HASH>",
+     "block_no": 62,
+     "created_at": "<TS>",
+     "event": "RESOLVED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1010",
+     "block_hash": "<HASH>",
+     "block_no": 61,
+     "created_at": "<TS>",
+     "event": "STUDENT_CONFIRMED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 60,
+     "created_at": "<TS>",
+     "event": "DISPUTE_REJECTED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 59,
+     "created_at": "<TS>",
+     "event": "CONFIRMATION_REJECTED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 58,
+     "created_at": "<TS>",
+     "event": "DISPUTE_REJECTED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 57,
+     "created_at": "<TS>",
+     "event": "AUDIT_PASSED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "staff:STAFF2",
+     "block_hash": "<HASH>",
+     "block_no": 56,
+     "created_at": "<TS>",
+     "event": "FIX_SUBMITTED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 55,
+     "created_at": "<TS>",
+     "event": "AUDIT_FAILED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "staff:STAFF2",
+     "block_hash": "<HASH>",
+     "block_no": 54,
+     "created_at": "<TS>",
+     "event": "FIX_SUBMITTED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 53,
+     "created_at": "<TS>",
+     "event": "ESCALATED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 52,
+     "created_at": "<TS>",
+     "event": "RANK_CHANGED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1010",
+     "block_hash": "<HASH>",
+     "block_no": 51,
+     "created_at": "<TS>",
+     "event": "REOPENED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 50,
+     "created_at": "<TS>",
+     "event": "DISPUTE_VERIFIED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 49,
+     "created_at": "<TS>",
+     "event": "AUDIT_PASSED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "staff:STAFF2",
+     "block_hash": "<HASH>",
+     "block_no": 48,
+     "created_at": "<TS>",
+     "event": "FIX_SUBMITTED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 47,
+     "created_at": "<TS>",
+     "event": "AUDIT_FAILED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "staff:STAFF2",
+     "block_hash": "<HASH>",
+     "block_no": 46,
+     "created_at": "<TS>",
+     "event": "FIX_SUBMITTED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1005",
+     "block_hash": "<HASH>",
+     "block_no": 28,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0014"
+    },
+    {
+     "actor": "seed",
+     "block_hash": "<HASH>",
+     "block_no": 27,
+     "created_at": "<TS>",
+     "event": "ISSUE_CREATED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    }
+   ],
+   "latest_hash": "<HASH>",
+   "total": 19
+  },
+  "name": "ledger: filter",
+  "status": 200
+ },
+ {
+  "body": {
+   "blocks": 67,
+   "intact": true,
+   "latest_hash": "<HASH>"
+  },
+  "name": "ledger: verify",
+  "status": 200
+ },
+ {
+  "body": {
+   "message": "Data already exists. Run `python seed_cusat.py --fresh` to start over.",
+   "seeded": false
+  },
+  "name": "seed: already seeded",
+  "status": 200
+ },
+ {
+  "body": {
+   "detail": "Please sign in."
+  },
+  "name": "upload: no token",
+  "status": 401
+ },
+ {
+  "body": {
+   "bytes": true,
+   "content_type": "image/jpeg"
+  },
+  "name": "upload: token in query",
+  "status": 200
+ },
+ {
+  "body": {
+   "detail": "Photo not found."
+  },
+  "name": "upload: missing",
+  "status": 404
+ },
+ {
+  "body": {
+   "detail": "Not Found"
+  },
+  "name": "upload: traversal",
+  "status": 404
+ }
+]

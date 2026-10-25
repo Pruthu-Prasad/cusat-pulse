@@ -117,7 +117,7 @@ class Grouper:
 
     def get_issue_photos(self, issue_id, **_):
         reps = self.conn.execute(
-            "SELECT id, image_path, ai_description FROM reports WHERE issue_id=? AND status='ACTIVE' ORDER BY created_at",
+            "SELECT id, image_path, ai_description FROM reports WHERE issue_id=? AND status='ACTIVE' ORDER BY created_at, id",
             (issue_id,)).fetchall()
         if not reps:
             return {"error": "No such issue"}, f"get_issue_photos({issue_id}) -> not found"

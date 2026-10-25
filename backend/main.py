@@ -84,7 +84,7 @@ def set_status(conn, issue_id, status, **fields):
 
 def issue_photos(conn, issue_id):
     reps = conn.execute(
-        "SELECT image_path FROM reports WHERE issue_id=? AND status='ACTIVE' ORDER BY created_at", (issue_id,)).fetchall()
+        "SELECT image_path FROM reports WHERE issue_id=? AND status='ACTIVE' ORDER BY created_at, id", (issue_id,)).fetchall()
     return [r["image_path"] for r in reps]
 
 
@@ -133,7 +133,7 @@ def api_me(user=Depends(current_user)):
         reps = rows(conn.execute(
             "SELECT r.id, r.issue_id, r.image_path, r.ai_description, r.category, r.severity, r.status AS report_status,"
             " r.created_at, i.title, i.status, i.threat_level, i.verify_deadline, i.unique_reporters, i.fix_disputed"
-            " FROM reports r LEFT JOIN issues i ON i.id = r.issue_id WHERE r.user_id=? ORDER BY r.created_at DESC",
+            " FROM reports r LEFT JOIN issues i ON i.id = r.issue_id WHERE r.user_id=? ORDER BY r.created_at DESC, r.id DESC",
             (user["id"],)))
         for r in reps:
             r["after_photo"] = latest_fix_photo(conn, r["issue_id"]) if r["issue_id"] else None
@@ -343,7 +343,7 @@ def api_issues(include_resolved: bool = False, user=Depends(current_user)):
         out = rows(conn.execute(
             "SELECT id, title, category, building, floor, lat, lng, status, threat_level, severity, unique_reporters,"
             f" priority, fix_disputed, failed_fix_attempts, created_at FROM issues WHERE {where}"
-            " ORDER BY priority DESC", args))
+            " ORDER BY priority DESC, id", args))
         links = rows(conn.execute("SELECT issue_a, issue_b, note FROM issue_links"))
     return {"issues": out, "links": links}
 
@@ -359,7 +359,7 @@ def api_issue(issue_id: str, user=Depends(current_user)):
             "SELECT r.id, r.image_path, r.ai_description, r.advice, r.note, r.severity, r.emergency, r.complexity,"
             " r.confidence, r.hazard_box, r.merge_type, r.merge_reason, r.counts_toward_total, r.status, r.created_at,"
             " r.floor, r.lat, r.lng, r.gps_lat, r.gps_lng, u.name, u.cusat_id, u.trust_score"
-            " FROM reports r JOIN users u ON u.id=r.user_id WHERE r.issue_id=? ORDER BY r.created_at", (issue_id,)))
+            " FROM reports r JOIN users u ON u.id=r.user_id WHERE r.issue_id=? ORDER BY r.created_at, r.id", (issue_id,)))
         for r in reports:
             r["gps_flag"] = antifake.gps_flag(r["lat"], r["lng"], r.pop("gps_lat"), r.pop("gps_lng"))
         if not staff:
@@ -386,11 +386,11 @@ def api_issue(issue_id: str, user=Depends(current_user)):
 @app.get("/api/admin/issues/grouped")
 def api_grouped(user=Depends(require_staff)):
     with get_db() as conn:
-        issues = rows(conn.execute("SELECT * FROM issues ORDER BY severity DESC, priority DESC"))
+        issues = rows(conn.execute("SELECT * FROM issues ORDER BY severity DESC, priority DESC, id"))
         flagged = rows(conn.execute(
             "SELECT r.id, r.image_path, r.ai_description, r.building, r.created_at, r.lat, r.lng, r.gps_lat, r.gps_lng,"
             " u.name, u.cusat_id FROM reports r JOIN users u ON u.id=r.user_id WHERE r.status='FLAGGED'"
-            " ORDER BY r.created_at DESC"))
+            " ORDER BY r.created_at DESC, r.id DESC"))
         for f in flagged:
             f["gps_flag"] = antifake.gps_flag(f["lat"], f["lng"], f.pop("gps_lat"), f.pop("gps_lng"))
     groups = {}
@@ -407,7 +407,7 @@ def api_grouped(user=Depends(require_staff)):
 @app.get("/api/admin/heatmap")
 def api_heatmap(user=Depends(require_staff)):
     with get_db() as conn:
-        pts = rows(conn.execute("SELECT id, lat, lng, priority, category, threat_level, status FROM issues"))
+        pts = rows(conn.execute("SELECT id, lat, lng, priority, category, threat_level, status FROM issues ORDER BY id"))
     for p in pts:
         p["weight"] = round((p["priority"] or 0) / 12, 3)
     return {"points": pts}

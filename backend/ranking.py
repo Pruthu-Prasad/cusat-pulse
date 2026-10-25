@@ -102,7 +102,7 @@ def escalate(conn, issue_id, actor, reason):
 def current_rank(conn, issue_id):
     ids = [r["id"] for r in conn.execute(
         "SELECT id FROM issues WHERE status IN ('OPEN','REOPENED','FIX_SUBMITTED','AWAITING_STUDENT_CHECK')"
-        " ORDER BY priority DESC")]
+        " ORDER BY priority DESC, id")]
     return ids.index(issue_id) + 1 if issue_id in ids else len(ids) + 1
 
 

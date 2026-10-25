@@ -1,5 +1,6 @@
 import asyncio
 
+from core import sessions
 from core.database import get_db, now_iso
 from services import ranking
 from services.ledger import write_block
@@ -28,6 +29,11 @@ def rerank_all():
             ranking.recount(conn, r["id"])
 
 
+def purge_sessions():
+    with get_db() as conn:
+        sessions.purge_expired(conn)
+
+
 async def scheduler_loop():
     tick = 0
     while True:
@@ -35,6 +41,7 @@ async def scheduler_loop():
             await asyncio.to_thread(close_expired)
             if tick % RERANK_EVERY_TICKS == 0:
                 await asyncio.to_thread(rerank_all)
+                await asyncio.to_thread(purge_sessions)
         except Exception as e:
             print(f"[scheduler] {e!r}", flush=True)
         tick += 1

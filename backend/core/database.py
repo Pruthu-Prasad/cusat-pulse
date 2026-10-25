@@ -85,6 +85,15 @@ CREATE TABLE IF NOT EXISTS ledger (
 CREATE TABLE IF NOT EXISTS capture_tokens (
   token TEXT PRIMARY KEY, user_id INTEGER, expires_at TIMESTAMP, used BOOLEAN DEFAULT 0
 );
+CREATE TABLE IF NOT EXISTS sessions (
+  token_hash TEXT PRIMARY KEY,          -- SHA-256 of the random token; the token itself is never stored
+  user_id INTEGER NOT NULL REFERENCES users(id),
+  created_at TIMESTAMP NOT NULL,
+  last_seen_at TIMESTAMP NOT NULL,
+  expires_at TIMESTAMP NOT NULL,
+  user_agent TEXT
+);
+CREATE INDEX IF NOT EXISTS idx_sessions_user ON sessions(user_id);
 CREATE INDEX IF NOT EXISTS idx_events_report ON agent_events(report_id, id);
 CREATE INDEX IF NOT EXISTS idx_reports_issue ON reports(issue_id);
 """

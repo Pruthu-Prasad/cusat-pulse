@@ -2,11 +2,12 @@ import hashlib
 import secrets
 from datetime import datetime, timedelta, timezone
 
-import jwt
 from fastapi import Depends, HTTPException, Request
 
+from core import sessions
 from core.config import ALLOWED_EMAIL_DOMAINS, DEMO_MODE, DEMO_OTP, JWT_SECRET, STAFF_EMAILS
 from core.database import get_db, now_iso, parse_iso
+from services import mailer
 
 DEMO_EMAIL_PREFIX = "demo"
 
@@ -29,9 +30,15 @@ def is_demo_account(email):
     return DEMO_MODE and (email.startswith(DEMO_EMAIL_PREFIX) or email in STAFF_EMAILS)
 
 
+def allowed_email(email):
+    """cusat.ac.in and any subdomain of it (pg.cusat.ac.in, ug.cusat.ac.in, ...)."""
+    domain = email.rpartition("@")[2]
+    return "@" in email and any(domain == d or domain.endswith("." + d) for d in ALLOWED_EMAIL_DOMAINS)
+
+
 def request_otp(name, email, cusat_id):
     email = (email or "").strip().lower()
-    if "@" not in email or email.split("@")[1] not in ALLOWED_EMAIL_DOMAINS:
+    if not allowed_email(email):
         raise HTTPException(400, "Only CUSAT email addresses can sign in.")
     with get_db() as conn:
         user = conn.execute("SELECT * FROM users WHERE email=?", (email,)).fetchone()
@@ -49,12 +56,15 @@ def request_otp(name, email, cusat_id):
             " VALUES (?,?,?,0,?,?)",
             (email, _hash_code(email, code), expires, (name or "").strip(), cid),
         )
-    # TODO: send by Gmail SMTP after the demo; console OTP is allowed by the plan's cut line.
-    print(f"\n==== OTP for {email}: {code} ====\n", flush=True)
+    if is_demo_account(email):
+        # Demo inboxes don't exist; they sign in with DEMO_OTP.
+        print(f"\n==== OTP for {email}: {code} ====\n", flush=True)
+    else:
+        mailer.send_otp(email, code)
     return {"sent": True, "new_user": user is None, "demo_hint": DEMO_OTP if is_demo_account(email) else None}
 
 
-def verify_otp(email, code):
+def verify_otp(email, code, user_agent=None):
     email = (email or "").strip().lower()
     with get_db() as conn:
         otp = conn.execute("SELECT * FROM otps WHERE email=?", (email,)).fetchone()
@@ -77,10 +87,7 @@ def verify_otp(email, code):
             user = conn.execute("SELECT * FROM users WHERE email=?", (email,)).fetchone()
         conn.execute("UPDATE users SET verified=1 WHERE id=?", (user["id"],))
         conn.execute("UPDATE otps SET attempts = 99 WHERE email=?", (email,))
-        token = jwt.encode(
-            {"sub": str(user["id"]), "role": user["role"], "exp": datetime.now(timezone.utc) + timedelta(days=7)},
-            JWT_SECRET, algorithm="HS256",
-        )
+        token = sessions.create(conn, user["id"], user_agent)
         return {"token": token, "user": public_user(dict(user))}
 
 
@@ -88,19 +95,21 @@ def public_user(u):
     return {k: u[k] for k in ("id", "name", "email", "cusat_id", "role", "trust_score")}
 
 
-def current_user(request: Request):
+def token_from_request(request: Request):
+    """Bearer header, or ?token= for places that can't set headers (<img> tags, EventSource)."""
     header = request.headers.get("authorization", "")
-    token = header[7:] if header.lower().startswith("bearer ") else request.query_params.get("token")
+    return header[7:] if header.lower().startswith("bearer ") else request.query_params.get("token")
+
+
+def current_user(request: Request):
+    token = token_from_request(request)
     if not token:
         raise HTTPException(401, "Please sign in.")
-    try:
-        claims = jwt.decode(token, JWT_SECRET, algorithms=["HS256"])
-    except jwt.PyJWTError:
-        raise HTTPException(401, "Your session has expired. Please sign in again.")
     with get_db() as conn:
-        user = conn.execute("SELECT * FROM users WHERE id=?", (int(claims["sub"]),)).fetchone()
-    if not user:
-        raise HTTPException(401, "Please sign in.")
+        session = sessions.lookup(conn, token)
+        user = conn.execute("SELECT * FROM users WHERE id=?", (session["user_id"],)).fetchone() if session else None
+    if not session or not user:
+        raise HTTPException(401, "Your session has expired. Please sign in again.")
     return dict(user)
 
 

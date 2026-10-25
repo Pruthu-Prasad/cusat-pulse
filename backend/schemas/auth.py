@@ -45,6 +45,24 @@ class CaptureTokenOut(Out):
     expires_in: int
 
 
+class OkOut(Out):
+    ok: bool
+    revoked: Optional[int] = None
+
+
+class SessionInfo(Out):
+    """One signed-in device. `id` is a short handle for picking it, not a credential."""
+    id: str
+    device: str
+    created_at: str
+    last_seen_at: str
+    current: bool
+
+
+class SessionsOut(Out):
+    sessions: List[SessionInfo]
+
+
 class MyReport(Out):
     id: str
     issue_id: Optional[str] = None

@@ -147,6 +147,18 @@ def photo(seed):
 
 # ---------- scenario ----------
 
+class _Json:
+    """A computed result recorded like a response (status 200, JSON body)."""
+    status_code = 200
+    headers = {"content-type": "application/json"}
+
+    def __init__(self, body):
+        self._body = body
+
+    def json(self):
+        return self._body
+
+
 def run():
     seed_cusat.seed()
     import main
@@ -346,6 +358,23 @@ def run():
         rec("upload: token in query", c.get("/uploads/seed_sahara_1.jpg?token=" + S1["Authorization"][7:]))
         rec("upload: missing", c.get("/uploads/nope.jpg", headers=S1))
         rec("upload: traversal", c.get("/uploads/..%2Fmain.py", headers=S1))
+
+        # --- sign-in sessions (last: these sign people out) ---
+        login("demo1@cusat.ac.in")  # a second device for demo1
+        r = c.get("/api/auth/sessions", headers=S1)
+        listed = r.json()["sessions"]  # ids/timestamps are random, so record the shape
+        rec("sessions: list", _Json({"status": r.status_code, "count": len(listed),
+                                     "current": sum(s["current"] for s in listed),
+                                     "devices": sorted({s["device"] for s in listed}), "fields": sorted(listed[0])}))
+        other = next(s for s in listed if not s["current"])
+        rec("sessions: revoke another device", c.post(f"/api/auth/sessions/{other['id']}/revoke", headers=S1))
+        rec("sessions: revoke unknown device", c.post("/api/auth/sessions/000000000000/revoke", headers=S1))
+        rec("logout", c.post("/api/auth/logout", headers=S1))
+        rec("after logout: token rejected", c.get("/api/me", headers=S1))
+        rec("logout: no token", c.post("/api/auth/logout"))
+        rec("logout-all (demo2)", c.post("/api/auth/logout-all", headers=S2))
+        rec("after logout-all: token rejected", c.get("/api/me", headers=S2))
+        rec("other accounts unaffected", c.get("/api/me", headers=S3))
     return out
 
 

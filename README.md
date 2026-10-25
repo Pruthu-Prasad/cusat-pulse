@@ -26,7 +26,7 @@ cloudflared tunnel --url http://localhost:5173
 ```
 
 Demo logins (`DEMO_MODE=true`, code `000000`): students `demo1@cusat.ac.in` to `demo10@cusat.ac.in`; admin `estate@cusat.ac.in`; staff `itsupport@cusat.ac.in`.
-Other CUSAT emails get a real OTP printed in the backend console.
+Other CUSAT emails get a real OTP by email once `SMTP_*` is set in `backend/.env` (Gmail needs an App Password); until then the code is printed in the backend console.
 
 ## Demo helpers
 

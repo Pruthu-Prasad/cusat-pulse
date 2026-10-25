@@ -5371,5 +5371,162 @@
   },
   "name": "upload: traversal",
   "status": 404
+ },
+ {
+  "body": {
+   "count": 3,
+   "current": 1,
+   "devices": [
+    "Browser on Unknown system"
+   ],
+   "fields": [
+    "created_at",
+    "current",
+    "device",
+    "id",
+    "last_seen_at"
+   ],
+   "status": 200
+  },
+  "name": "sessions: list",
+  "status": 200
+ },
+ {
+  "body": {
+   "ok": true
+  },
+  "name": "sessions: revoke another device",
+  "status": 200
+ },
+ {
+  "body": {
+   "detail": "That device is not signed in."
+  },
+  "name": "sessions: revoke unknown device",
+  "status": 404
+ },
+ {
+  "body": {
+   "ok": true
+  },
+  "name": "logout",
+  "status": 200
+ },
+ {
+  "body": {
+   "detail": "Your session has expired. Please sign in again."
+  },
+  "name": "after logout: token rejected",
+  "status": 401
+ },
+ {
+  "body": {
+   "detail": "Please sign in."
+  },
+  "name": "logout: no token",
+  "status": 401
+ },
+ {
+  "body": {
+   "ok": true,
+   "revoked": 1
+  },
+  "name": "logout-all (demo2)",
+  "status": 200
+ },
+ {
+  "body": {
+   "detail": "Your session has expired. Please sign in again."
+  },
+  "name": "after logout-all: token rejected",
+  "status": 401
+ },
+ {
+  "body": {
+   "reports": [
+    {
+     "after_photo": null,
+     "ai_description": "Exposed wires on a wall socket.",
+     "already_confirmed": false,
+     "category": "Electrical",
+     "created_at": "<TS>",
+     "fix_disputed": 0,
+     "id": "RPT-0021",
+     "image_path": "<IMG>.jpg",
+     "issue_id": "CL-0008",
+     "report_status": "ACTIVE",
+     "severity": 8,
+     "status": "OPEN",
+     "threat_level": "High",
+     "title": "Exposed socket wires",
+     "unique_reporters": 1,
+     "verify_deadline": null
+    },
+    {
+     "after_photo": null,
+     "ai_description": "Exposed wires on a wall socket.",
+     "already_confirmed": false,
+     "category": "Electrical",
+     "created_at": "<TS>",
+     "fix_disputed": null,
+     "id": "RPT-0020",
+     "image_path": "<IMG>.jpg",
+     "issue_id": null,
+     "report_status": "FLAGGED",
+     "severity": 8,
+     "status": null,
+     "threat_level": null,
+     "title": null,
+     "unique_reporters": null,
+     "verify_deadline": null
+    },
+    {
+     "after_photo": null,
+     "ai_description": "Close-up of melted insulation inside the box.",
+     "already_confirmed": false,
+     "category": "Electrical",
+     "created_at": "<TS>",
+     "fix_disputed": 0,
+     "id": "RPT-0003",
+     "image_path": "seed_sahara_3.jpg",
+     "issue_id": "CL-0001",
+     "report_status": "ACTIVE",
+     "severity": 9,
+     "status": "OPEN",
+     "threat_level": "Critical",
+     "title": "Sparking distribution box near the mess entrance",
+     "unique_reporters": 4,
+     "verify_deadline": null
+    },
+    {
+     "after_photo": null,
+     "ai_description": "Fallen ceiling panel on a lab bench, sagging frame above.",
+     "already_confirmed": false,
+     "category": "Structural",
+     "created_at": "<TS>",
+     "fix_disputed": 0,
+     "id": "RPT-0013",
+     "image_path": "seed_soe_1.jpg",
+     "issue_id": "CL-0004",
+     "report_status": "MARKED_FAKE",
+     "severity": 7,
+     "status": "DISMISSED",
+     "threat_level": "High",
+     "title": "Collapsed ceiling panel in a lab",
+     "unique_reporters": 0,
+     "verify_deadline": null
+    }
+   ],
+   "user": {
+    "cusat_id": "CUS1003",
+    "email": "demo3@cusat.ac.in",
+    "id": 3,
+    "name": "Fathima Rasheed",
+    "role": "student",
+    "trust_score": 65
+   }
+  },
+  "name": "other accounts unaffected",
+  "status": 200
  }
 ]

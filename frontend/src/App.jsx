@@ -1,6 +1,6 @@
 import { lazy, Suspense, useState } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { session } from './api'
+import { api, session } from './api'
 import Login from './pages/Login'
 import StudentShell from './components/layout/StudentShell'
 import StudentMap from './pages/StudentMap'
@@ -13,7 +13,13 @@ const AdminApp = lazy(() => import('./pages/admin/AdminApp'))
 export default function App() {
   const [user, setUser] = useState(session.user)
   const staff = user && (user.role === 'staff' || user.role === 'admin')
-  const logout = () => { session.clear(); setUser(null) }
+  // End the session on the server first (so the token stops working), then forget it here.
+  // If the server can't be reached, still sign out locally.
+  const logout = async () => {
+    try { await api('/api/auth/logout', { method: 'POST' }) } catch { /* offline or already expired */ }
+    session.clear()
+    setUser(null)
+  }
 
   if (!user) return <Login onLogin={setUser} />
 

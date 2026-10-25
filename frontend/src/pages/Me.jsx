@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { LogOut, ShieldCheck, Moon, Sun, Award, Sparkles, User as UserIcon } from 'lucide-react'
 import { api } from '../api'
 import { useDarkMode } from '../hooks/useDarkMode'
+import SessionsCard from '../components/SessionsCard'
 
 export default function Me({ user, onLogout }) {
   const [me, setMe] = useState(user)
@@ -97,6 +98,8 @@ export default function Me({ user, onLogout }) {
           Open Staff Dashboard
         </Link>
       )}
+
+      <SessionsCard />
 
       <button onClick={onLogout} className="btn-ghost w-full">
         <LogOut size={16} /> Sign out

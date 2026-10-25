@@ -1,5 +1,5 @@
 """Demo data. From backend/: `python -m scripts.seed_cusat --fresh` wipes and reseeds (the DB file is removed;
-rows can't be deleted). Stop the backend first.
+rows can't be deleted). Stop the backend first. Add --empty for logins only (no demo issues).
 
 Real photos: drop JPEGs into seed_images/ named <photo key>.jpg (e.g. sahara_1.jpg). Missing ones get a placeholder.
 Add --ai to run each real photo through Gemma (descriptions, scores, advice, rank reasons, EN/ML work orders)
@@ -226,10 +226,13 @@ def _scenario(conn, s, user_ids):
     return issue_id
 
 
-def seed():
+def seed(with_issues=True):
     init_db()
     with get_db() as conn:
         user_ids = _users(conn)
+        if not with_issues:
+            # Clean slate for a live presentation: demo/staff logins only, no issues, empty ledger.
+            return {"seeded": True, "issues": [], "logins": [f"demo{n}@cusat.ac.in" for n in range(1, 11)] + STAFF_EMAILS}
         if conn.execute("SELECT COUNT(*) c FROM issues").fetchone()["c"]:
             return {"seeded": False, "message": "Data already exists. Run `python -m scripts.seed_cusat --fresh` to start over."}
         ids = [_scenario(conn, s, user_ids) for s in SCENARIOS]
@@ -268,4 +271,4 @@ if __name__ == "__main__":
             p = DB_PATH.with_name(DB_PATH.name + suffix)
             if p.exists():
                 p.unlink()
-    print(json.dumps(seed(), indent=2, ensure_ascii=False))
+    print(json.dumps(seed(with_issues="--empty" not in sys.argv), indent=2, ensure_ascii=False))

@@ -1587,6 +1587,160 @@
  },
  {
   "body": {
+   "job_id": "<JOB>"
+  },
+  "name": "report: tool-calling loop",
+  "status": 200
+ },
+ {
+  "body": [
+   {
+    "id": 34,
+    "kind": "thought",
+    "step": 1,
+    "text": "Looking at photo..."
+   },
+   {
+    "id": 35,
+    "kind": "thought",
+    "step": 2,
+    "text": "Plumbing: Exposed wires on a wall socket. Severity 8 (High)"
+   },
+   {
+    "id": 36,
+    "kind": "thought",
+    "step": 3,
+    "text": "Gemma is deciding the next step..."
+   },
+   {
+    "id": 37,
+    "kind": "thought",
+    "step": 4,
+    "text": "Looking for open issues in this building."
+   },
+   {
+    "id": 38,
+    "kind": "tool_call",
+    "step": 5,
+    "text": "find_nearby_issues(Guest House) -> 0 issues"
+   },
+   {
+    "id": 39,
+    "kind": "thought",
+    "step": 6,
+    "text": "Gemma is deciding the next step..."
+   },
+   {
+    "id": 40,
+    "kind": "tool_call",
+    "step": 7,
+    "text": "create_issue -> CL-0009, priority 5.93"
+   },
+   {
+    "id": 41,
+    "kind": "thought",
+    "step": 8,
+    "text": "Gemma is deciding the next step..."
+   },
+   {
+    "id": 42,
+    "kind": "tool_call",
+    "step": 9,
+    "text": "notify_department(Plumbing) -> work order drafted"
+   },
+   {
+    "id": 43,
+    "kind": "tool_call",
+    "step": 10,
+    "text": "no_such_tool -> unknown tool"
+   },
+   {
+    "id": 44,
+    "kind": "thought",
+    "step": 11,
+    "text": "Gemma is deciding the next step..."
+   },
+   {
+    "id": 45,
+    "kind": "thought",
+    "step": 12,
+    "text": "Created a new issue and notified plumbing."
+   },
+   {
+    "id": 46,
+    "kind": "thought",
+    "step": 13,
+    "text": "Writing rank reason and work order (English + Malayalam)..."
+   },
+   {
+    "id": 47,
+    "kind": "final",
+    "step": 14,
+    "text": "{\"outcome\": \"saved\", \"report_id\": \"RPT-0022\", \"issue_id\": \"CL-0009\", \"merge_type\": \"new\", \"reopened\": false, \"unique_students\": 1, \"priority\": 5.93, \"category\": \"Plumbing\", \"threat_level\": \"High\", \"severity\": 8, \"what_i_see\": \"Exposed wires on a wall socket.\", \"advice\": \"Keep away.\", \"who_is_at_risk\": \"Students\", \"needs_human_check\": false, \"rank_reason\": \"Ranked #8: test\"}"
+   }
+  ],
+  "name": "report: tool-calling loop /stream",
+  "status": 200
+ },
+ {
+  "body": {
+   "job_id": "<JOB>"
+  },
+  "name": "report: no api key",
+  "status": 200
+ },
+ {
+  "body": [
+   {
+    "id": 48,
+    "kind": "thought",
+    "step": 1,
+    "text": "Looking at photo..."
+   },
+   {
+    "id": 49,
+    "kind": "error",
+    "step": 2,
+    "text": "The server has no Gemini API key set. Ask the team to add it."
+   }
+  ],
+  "name": "report: no api key /stream",
+  "status": 200
+ },
+ {
+  "body": {
+   "job_id": "<JOB>"
+  },
+  "name": "report: gemma busy",
+  "status": 200
+ },
+ {
+  "body": [
+   {
+    "id": 50,
+    "kind": "thought",
+    "step": 1,
+    "text": "Looking at photo..."
+   },
+   {
+    "id": 51,
+    "kind": "error",
+    "step": 2,
+    "text": "Gemma is busy right now. Please try again in a minute."
+   }
+  ],
+  "name": "report: gemma busy /stream",
+  "status": 200
+ },
+ {
+  "body": {
+   "detail": "You've sent a lot of reports this hour. Please try again later."
+  },
+  "name": "report: rate limited",
+  "status": 429
+ },
+ {
+  "body": {
    "detail": "That file is not a photo."
   },
   "name": "report: not an image",
@@ -1646,40 +1800,40 @@
  {
   "body": [
    {
-    "id": 34,
+    "id": 52,
     "kind": "thought",
     "step": 1,
     "text": "Staff (staff:STAFF2) confirmed RPT-0017 shows a real problem. Grouping it now..."
    },
    {
-    "id": 35,
+    "id": 53,
     "kind": "thought",
     "step": 2,
     "text": "Gemma is deciding the next step..."
    },
    {
-    "id": 36,
+    "id": 54,
     "kind": "tool_call",
     "step": 3,
     "text": "find_nearby_issues(SOE) -> 2 issues"
    },
    {
-    "id": 37,
+    "id": 55,
     "kind": "tool_call",
     "step": 4,
-    "text": "create_issue -> CL-0009, priority 6.58"
+    "text": "create_issue -> CL-0010, priority 6.58"
    },
    {
-    "id": 38,
+    "id": 56,
     "kind": "thought",
     "step": 5,
     "text": "Writing rank reason and work order (English + Malayalam)..."
    },
    {
-    "id": 39,
+    "id": 57,
     "kind": "final",
     "step": 6,
-    "text": "{\"outcome\": \"saved\", \"report_id\": \"RPT-0017\", \"issue_id\": \"CL-0009\", \"merge_type\": \"new\", \"reopened\": false, \"unique_students\": 1, \"priority\": 6.58, \"category\": \"Plumbing\", \"threat_level\": \"High\", \"severity\": 8, \"what_i_see\": \"A flooded room shown on a laptop screen; screen bezel and moire lines visible.\", \"advice\": \"Keep a safe distance.\", \"who_is_at_risk\": null, \"needs_human_check\": false, \"rank_reason\": \"Ranked #5: test\"}"
+    "text": "{\"outcome\": \"saved\", \"report_id\": \"RPT-0017\", \"issue_id\": \"CL-0010\", \"merge_type\": \"new\", \"reopened\": false, \"unique_students\": 1, \"priority\": 6.58, \"category\": \"Plumbing\", \"threat_level\": \"High\", \"severity\": 8, \"what_i_see\": \"A flooded room shown on a laptop screen; screen bezel and moire lines visible.\", \"advice\": \"Keep a safe distance.\", \"who_is_at_risk\": null, \"needs_human_check\": false, \"rank_reason\": \"Ranked #5: test\"}"
    }
   ],
   "name": "accept /stream",
@@ -1709,6 +1863,13 @@
   },
   "name": "fix: reused before photo",
   "status": 200
+ },
+ {
+  "body": {
+   "detail": "Gemma is busy right now. Please try again in a minute."
+  },
+  "name": "fix: gemma busy -> 503",
+  "status": 503
  },
  {
   "body": {
@@ -1781,7 +1942,7 @@
    "lng": 76.33,
    "needs_human_check": 0,
    "priority": 3.28,
-   "rank": 9,
+   "rank": 10,
    "rank_reason": "Ranked #6: no safety risk; schedule with IT support this week.",
    "reports": [
     {
@@ -1906,22 +2067,6 @@
     {
      "actor": "staff:STAFF2",
      "block_hash": "<HASH>",
-     "block_no": 46,
-     "created_at": "<TS>",
-     "event": "FIX_SUBMITTED",
-     "report_id": null
-    },
-    {
-     "actor": "gemma",
-     "block_hash": "<HASH>",
-     "block_no": 47,
-     "created_at": "<TS>",
-     "event": "AUDIT_FAILED",
-     "report_id": null
-    },
-    {
-     "actor": "staff:STAFF2",
-     "block_hash": "<HASH>",
      "block_no": 48,
      "created_at": "<TS>",
      "event": "FIX_SUBMITTED",
@@ -1932,23 +2077,23 @@
      "block_hash": "<HASH>",
      "block_no": 49,
      "created_at": "<TS>",
-     "event": "AUDIT_PASSED",
+     "event": "AUDIT_FAILED",
+     "report_id": null
+    },
+    {
+     "actor": "staff:STAFF2",
+     "block_hash": "<HASH>",
+     "block_no": 50,
+     "created_at": "<TS>",
+     "event": "FIX_SUBMITTED",
      "report_id": null
     },
     {
      "actor": "gemma",
      "block_hash": "<HASH>",
-     "block_no": 50,
-     "created_at": "<TS>",
-     "event": "DISPUTE_VERIFIED",
-     "report_id": null
-    },
-    {
-     "actor": "student:CUS1010",
-     "block_hash": "<HASH>",
      "block_no": 51,
      "created_at": "<TS>",
-     "event": "REOPENED",
+     "event": "AUDIT_PASSED",
      "report_id": null
     },
     {
@@ -1956,13 +2101,29 @@
      "block_hash": "<HASH>",
      "block_no": 52,
      "created_at": "<TS>",
+     "event": "DISPUTE_VERIFIED",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1010",
+     "block_hash": "<HASH>",
+     "block_no": 53,
+     "created_at": "<TS>",
+     "event": "REOPENED",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 54,
+     "created_at": "<TS>",
      "event": "RANK_CHANGED",
      "report_id": null
     },
     {
      "actor": "gemma",
      "block_hash": "<HASH>",
-     "block_no": 53,
+     "block_no": 55,
      "created_at": "<TS>",
      "event": "ESCALATED",
      "report_id": null
@@ -1972,8 +2133,8 @@
    "lng": 76.33,
    "needs_human_check": 0,
    "priority": 4.58,
-   "rank": 9,
-   "rank_reason": "Ranked #9: test",
+   "rank": 10,
+   "rank_reason": "Ranked #10: test",
    "reports": [
     {
      "advice": "No danger. Use the spare portable projector for now.",
@@ -2120,6 +2281,61 @@
  },
  {
   "body": {
+   "job_id": "<JOB>"
+  },
+  "name": "report: recurrence reopens CL-0005",
+  "status": 200
+ },
+ {
+  "body": [
+   {
+    "id": 58,
+    "kind": "thought",
+    "step": 1,
+    "text": "Looking at photo..."
+   },
+   {
+    "id": 59,
+    "kind": "thought",
+    "step": 2,
+    "text": "IT: Exposed wires on a wall socket. Severity 8 (High)"
+   },
+   {
+    "id": 60,
+    "kind": "thought",
+    "step": 3,
+    "text": "Gemma is deciding the next step..."
+   },
+   {
+    "id": 61,
+    "kind": "tool_call",
+    "step": 4,
+    "text": "find_nearby_issues(CITTIC) -> 2 issues (1 recently fixed)"
+   },
+   {
+    "id": 62,
+    "kind": "thought",
+    "step": 5,
+    "text": "same projector again"
+   },
+   {
+    "id": 63,
+    "kind": "tool_call",
+    "step": 6,
+    "text": "merge_into_issue(CL-0005, same_object) -> 2 students, priority 8.85 -> REOPENED, fix flagged"
+   },
+   {
+    "id": 64,
+    "kind": "final",
+    "step": 7,
+    "text": "{\"outcome\": \"saved\", \"report_id\": \"RPT-0023\", \"issue_id\": \"CL-0005\", \"merge_type\": \"same_object\", \"reopened\": true, \"unique_students\": 2, \"priority\": 8.85, \"category\": \"IT\", \"threat_level\": \"Critical\", \"severity\": 8, \"what_i_see\": \"Exposed wires on a wall socket.\", \"advice\": \"Keep away.\", \"who_is_at_risk\": \"Students\", \"needs_human_check\": false, \"rank_reason\": \"Ranked #10: test\"}"
+   }
+  ],
+  "name": "report: recurrence reopens CL-0005 /stream",
+  "status": 200
+ },
+ {
+  "body": {
    "is_screen_or_reused": false,
    "marked_fake": false,
    "problem_present": true,
@@ -2181,6 +2397,23 @@
   "body": {
    "issues": [
     {
+     "building": "CITTIC",
+     "category": "IT",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 4,
+     "fix_disputed": 1,
+     "floor": "1",
+     "id": "CL-0005",
+     "lat": 10.04,
+     "lng": 76.33,
+     "priority": 8.85,
+     "severity": 10,
+     "status": "REOPENED",
+     "threat_level": "Critical",
+     "title": "Projector not turning on in seminar hall",
+     "unique_reporters": 2
+    },
+    {
      "building": "Sahara Hostel",
      "category": "Electrical",
      "created_at": "<TS>",
@@ -2238,7 +2471,7 @@
      "failed_fix_attempts": 0,
      "fix_disputed": 0,
      "floor": null,
-     "id": "CL-0009",
+     "id": "CL-0010",
      "lat": 10.05,
      "lng": 76.33,
      "priority": 6.58,
@@ -2280,6 +2513,23 @@
      "status": "OPEN",
      "threat_level": "High",
      "title": "Exposed socket wires",
+     "unique_reporters": 1
+    },
+    {
+     "building": "Guest House",
+     "category": "Plumbing",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "Ground",
+     "id": "CL-0009",
+     "lat": 10.04,
+     "lng": 76.33,
+     "priority": 5.93,
+     "severity": 8,
+     "status": "OPEN",
+     "threat_level": "High",
+     "title": "Leaking tap in guest house",
      "unique_reporters": 1
     },
     {
@@ -2315,6 +2565,23 @@
   "body": {
    "issues": [
     {
+     "building": "CITTIC",
+     "category": "IT",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 4,
+     "fix_disputed": 1,
+     "floor": "1",
+     "id": "CL-0005",
+     "lat": 10.04,
+     "lng": 76.33,
+     "priority": 8.85,
+     "severity": 10,
+     "status": "REOPENED",
+     "threat_level": "Critical",
+     "title": "Projector not turning on in seminar hall",
+     "unique_reporters": 2
+    },
+    {
      "building": "Sahara Hostel",
      "category": "Electrical",
      "created_at": "<TS>",
@@ -2372,7 +2639,7 @@
      "failed_fix_attempts": 0,
      "fix_disputed": 0,
      "floor": null,
-     "id": "CL-0009",
+     "id": "CL-0010",
      "lat": 10.05,
      "lng": 76.33,
      "priority": 6.58,
@@ -2417,6 +2684,23 @@
      "unique_reporters": 1
     },
     {
+     "building": "Guest House",
+     "category": "Plumbing",
+     "created_at": "<TS>",
+     "failed_fix_attempts": 0,
+     "fix_disputed": 0,
+     "floor": "Ground",
+     "id": "CL-0009",
+     "lat": 10.04,
+     "lng": 76.33,
+     "priority": 5.93,
+     "severity": 8,
+     "status": "OPEN",
+     "threat_level": "High",
+     "title": "Leaking tap in guest house",
+     "unique_reporters": 1
+    },
+    {
      "building": "Aishwarya Hostel",
      "category": "Plumbing",
      "created_at": "<TS>",
@@ -2432,23 +2716,6 @@
      "threat_level": "Medium",
      "title": "Taps dry in Aishwarya Hostel",
      "unique_reporters": 2
-    },
-    {
-     "building": "CITTIC",
-     "category": "IT",
-     "created_at": "<TS>",
-     "failed_fix_attempts": 3,
-     "fix_disputed": 1,
-     "floor": "1",
-     "id": "CL-0005",
-     "lat": 10.04,
-     "lng": 76.33,
-     "priority": 4.58,
-     "severity": 4,
-     "status": "RESOLVED",
-     "threat_level": "Medium",
-     "title": "Projector not turning on in seminar hall",
-     "unique_reporters": 1
     }
    ],
    "links": [
@@ -2479,6 +2746,45 @@
     }
    ],
    "groups": [
+    {
+     "category": "IT",
+     "count": 1,
+     "locations": [
+      {
+       "building": "CITTIC",
+       "issues": [
+        {
+         "building": "CITTIC",
+         "category": "IT",
+         "complexity": 3,
+         "created_at": "<TS>",
+         "emergency": 10,
+         "escalation": 4,
+         "failed_fix_attempts": 4,
+         "fix_disputed": 1,
+         "floor": "1",
+         "id": "CL-0005",
+         "lat": 10.04,
+         "lng": 76.33,
+         "needs_human_check": 0,
+         "priority": 8.85,
+         "rank_reason": "Ranked #10: test",
+         "resolved_at": null,
+         "severity": 10,
+         "status": "REOPENED",
+         "summary": "Ceiling projector shows no power light; the rest of the hall works.",
+         "threat_level": "Critical",
+         "title": "Projector not turning on in seminar hall",
+         "trade_needed": "Tester",
+         "unique_reporters": 2,
+         "verify_deadline": null,
+         "work_order_en": "WO EN",
+         "work_order_ml": "WO ML"
+        }
+       ]
+      }
+     ]
+    },
     {
      "category": "Electrical",
      "count": 3,
@@ -2586,7 +2892,7 @@
     },
     {
      "category": "Plumbing",
-     "count": 4,
+     "count": 5,
      "locations": [
       {
        "building": "SOE",
@@ -2601,7 +2907,7 @@
          "failed_fix_attempts": 0,
          "fix_disputed": 0,
          "floor": null,
-         "id": "CL-0009",
+         "id": "CL-0010",
          "lat": 10.05,
          "lng": 76.33,
          "needs_human_check": 0,
@@ -2613,6 +2919,39 @@
          "summary": "A flooded room shown on a laptop screen; screen bezel and moire lines visible.",
          "threat_level": "High",
          "title": "A flooded room shown on a laptop screen; screen bezel and moire lines visible",
+         "trade_needed": "Tester",
+         "unique_reporters": 1,
+         "verify_deadline": null,
+         "work_order_en": "WO EN",
+         "work_order_ml": "WO ML"
+        }
+       ]
+      },
+      {
+       "building": "Guest House",
+       "issues": [
+        {
+         "building": "Guest House",
+         "category": "Plumbing",
+         "complexity": 3,
+         "created_at": "<TS>",
+         "emergency": 7,
+         "escalation": 0,
+         "failed_fix_attempts": 0,
+         "fix_disputed": 0,
+         "floor": "Ground",
+         "id": "CL-0009",
+         "lat": 10.04,
+         "lng": 76.33,
+         "needs_human_check": 0,
+         "priority": 5.93,
+         "rank_reason": "Ranked #8: test",
+         "resolved_at": null,
+         "severity": 8,
+         "status": "OPEN",
+         "summary": "Exposed wires on a wall socket.",
+         "threat_level": "High",
+         "title": "Leaking tap in guest house",
          "trade_needed": "Tester",
          "unique_reporters": 1,
          "verify_deadline": null,
@@ -2760,48 +3099,37 @@
        ]
       }
      ]
-    },
-    {
-     "category": "IT",
-     "count": 1,
-     "locations": [
-      {
-       "building": "CITTIC",
-       "issues": [
-        {
-         "building": "CITTIC",
-         "category": "IT",
-         "complexity": 3,
-         "created_at": "<TS>",
-         "emergency": 4,
-         "escalation": 2,
-         "failed_fix_attempts": 3,
-         "fix_disputed": 1,
-         "floor": "1",
-         "id": "CL-0005",
-         "lat": 10.04,
-         "lng": 76.33,
-         "needs_human_check": 0,
-         "priority": 4.58,
-         "rank_reason": "Ranked #9: test",
-         "resolved_at": "<TS>",
-         "severity": 4,
-         "status": "RESOLVED",
-         "summary": "Ceiling projector shows no power light; the rest of the hall works.",
-         "threat_level": "Medium",
-         "title": "Projector not turning on in seminar hall",
-         "trade_needed": "Tester",
-         "unique_reporters": 1,
-         "verify_deadline": null,
-         "work_order_en": "WO EN",
-         "work_order_ml": "WO ML"
-        }
-       ]
-      }
-     ]
     }
    ],
    "top": [
+    {
+     "building": "CITTIC",
+     "category": "IT",
+     "complexity": 3,
+     "created_at": "<TS>",
+     "emergency": 10,
+     "escalation": 4,
+     "failed_fix_attempts": 4,
+     "fix_disputed": 1,
+     "floor": "1",
+     "id": "CL-0005",
+     "lat": 10.04,
+     "lng": 76.33,
+     "needs_human_check": 0,
+     "priority": 8.85,
+     "rank_reason": "Ranked #10: test",
+     "resolved_at": null,
+     "severity": 10,
+     "status": "REOPENED",
+     "summary": "Ceiling projector shows no power light; the rest of the hall works.",
+     "threat_level": "Critical",
+     "title": "Projector not turning on in seminar hall",
+     "trade_needed": "Tester",
+     "unique_reporters": 2,
+     "verify_deadline": null,
+     "work_order_en": "WO EN",
+     "work_order_ml": "WO ML"
+    },
     {
      "building": "Sahara Hostel",
      "category": "Electrical",
@@ -2896,7 +3224,7 @@
      "failed_fix_attempts": 0,
      "fix_disputed": 0,
      "floor": null,
-     "id": "CL-0009",
+     "id": "CL-0010",
      "lat": 10.05,
      "lng": 76.33,
      "needs_human_check": 0,
@@ -2908,34 +3236,6 @@
      "summary": "A flooded room shown on a laptop screen; screen bezel and moire lines visible.",
      "threat_level": "High",
      "title": "A flooded room shown on a laptop screen; screen bezel and moire lines visible",
-     "trade_needed": "Tester",
-     "unique_reporters": 1,
-     "verify_deadline": null,
-     "work_order_en": "WO EN",
-     "work_order_ml": "WO ML"
-    },
-    {
-     "building": "CITTIC",
-     "category": "Electrical",
-     "complexity": 3,
-     "created_at": "<TS>",
-     "emergency": 7,
-     "escalation": 0,
-     "failed_fix_attempts": 0,
-     "fix_disputed": 0,
-     "floor": "1",
-     "id": "CL-0007",
-     "lat": 10.04,
-     "lng": 76.33,
-     "needs_human_check": 0,
-     "priority": 5.93,
-     "rank_reason": "Ranked #6: test",
-     "resolved_at": null,
-     "severity": 8,
-     "status": "OPEN",
-     "summary": "Exposed wires on a wall socket.",
-     "threat_level": "High",
-     "title": "Exposed socket wires",
      "trade_needed": "Tester",
      "unique_reporters": 1,
      "verify_deadline": null,
@@ -2995,10 +3295,10 @@
      "id": "CL-0005",
      "lat": 10.04,
      "lng": 76.33,
-     "priority": 4.58,
-     "status": "RESOLVED",
-     "threat_level": "Medium",
-     "weight": 0.38
+     "priority": 8.85,
+     "status": "REOPENED",
+     "threat_level": "Critical",
+     "weight": 0.74
     },
     {
      "category": "Plumbing",
@@ -3033,6 +3333,16 @@
     {
      "category": "Plumbing",
      "id": "CL-0009",
+     "lat": 10.04,
+     "lng": 76.33,
+     "priority": 5.93,
+     "status": "OPEN",
+     "threat_level": "High",
+     "weight": 0.49
+    },
+    {
+     "category": "Plumbing",
+     "id": "CL-0010",
      "lat": 10.05,
      "lng": 76.33,
      "priority": 6.58,
@@ -3294,7 +3604,7 @@
     {
      "actor": "gemma",
      "block_hash": "<HASH>",
-     "block_no": 63,
+     "block_no": 70,
      "created_at": "<TS>",
      "event": "FAKE_CLAIM_REJECTED",
      "report_id": "RPT-0012"
@@ -3302,7 +3612,7 @@
     {
      "actor": "gemma",
      "block_hash": "<HASH>",
-     "block_no": 64,
+     "block_no": 71,
      "created_at": "<TS>",
      "event": "FAKE_CLAIM_REJECTED",
      "report_id": "RPT-0012"
@@ -3310,7 +3620,7 @@
     {
      "actor": "staff:STAFF2",
      "block_hash": "<HASH>",
-     "block_no": 65,
+     "block_no": 72,
      "created_at": "<TS>",
      "event": "MARKED_FAKE_BY_STAFF",
      "report_id": "RPT-0012"
@@ -3326,7 +3636,7 @@
    "lng": 76.32,
    "needs_human_check": 0,
    "priority": 5.75,
-   "rank": 7,
+   "rank": 9,
    "rank_reason": "Ranked #5: water failure for 3 students, possibly the same main supply as Athulya Hostel.",
    "reports": [
     {
@@ -3478,7 +3788,7 @@
     {
      "actor": "staff:STAFF2",
      "block_hash": "<HASH>",
-     "block_no": 66,
+     "block_no": 73,
      "created_at": "<TS>",
      "event": "MARKED_FAKE_BY_STAFF",
      "report_id": "RPT-0013"
@@ -3486,7 +3796,7 @@
     {
      "actor": "staff:STAFF2",
      "block_hash": "<HASH>",
-     "block_no": 67,
+     "block_no": 74,
      "created_at": "<TS>",
      "event": "DISMISSED",
      "report_id": null
@@ -3496,7 +3806,7 @@
    "lng": 76.33,
    "needs_human_check": 0,
    "priority": 6.4,
-   "rank": 8,
+   "rank": 10,
    "rank_reason": "Ranked #3: more panels may fall in a room students use daily; needs a scaffold and a carpentry team.",
    "reports": [
     {
@@ -3619,26 +3929,26 @@
    "breakdown": {
     "inputs": {
      "C": 3,
-     "E": 4,
-     "R": 1,
-     "S": 4
+     "E": 10,
+     "R": 2,
+     "S": 10
     },
     "parts": {
      "age": 1.0,
      "complexity": 0.6,
-     "emergency": 1.0,
-     "reporters": 0.38,
-     "severity": 1.6
+     "emergency": 2.5,
+     "reporters": 0.75,
+     "severity": 4.0
     },
-    "priority": 4.58
+    "priority": 8.85
    },
    "building": "CITTIC",
    "category": "IT",
    "complexity": 3,
    "created_at": "<TS>",
-   "emergency": 4,
-   "escalation": 2,
-   "failed_fix_attempts": 3,
+   "emergency": 10,
+   "escalation": 4,
+   "failed_fix_attempts": 4,
    "fix_disputed": 1,
    "floor": "1",
    "i_reported": false,
@@ -3664,22 +3974,6 @@
     {
      "actor": "staff:STAFF2",
      "block_hash": "<HASH>",
-     "block_no": 46,
-     "created_at": "<TS>",
-     "event": "FIX_SUBMITTED",
-     "report_id": null
-    },
-    {
-     "actor": "gemma",
-     "block_hash": "<HASH>",
-     "block_no": 47,
-     "created_at": "<TS>",
-     "event": "AUDIT_FAILED",
-     "report_id": null
-    },
-    {
-     "actor": "staff:STAFF2",
-     "block_hash": "<HASH>",
      "block_no": 48,
      "created_at": "<TS>",
      "event": "FIX_SUBMITTED",
@@ -3690,45 +3984,13 @@
      "block_hash": "<HASH>",
      "block_no": 49,
      "created_at": "<TS>",
-     "event": "AUDIT_PASSED",
-     "report_id": null
-    },
-    {
-     "actor": "gemma",
-     "block_hash": "<HASH>",
-     "block_no": 50,
-     "created_at": "<TS>",
-     "event": "DISPUTE_VERIFIED",
-     "report_id": null
-    },
-    {
-     "actor": "student:CUS1010",
-     "block_hash": "<HASH>",
-     "block_no": 51,
-     "created_at": "<TS>",
-     "event": "REOPENED",
-     "report_id": null
-    },
-    {
-     "actor": "gemma",
-     "block_hash": "<HASH>",
-     "block_no": 52,
-     "created_at": "<TS>",
-     "event": "RANK_CHANGED",
-     "report_id": null
-    },
-    {
-     "actor": "gemma",
-     "block_hash": "<HASH>",
-     "block_no": 53,
-     "created_at": "<TS>",
-     "event": "ESCALATED",
+     "event": "AUDIT_FAILED",
      "report_id": null
     },
     {
      "actor": "staff:STAFF2",
      "block_hash": "<HASH>",
-     "block_no": 54,
+     "block_no": 50,
      "created_at": "<TS>",
      "event": "FIX_SUBMITTED",
      "report_id": null
@@ -3736,9 +3998,41 @@
     {
      "actor": "gemma",
      "block_hash": "<HASH>",
+     "block_no": 51,
+     "created_at": "<TS>",
+     "event": "AUDIT_PASSED",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 52,
+     "created_at": "<TS>",
+     "event": "DISPUTE_VERIFIED",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1010",
+     "block_hash": "<HASH>",
+     "block_no": 53,
+     "created_at": "<TS>",
+     "event": "REOPENED",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 54,
+     "created_at": "<TS>",
+     "event": "RANK_CHANGED",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
      "block_no": 55,
      "created_at": "<TS>",
-     "event": "AUDIT_FAILED",
+     "event": "ESCALATED",
      "report_id": null
     },
     {
@@ -3754,15 +4048,15 @@
      "block_hash": "<HASH>",
      "block_no": 57,
      "created_at": "<TS>",
-     "event": "AUDIT_PASSED",
+     "event": "AUDIT_FAILED",
      "report_id": null
     },
     {
-     "actor": "gemma",
+     "actor": "staff:STAFF2",
      "block_hash": "<HASH>",
      "block_no": 58,
      "created_at": "<TS>",
-     "event": "DISPUTE_REJECTED",
+     "event": "FIX_SUBMITTED",
      "report_id": null
     },
     {
@@ -3770,7 +4064,7 @@
      "block_hash": "<HASH>",
      "block_no": 59,
      "created_at": "<TS>",
-     "event": "CONFIRMATION_REJECTED",
+     "event": "AUDIT_PASSED",
      "report_id": null
     },
     {
@@ -3782,9 +4076,25 @@
      "report_id": null
     },
     {
-     "actor": "student:CUS1010",
+     "actor": "gemma",
      "block_hash": "<HASH>",
      "block_no": 61,
+     "created_at": "<TS>",
+     "event": "CONFIRMATION_REJECTED",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 62,
+     "created_at": "<TS>",
+     "event": "DISPUTE_REJECTED",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1010",
+     "block_hash": "<HASH>",
+     "block_no": 63,
      "created_at": "<TS>",
      "event": "STUDENT_CONFIRMED",
      "report_id": null
@@ -3792,18 +4102,58 @@
     {
      "actor": "student:CUS1010",
      "block_hash": "<HASH>",
-     "block_no": 62,
+     "block_no": 64,
      "created_at": "<TS>",
      "event": "RESOLVED",
      "report_id": null
+    },
+    {
+     "actor": "student:CUS1001",
+     "block_hash": "<HASH>",
+     "block_no": 65,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "report_id": "RPT-0023"
+    },
+    {
+     "actor": "student:CUS1001",
+     "block_hash": "<HASH>",
+     "block_no": 66,
+     "created_at": "<TS>",
+     "event": "REOPENED",
+     "report_id": "RPT-0023"
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 67,
+     "created_at": "<TS>",
+     "event": "RANK_CHANGED",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 68,
+     "created_at": "<TS>",
+     "event": "ESCALATED",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1001",
+     "block_hash": "<HASH>",
+     "block_no": 69,
+     "created_at": "<TS>",
+     "event": "MERGED",
+     "report_id": "RPT-0023"
     }
    ],
    "links": [],
    "lng": 76.33,
    "needs_human_check": 0,
-   "priority": 4.58,
-   "rank": 8,
-   "rank_reason": "Ranked #9: test",
+   "priority": 8.85,
+   "rank": 1,
+   "rank_reason": "Ranked #10: test",
    "reports": [
     {
      "advice": "No danger. Use the spare portable projector for now.",
@@ -3828,16 +4178,40 @@
      "severity": 2,
      "status": "ACTIVE",
      "trust_score": 100
+    },
+    {
+     "advice": "Keep away.",
+     "ai_description": "Exposed wires on a wall socket.",
+     "complexity": 3,
+     "confidence": 0.9,
+     "counts_toward_total": 1,
+     "created_at": "<TS>",
+     "cusat_id": "CUS1001",
+     "emergency": 7,
+     "floor": "1",
+     "gps_flag": null,
+     "hazard_box": "[10, 10, 500, 500]",
+     "id": "RPT-0023",
+     "image_path": "<IMG>.jpg",
+     "lat": 10.04,
+     "lng": 76.33,
+     "merge_reason": "same projector again",
+     "merge_type": "same_object",
+     "name": "Anjali Menon",
+     "note": "",
+     "severity": 8,
+     "status": "ACTIVE",
+     "trust_score": 100
     }
    ],
-   "resolved_at": "<TS>",
-   "severity": 4,
-   "status": "RESOLVED",
+   "resolved_at": null,
+   "severity": 10,
+   "status": "REOPENED",
    "summary": "Ceiling projector shows no power light; the rest of the hall works.",
-   "threat_level": "Medium",
+   "threat_level": "Critical",
    "title": "Projector not turning on in seminar hall",
    "trade_needed": "Tester",
-   "unique_reporters": 1,
+   "unique_reporters": 2,
    "verify_deadline": null,
    "work_order_en": "WO EN",
    "work_order_ml": "WO ML"
@@ -3899,7 +4273,7 @@
    "lng": 76.33,
    "needs_human_check": 0,
    "priority": 5.93,
-   "rank": 5,
+   "rank": 6,
    "rank_reason": "Ranked #6: test",
    "reports": [
     {
@@ -3948,7 +4322,7 @@
     {
      "actor": "staff:STAFF2",
      "block_hash": "<HASH>",
-     "block_no": 67,
+     "block_no": 74,
      "created_at": "<TS>",
      "event": "DISMISSED",
      "issue_id": "CL-0004",
@@ -3958,7 +4332,7 @@
     {
      "actor": "staff:STAFF2",
      "block_hash": "<HASH>",
-     "block_no": 66,
+     "block_no": 73,
      "created_at": "<TS>",
      "event": "MARKED_FAKE_BY_STAFF",
      "issue_id": "CL-0004",
@@ -3968,7 +4342,7 @@
     {
      "actor": "staff:STAFF2",
      "block_hash": "<HASH>",
-     "block_no": 65,
+     "block_no": 72,
      "created_at": "<TS>",
      "event": "MARKED_FAKE_BY_STAFF",
      "issue_id": "CL-0003",
@@ -3978,7 +4352,7 @@
     {
      "actor": "gemma",
      "block_hash": "<HASH>",
-     "block_no": 64,
+     "block_no": 71,
      "created_at": "<TS>",
      "event": "FAKE_CLAIM_REJECTED",
      "issue_id": "CL-0003",
@@ -3988,7 +4362,7 @@
     {
      "actor": "gemma",
      "block_hash": "<HASH>",
-     "block_no": 63,
+     "block_no": 70,
      "created_at": "<TS>",
      "event": "FAKE_CLAIM_REJECTED",
      "issue_id": "CL-0003",
@@ -3996,9 +4370,59 @@
      "report_id": "RPT-0012"
     },
     {
+     "actor": "student:CUS1001",
+     "block_hash": "<HASH>",
+     "block_no": 69,
+     "created_at": "<TS>",
+     "event": "MERGED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0023"
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 68,
+     "created_at": "<TS>",
+     "event": "ESCALATED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 67,
+     "created_at": "<TS>",
+     "event": "RANK_CHANGED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1001",
+     "block_hash": "<HASH>",
+     "block_no": 66,
+     "created_at": "<TS>",
+     "event": "REOPENED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0023"
+    },
+    {
+     "actor": "student:CUS1001",
+     "block_hash": "<HASH>",
+     "block_no": 65,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0023"
+    },
+    {
      "actor": "student:CUS1010",
      "block_hash": "<HASH>",
-     "block_no": 62,
+     "block_no": 64,
      "created_at": "<TS>",
      "event": "RESOLVED",
      "issue_id": "CL-0005",
@@ -4008,9 +4432,29 @@
     {
      "actor": "student:CUS1010",
      "block_hash": "<HASH>",
-     "block_no": 61,
+     "block_no": 63,
      "created_at": "<TS>",
      "event": "STUDENT_CONFIRMED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 62,
+     "created_at": "<TS>",
+     "event": "DISPUTE_REJECTED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 61,
+     "created_at": "<TS>",
+     "event": "CONFIRMATION_REJECTED",
      "issue_id": "CL-0005",
      "prev_hash": "<HASH>",
      "report_id": null
@@ -4030,17 +4474,17 @@
      "block_hash": "<HASH>",
      "block_no": 59,
      "created_at": "<TS>",
-     "event": "CONFIRMATION_REJECTED",
+     "event": "AUDIT_PASSED",
      "issue_id": "CL-0005",
      "prev_hash": "<HASH>",
      "report_id": null
     },
     {
-     "actor": "gemma",
+     "actor": "staff:STAFF2",
      "block_hash": "<HASH>",
      "block_no": 58,
      "created_at": "<TS>",
-     "event": "DISPUTE_REJECTED",
+     "event": "FIX_SUBMITTED",
      "issue_id": "CL-0005",
      "prev_hash": "<HASH>",
      "report_id": null
@@ -4050,7 +4494,7 @@
      "block_hash": "<HASH>",
      "block_no": 57,
      "created_at": "<TS>",
-     "event": "AUDIT_PASSED",
+     "event": "AUDIT_FAILED",
      "issue_id": "CL-0005",
      "prev_hash": "<HASH>",
      "report_id": null
@@ -4070,26 +4514,6 @@
      "block_hash": "<HASH>",
      "block_no": 55,
      "created_at": "<TS>",
-     "event": "AUDIT_FAILED",
-     "issue_id": "CL-0005",
-     "prev_hash": "<HASH>",
-     "report_id": null
-    },
-    {
-     "actor": "staff:STAFF2",
-     "block_hash": "<HASH>",
-     "block_no": 54,
-     "created_at": "<TS>",
-     "event": "FIX_SUBMITTED",
-     "issue_id": "CL-0005",
-     "prev_hash": "<HASH>",
-     "report_id": null
-    },
-    {
-     "actor": "gemma",
-     "block_hash": "<HASH>",
-     "block_no": 53,
-     "created_at": "<TS>",
      "event": "ESCALATED",
      "issue_id": "CL-0005",
      "prev_hash": "<HASH>",
@@ -4098,7 +4522,7 @@
     {
      "actor": "gemma",
      "block_hash": "<HASH>",
-     "block_no": 52,
+     "block_no": 54,
      "created_at": "<TS>",
      "event": "RANK_CHANGED",
      "issue_id": "CL-0005",
@@ -4108,7 +4532,7 @@
     {
      "actor": "student:CUS1010",
      "block_hash": "<HASH>",
-     "block_no": 51,
+     "block_no": 53,
      "created_at": "<TS>",
      "event": "REOPENED",
      "issue_id": "CL-0005",
@@ -4118,7 +4542,7 @@
     {
      "actor": "gemma",
      "block_hash": "<HASH>",
-     "block_no": 50,
+     "block_no": 52,
      "created_at": "<TS>",
      "event": "DISPUTE_VERIFIED",
      "issue_id": "CL-0005",
@@ -4128,9 +4552,29 @@
     {
      "actor": "gemma",
      "block_hash": "<HASH>",
-     "block_no": 49,
+     "block_no": 51,
      "created_at": "<TS>",
      "event": "AUDIT_PASSED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "staff:STAFF2",
+     "block_hash": "<HASH>",
+     "block_no": 50,
+     "created_at": "<TS>",
+     "event": "FIX_SUBMITTED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 49,
+     "created_at": "<TS>",
+     "event": "AUDIT_FAILED",
      "issue_id": "CL-0005",
      "prev_hash": "<HASH>",
      "report_id": null
@@ -4146,54 +4590,54 @@
      "report_id": null
     },
     {
-     "actor": "gemma",
+     "actor": "student:CUS1008",
      "block_hash": "<HASH>",
      "block_no": 47,
      "created_at": "<TS>",
-     "event": "AUDIT_FAILED",
-     "issue_id": "CL-0005",
-     "prev_hash": "<HASH>",
-     "report_id": null
-    },
-    {
-     "actor": "staff:STAFF2",
-     "block_hash": "<HASH>",
-     "block_no": 46,
-     "created_at": "<TS>",
-     "event": "FIX_SUBMITTED",
-     "issue_id": "CL-0005",
-     "prev_hash": "<HASH>",
-     "report_id": null
-    },
-    {
-     "actor": "student:CUS1008",
-     "block_hash": "<HASH>",
-     "block_no": 45,
-     "created_at": "<TS>",
      "event": "REPORT_CREATED",
-     "issue_id": "CL-0009",
+     "issue_id": "CL-0010",
      "prev_hash": "<HASH>",
      "report_id": "RPT-0017"
     },
     {
      "actor": "student:CUS1008",
      "block_hash": "<HASH>",
-     "block_no": 44,
+     "block_no": 46,
      "created_at": "<TS>",
      "event": "ISSUE_CREATED",
-     "issue_id": "CL-0009",
+     "issue_id": "CL-0010",
      "prev_hash": "<HASH>",
      "report_id": null
     },
     {
      "actor": "staff:STAFF2",
      "block_hash": "<HASH>",
-     "block_no": 43,
+     "block_no": 45,
      "created_at": "<TS>",
      "event": "FLAG_CLEARED_BY_STAFF",
      "issue_id": null,
      "prev_hash": "<HASH>",
      "report_id": "RPT-0017"
+    },
+    {
+     "actor": "student:CUS1002",
+     "block_hash": "<HASH>",
+     "block_no": 44,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "issue_id": "CL-0009",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0022"
+    },
+    {
+     "actor": "student:CUS1002",
+     "block_hash": "<HASH>",
+     "block_no": 43,
+     "created_at": "<TS>",
+     "event": "ISSUE_CREATED",
+     "issue_id": "CL-0009",
+     "prev_hash": "<HASH>",
+     "report_id": null
     },
     {
      "actor": "student:CUS1003",
@@ -4374,7 +4818,17 @@
      "issue_id": "CL-0004",
      "prev_hash": "<HASH>",
      "report_id": null
-    },
+    }
+   ],
+   "latest_hash": "<HASH>",
+   "total": 74
+  },
+  "name": "ledger: page 1",
+  "status": 200
+ },
+ {
+  "body": {
+   "blocks": [
     {
      "actor": "student:CUS1002",
      "block_hash": "<HASH>",
@@ -4444,17 +4898,7 @@
      "issue_id": "CL-0002",
      "prev_hash": "<HASH>",
      "report_id": "RPT-0009"
-    }
-   ],
-   "latest_hash": "<HASH>",
-   "total": 67
-  },
-  "name": "ledger: page 1",
-  "status": 200
- },
- {
-  "body": {
-   "blocks": [
+    },
     {
      "actor": "student:CUS1009",
      "block_hash": "<HASH>",
@@ -4627,7 +5071,7 @@
     }
    ],
    "latest_hash": "<HASH>",
-   "total": 67
+   "total": 74
   },
   "name": "ledger: page 2",
   "status": 200
@@ -4636,9 +5080,59 @@
   "body": {
    "blocks": [
     {
+     "actor": "student:CUS1001",
+     "block_hash": "<HASH>",
+     "block_no": 69,
+     "created_at": "<TS>",
+     "event": "MERGED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0023"
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 68,
+     "created_at": "<TS>",
+     "event": "ESCALATED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 67,
+     "created_at": "<TS>",
+     "event": "RANK_CHANGED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "student:CUS1001",
+     "block_hash": "<HASH>",
+     "block_no": 66,
+     "created_at": "<TS>",
+     "event": "REOPENED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0023"
+    },
+    {
+     "actor": "student:CUS1001",
+     "block_hash": "<HASH>",
+     "block_no": 65,
+     "created_at": "<TS>",
+     "event": "REPORT_CREATED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": "RPT-0023"
+    },
+    {
      "actor": "student:CUS1010",
      "block_hash": "<HASH>",
-     "block_no": 62,
+     "block_no": 64,
      "created_at": "<TS>",
      "event": "RESOLVED",
      "issue_id": "CL-0005",
@@ -4648,9 +5142,29 @@
     {
      "actor": "student:CUS1010",
      "block_hash": "<HASH>",
-     "block_no": 61,
+     "block_no": 63,
      "created_at": "<TS>",
      "event": "STUDENT_CONFIRMED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 62,
+     "created_at": "<TS>",
+     "event": "DISPUTE_REJECTED",
+     "issue_id": "CL-0005",
+     "prev_hash": "<HASH>",
+     "report_id": null
+    },
+    {
+     "actor": "gemma",
+     "block_hash": "<HASH>",
+     "block_no": 61,
+     "created_at": "<TS>",
+     "event": "CONFIRMATION_REJECTED",
      "issue_id": "CL-0005",
      "prev_hash": "<HASH>",
      "report_id": null
@@ -4670,17 +5184,17 @@
      "block_hash": "<HASH>",
      "block_no": 59,
      "created_at": "<TS>",
-     "event": "CONFIRMATION_REJECTED",
+     "event": "AUDIT_PASSED",
      "issue_id": "CL-0005",
      "prev_hash": "<HASH>",
      "report_id": null
     },
     {
-     "actor": "gemma",
+     "actor": "staff:STAFF2",
      "block_hash": "<HASH>",
      "block_no": 58,
      "created_at": "<TS>",
-     "event": "DISPUTE_REJECTED",
+     "event": "FIX_SUBMITTED",
      "issue_id": "CL-0005",
      "prev_hash": "<HASH>",
      "report_id": null
@@ -4690,7 +5204,7 @@
      "block_hash": "<HASH>",
      "block_no": 57,
      "created_at": "<TS>",
-     "event": "AUDIT_PASSED",
+     "event": "AUDIT_FAILED",
      "issue_id": "CL-0005",
      "prev_hash": "<HASH>",
      "report_id": null
@@ -4710,26 +5224,6 @@
      "block_hash": "<HASH>",
      "block_no": 55,
      "created_at": "<TS>",
-     "event": "AUDIT_FAILED",
-     "issue_id": "CL-0005",
-     "prev_hash": "<HASH>",
-     "report_id": null
-    },
-    {
-     "actor": "staff:STAFF2",
-     "block_hash": "<HASH>",
-     "block_no": 54,
-     "created_at": "<TS>",
-     "event": "FIX_SUBMITTED",
-     "issue_id": "CL-0005",
-     "prev_hash": "<HASH>",
-     "report_id": null
-    },
-    {
-     "actor": "gemma",
-     "block_hash": "<HASH>",
-     "block_no": 53,
-     "created_at": "<TS>",
      "event": "ESCALATED",
      "issue_id": "CL-0005",
      "prev_hash": "<HASH>",
@@ -4738,7 +5232,7 @@
     {
      "actor": "gemma",
      "block_hash": "<HASH>",
-     "block_no": 52,
+     "block_no": 54,
      "created_at": "<TS>",
      "event": "RANK_CHANGED",
      "issue_id": "CL-0005",
@@ -4748,7 +5242,7 @@
     {
      "actor": "student:CUS1010",
      "block_hash": "<HASH>",
-     "block_no": 51,
+     "block_no": 53,
      "created_at": "<TS>",
      "event": "REOPENED",
      "issue_id": "CL-0005",
@@ -4758,7 +5252,7 @@
     {
      "actor": "gemma",
      "block_hash": "<HASH>",
-     "block_no": 50,
+     "block_no": 52,
      "created_at": "<TS>",
      "event": "DISPUTE_VERIFIED",
      "issue_id": "CL-0005",
@@ -4768,7 +5262,7 @@
     {
      "actor": "gemma",
      "block_hash": "<HASH>",
-     "block_no": 49,
+     "block_no": 51,
      "created_at": "<TS>",
      "event": "AUDIT_PASSED",
      "issue_id": "CL-0005",
@@ -4778,7 +5272,7 @@
     {
      "actor": "staff:STAFF2",
      "block_hash": "<HASH>",
-     "block_no": 48,
+     "block_no": 50,
      "created_at": "<TS>",
      "event": "FIX_SUBMITTED",
      "issue_id": "CL-0005",
@@ -4788,7 +5282,7 @@
     {
      "actor": "gemma",
      "block_hash": "<HASH>",
-     "block_no": 47,
+     "block_no": 49,
      "created_at": "<TS>",
      "event": "AUDIT_FAILED",
      "issue_id": "CL-0005",
@@ -4798,7 +5292,7 @@
     {
      "actor": "staff:STAFF2",
      "block_hash": "<HASH>",
-     "block_no": 46,
+     "block_no": 48,
      "created_at": "<TS>",
      "event": "FIX_SUBMITTED",
      "issue_id": "CL-0005",
@@ -4827,14 +5321,14 @@
     }
    ],
    "latest_hash": "<HASH>",
-   "total": 19
+   "total": 24
   },
   "name": "ledger: filter",
   "status": 200
  },
  {
   "body": {
-   "blocks": 67,
+   "blocks": 74,
    "intact": true,
    "latest_hash": "<HASH>"
   },

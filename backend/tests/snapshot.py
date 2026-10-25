@@ -31,10 +31,14 @@ def _setup():
         import seed_cusat
     config.DB_PATH = tmp
     db.DB_PATH = tmp
-    return ai, seed_cusat
+    return ai, seed_cusat, tmp
 
 
-ai, seed_cusat = _setup()
+ai, seed_cusat, _TMP_DB = _setup()
+
+
+def _db_path():
+    return _TMP_DB
 
 
 # ---------- Gemma stubs ----------
@@ -47,21 +51,48 @@ class Stub:
     fake = None
 
 
+class _Call:
+    def __init__(self, name, args):
+        self.name, self.args = name, args
+
+
+class _Resp:
+    """Just enough of a google-genai response for the agent loop: candidates[0].content.parts + function_calls."""
+    def __init__(self, calls, text=""):
+        from types import SimpleNamespace
+        part = SimpleNamespace(text=text, thought=False)
+        self.function_calls = calls
+        self.candidates = [SimpleNamespace(content=SimpleNamespace(parts=[part] if text else []))]
+
+
+TOOL_SCRIPT = []  # when non-empty, generate_with_tools replays these responses (the real tool-calling loop)
+
+
+def _tools(system, contents, tools):
+    if not TOOL_SCRIPT:
+        raise RuntimeError("tool loop disabled in snapshot; agent uses its fallback")
+    return TOOL_SCRIPT.pop(0)
+
+
 def _triage(image, note, building, floor):
+    if isinstance(Stub.triage, Exception):
+        raise Stub.triage
     t = dict(Stub.triage)
     if not note:
         t["text_matches_photo"] = True
     return t
 
 
-def _no_tools(*_a, **_k):
-    raise RuntimeError("tool loop disabled in snapshot; agent uses its fallback")
-
-
 ai.triage = _triage
-ai.generate_with_tools = _no_tools
+ai.generate_with_tools = _tools
 ai.match_fallback = lambda t, candidates: dict(Stub.match)
-ai.audit_fix = lambda before, latest, after, note: dict(Stub.audit)
+def _audit(before, latest, after, note):
+    if isinstance(Stub.audit, Exception):
+        raise Stub.audit
+    return dict(Stub.audit)
+
+
+ai.audit_fix = _audit
 ai.check_dispute = lambda before, after, new: dict(Stub.dispute)
 ai.check_fake_claim = lambda report, staff, reported: dict(Stub.fake)
 ai.rank_and_work_order = lambda issue, rank, linked: {
@@ -211,6 +242,33 @@ def run():
         t = tok(S3)
         report(S3, "report: token first use", photo(5), token=t, building="SOE", floor="2", lat=10.04878, lng=76.33132)
         report(S3, "report: reused token", photo(6), token=t)
+        # real tool-calling loop (scripted Gemma): find -> create -> notify -> final text
+        Stub.triage = {**TRIAGE_OK, "category": "Plumbing", "title": "Leaking tap"}
+        TOOL_SCRIPT[:] = [
+            _Resp([_Call("find_nearby_issues", {"building": "Guest House", "category": "Plumbing"})],
+                  "**1. Analyze:** checking\nLooking for open issues in this building."),
+            _Resp([_Call("create_issue", {"title": "Leaking tap in guest house", "category": "Plumbing", "reason": "none nearby"})]),
+            _Resp([_Call("notify_department", {"category": "Plumbing", "message": "Fix the tap"}),
+                   _Call("no_such_tool", {})]),
+            _Resp([], "Created a new issue and notified plumbing."),
+        ]
+        report(S2, "report: tool-calling loop", photo(30), building="Guest House", floor="Ground", lat=10.04364, lng=76.32573)
+        TOOL_SCRIPT.clear()
+        # Gemma failures surface as plain messages in the trace
+        Stub.triage = ai.GemmaError("No GEMINI_API_KEY set")
+        report(S2, "report: no api key", photo(31))
+        Stub.triage = ai.GemmaError("503 UNAVAILABLE")
+        report(S2, "report: gemma busy", photo(32))
+        Stub.triage = dict(TRIAGE_OK)
+        # rate limit: 5 reports in the last hour -> 429
+        conn = __import__("sqlite3").connect(str(_db_path()))
+        uid = conn.execute("SELECT id FROM users WHERE email='demo6@cusat.ac.in'").fetchone()[0]
+        for n in range(5):
+            conn.execute("INSERT INTO reports (id, user_id, status, created_at) VALUES (?,?,'ACTIVE',strftime('%Y-%m-%dT%H:%M:%SZ','now'))",
+                         (f"RL-{n}", uid))
+        conn.commit()
+        conn.close()
+        report(login("demo6@cusat.ac.in"), "report: rate limited", photo(33))
         rec("report: not an image", c.post("/api/reports", headers=S3, data={"capture_token": tok(S3), "lat": 1, "lng": 1},
                                            files={"image": ("x.jpg", b"not an image", "image/jpeg")}))
         rec("report: missing fields", c.post("/api/reports", headers=S3, data={}))
@@ -226,6 +284,8 @@ def run():
         before = c.get("/api/issues/CL-0005", headers=ST).json()["reports"][0]["image_path"]
         before_bytes = c.get(f"/uploads/{before}", headers=ST).content
         upload("/api/admin/issues/CL-0005/fix", ST, before_bytes, {"note": "fixed"}, "fix: reused before photo")
+        Stub.audit = ai.GemmaError("503 UNAVAILABLE")
+        upload("/api/admin/issues/CL-0005/fix", ST, photo(9), None, "fix: gemma busy -> 503")
         Stub.audit = {"same_location_verified": True, "resolved": True, "is_screen_or_reused": False, "reason": "repaired"}
         upload("/api/admin/issues/CL-0005/fix", ST, photo(10), {"note": "new socket"}, "fix: passes")
         upload("/api/admin/issues/CL-0005/fix", ST, photo(11), None, "fix: not waiting for a fix")
@@ -246,6 +306,11 @@ def run():
         upload("/api/issues/CL-0005/confirm", S10, photo(17), None, "confirm: verified -> resolved")
         upload("/api/issues/CL-0005/confirm", S10, photo(18), None, "confirm: no longer awaiting")
         rec("confirm: no photo", c.post("/api/issues/CL-0005/confirm", headers=S10))
+        # recurrence: a new report of the just-resolved CL-0005 reopens + escalates it instead of a duplicate
+        Stub.triage = {**TRIAGE_OK, "category": "IT"}
+        Stub.match = {"match_issue_id": "CL-0005", "merge_type": "same_object", "reason": "same projector again"}
+        report(S1, "report: recurrence reopens CL-0005", photo(19))
+        Stub.triage = dict(TRIAGE_OK)
 
         # --- mark fake (proof photo) + dismissal ---
         rid3 = c.get("/api/issues/CL-0003", headers=ST).json()["reports"][2]["id"]
@@ -297,8 +362,9 @@ def main():
     if len(want) != len(got):
         print(f"DIFF: {len(want)} calls recorded, {len(got)} now")
         bad += 1
+    exact = lambda x: json.dumps(x, ensure_ascii=False, sort_keys=True)  # exact text: 1 != true, 0 != 0.0
     for w, g in zip(want, got):
-        if w != g:
+        if exact(w) != exact(g):
             bad += 1
             print(f"DIFF in '{w['name']}'  (status {w['status']} -> {g['status']})")
             print("   was:", json.dumps(w["body"], ensure_ascii=False)[:400])

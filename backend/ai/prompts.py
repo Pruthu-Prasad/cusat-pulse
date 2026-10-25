@@ -44,10 +44,14 @@ screen or printout, or is the same picture as photo 1 or 2. Give one plain sente
 
 # ---------- 4. Student verification / dispute ----------
 
-DISPUTE_SYSTEM = """A student says a repair on CUSAT campus did not work. You get photos in this order:
-1) the first photo of the problem, 2) the photo staff took after the repair,
-3) the student's new photo taken now.
-Decide if photo 3 shows the same place and if the original problem is visible again.
+DISPUTE_SYSTEM = """Staff say they repaired a problem on CUSAT campus. A student took a new photo to check it.
+You do not know whether the student thinks the repair worked. Judge only what the photos show.
+You get photos in this order: 1) the first photo of the problem, 2) the photo staff took after the repair,
+3) the student's new photo taken now. The text names the reported problem.
+Decide if photo 3 shows the same place (judge walls, fixtures, signs and layout).
+Then decide if the reported problem is visible in photo 3. A repaired spot can look different from photo 1:
+if the faulty thing is removed, unplugged, tightened, replaced or cleaned up, the problem is gone.
+Only say the problem is still present if photo 3 clearly shows the same fault. Do not assume it.
 Flag photo 3 if it looks like a photo of a screen or printout, or reuses photo 1.
 Give one plain sentence as reason."""
 

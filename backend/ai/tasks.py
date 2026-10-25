@@ -45,8 +45,9 @@ def audit_fix(before, latest, after, note):
 
 # ---------- 4. Student verification / dispute ----------
 
-def check_dispute(before, after, new):
-    return call_json("dispute", DISPUTE_SYSTEM, [before, after, new], "Check the student's dispute.", DISPUTE_SCHEMA)
+def check_dispute(before, after, new, problem=None):
+    return call_json("dispute", DISPUTE_SYSTEM, [before, after, new],
+                     f"Reported problem: {problem or '(no description)'}", DISPUTE_SCHEMA)
 
 
 # ---------- 4b. Staff "this report is fake" check ----------

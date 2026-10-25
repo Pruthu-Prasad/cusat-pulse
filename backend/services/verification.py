@@ -154,7 +154,9 @@ async def student_check(issue_id, data, capture_token, user, claim, background):
                   "reason": "This photo was already submitted for this issue. Please take a new photo of the location."}
     else:
         try:
-            result = await asyncio.to_thread(tasks.check_dispute, load_image(before_name), load_image(after_name), data)
+            problem = f"{issue['title']}. {issue['summary'] or ''}".strip()
+            result = await asyncio.to_thread(tasks.check_dispute, load_image(before_name), load_image(after_name),
+                                             data, problem)
         except tasks.GemmaError:
             raise AppError(503, "Gemma is busy right now. Please try again in a minute.")
     valid = bool(result.get("same_location_verified") and not result.get("is_screen_or_reused"))

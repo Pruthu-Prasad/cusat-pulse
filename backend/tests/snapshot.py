@@ -93,7 +93,7 @@ def _audit(before, latest, after, note):
 
 
 ai.audit_fix = _audit
-ai.check_dispute = lambda before, after, new: dict(Stub.dispute)
+ai.check_dispute = lambda before, after, new, problem=None: dict(Stub.dispute)
 ai.check_fake_claim = lambda report, staff, reported: dict(Stub.fake)
 ai.rank_and_work_order = lambda issue, rank, linked: {
     "rank_reason": f"Ranked #{rank}: test", "work_order_en": "WO EN", "work_order_ml": "WO ML", "trade_needed": "Tester"}
